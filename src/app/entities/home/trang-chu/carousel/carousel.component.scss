@@ -1,0 +1,33 @@
+#mycarousel{
+    .carousel-indicators{
+        li{
+            border-radius: 50%;
+            width: 13px;
+            height: 13px;
+            margin-right: 5px;
+        }
+    }
+    .carousel-inner{
+        .carousel-item{
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}   
+
+
+@media (max-width: 767px){
+    #mycarousel{
+        .carousel-inner{
+            .carousel-item{
+                img{
+                    width: unset;
+                    height: 350px;
+                    display: none;
+                }
+            }
+        }
+    }
+}
