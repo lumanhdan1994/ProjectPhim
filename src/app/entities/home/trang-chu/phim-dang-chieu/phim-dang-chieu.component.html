@@ -14,9 +14,7 @@
       <div class="tab-content">
         <div class="tab-pane container active" id="dangchieu">
           <!-- slick -->
-          <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
-            (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-            (beforeChange)="beforeChange($event)">
+          <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
             <div ngxSlickItem *ngFor="let item of danhSachPhim" class="slide">
                 <app-item-phim [phim]="item"></app-item-phim>
             </div>
