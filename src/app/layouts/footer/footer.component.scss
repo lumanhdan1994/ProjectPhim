@@ -1,0 +1,63 @@
+@import "../../../Helper/variable";
+
+
+
+#footer{
+    background-color: $color-reset;
+    padding: 50px 0;
+    color: white;
+    .title{
+        display: inline;
+        font-weight: bold;
+        border-bottom: 1px solid $color-text;
+        padding-bottom: 10px;
+        white-space: nowrap;
+    }
+    .footer-item1{
+        color: rgba(189, 189, 189, 0.993);
+        padding: 0 10px;
+        font-size: 16px;
+        img{
+            width: 50px;
+            margin-bottom: 10px;
+        }
+    }
+    .footer-item2, .footer-item3{
+        ul{
+            list-style: none;
+            margin-top: 40px;
+            padding: unset;
+            li{
+                border-bottom: 1px solid rgba(85, 85, 85, 0.993);
+                padding-bottom: 6px;
+                margin-bottom: 6px;
+                a{
+                    text-decoration: none;
+                    color: rgba(189, 189, 189, 0.993);
+                    font-size: 16px;
+                    transition: all .15s;
+                    &:hover{
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+    .footer-item4{
+        text-align: center;
+        .row{
+            margin-top: 40px;
+        }
+        img{
+            width: 50px;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    #footer{
+        .footer-item3, .footer-item1{
+            display: none;
+        }
+    }
+}
