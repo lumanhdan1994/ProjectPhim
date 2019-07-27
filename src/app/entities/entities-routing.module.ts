@@ -8,10 +8,9 @@ const routes: Routes = [
     component: EntitiesComponent,
     children: [
       //Trang Home
-      {
-        path: "",
-        loadChildren: "./home/home.module#HomeModule"
-      },
+      { path: "", redirectTo: "trangchu", pathMatch: 'full' },
+      { path: "trangchu", loadChildren: "./home/home.module#HomeModule" },
+
       //Trang Admin
       {
         path: "admin",
@@ -25,4 +24,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class EntitiesRoutingModule {}
+export class EntitiesRoutingModule { }
