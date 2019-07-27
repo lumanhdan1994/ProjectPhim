@@ -1,13 +1,13 @@
 @import './../Helper/variable';
 
 html {
-  background-color: $bg-color;
+  background-color: $primary-color;
 }
 body {
   margin: 0 auto !important;
   padding: 0;
   box-sizing: border-box;
-  background-color: $bg-color;
+  background-color:$primary-color;
 }
 .my-container {
   padding-left: 20px !important;

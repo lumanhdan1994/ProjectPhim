@@ -1,4 +1,4 @@
-@import './../../../Helper/variable';
+@import "./../../../Helper/variable";
 
 #Header {
   background-color: $primary-color;
@@ -47,13 +47,13 @@
   height: 60px;
   overflow: hidden;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.774);
+  opacity: 1;
   .toggle-button {
     width: 50px;
     button {
       background: transparent;
       border: 1px solid transparent;
       border-radius: 5px;
-
       i {
         padding-top: 2px;
         font-size: 35px;
