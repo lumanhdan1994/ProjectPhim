@@ -1,21 +1,51 @@
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Brand -->
-    <a class="navbar-brand" href="#">Navbar</a>
-
-    <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
+<header id="Header">
+    <div class="header-top d-flex justify-content-end align-items-center container-fluid">
+        <div class="header-log-in">
+            <a href="#" class="log-in d-flex align-items-center">
+                <i class="fas fa-user-circle"></i>
+                <span>Đăng Nhập</span>
+            </a>
+        </div>
+        <div class="header-khuvuc d-flex align-items-center">
+            <i class="fas fa-map-marker-alt"></i>
+            <button type="button" class="btn btn-primary dropdown-toggle btn-khuvuc" data-toggle="dropdown">
+                Hồ Chí Minh
+            </button>
+            <div class="dropdown-menu khuvuc-scroll">
+                <a class="dropdown-item" href="#">Hà Nội</a>
+                <a class="dropdown-item" href="#">Đà Nẵng</a>
+                <a class="dropdown-item" href="#">Hải Phòng</a>
+                <a class="dropdown-item" href="#">Nha Trang</a>
+                <a class="dropdown-item" href="#">Bà Rịa Vũng Tàu</a>
+                <a class="dropdown-item" href="#">Hồ Chí Minh</a>
+                <a class="dropdown-item" href="#">Cần Thơ</a>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="NavBar" class="my-container sticky-top d-flex justify-content-between align-items-center">
+    <div class="navbar-brand">
+        <a href="#">
+            <img src="./../../../assets/img/logo.png" alt="LuManhDan">
+        </a>
+    </div>
+    <div class="nav-menu">
+        <ul class="nav3-nav d-flex align-items-center">
             <li class="nav-item">
-                <a class="nav-link" routerLink="">Trang chủ</a>
+                <a href="/home#LichChieu" class="active">Lịch Chiếu</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/list-movie">Danh Sách Phim</a>
+                <a href="/home#Cum-Rap">Cụm Rạp</a>
+            </li>
+            <li class="nav-item">
+                <a href="/home#">Tin Tức</a>
             </li>
         </ul>
+    </div>
+    <div class="toggle-button">
+        <button id="show-menu">
+            <!-- <img src="./../img/navbar-icon-light.png" alt=""> -->
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
 </nav>
