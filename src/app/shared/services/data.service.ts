@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap, catchError } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 
-let urlAPI = "";
+let urlAPI = "http://movie0706.cybersoft.edu.vn/api/";
 
 const httpOptions = {
   headers: new HttpHeaders({

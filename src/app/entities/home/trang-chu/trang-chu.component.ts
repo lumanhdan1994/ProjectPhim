@@ -10,20 +10,20 @@ export class TrangChuComponent implements OnInit {
     console.log("constructor");
   }
 
-  ngOnChanges() {
-    console.log("ngOnChanges");
-  }
+  // ngOnChanges() {
+  //   console.log("ngOnChanges");
+  // }
 
   ngOnInit() {
     console.log("ngOnInit");
   }
 
-  ngAfterViewInit() {
-    //DOM
-    console.log("ngAfterViewInit");
-  }
+  // ngAfterViewInit() {
+  //   //DOM
+  //   console.log("ngAfterViewInit");
+  // }
 
-  ngOnDestroy() {
-    console.log("ngOnDestroy");
-  }
+  // ngOnDestroy() {
+  //   console.log("ngOnDestroy");
+  // }
 }
