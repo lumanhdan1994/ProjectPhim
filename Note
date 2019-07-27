@@ -1,0 +1,4 @@
+- Comon: chứ các thư mục: models, guards
+- Entities: Chứa cấp độ trang
+- Layouts: Chứa các chứa các components
+- Shared: Chứa services, material...

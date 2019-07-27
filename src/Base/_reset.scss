@@ -1,0 +1,19 @@
+html {
+  background-color: $bg-color;
+}
+body {
+  margin: 0 auto !important;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: $bg-color;
+}
+.my-container {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+.btn-khuvuc {
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  color: #bababa !important;
+  box-shadow: none !important;
+}
