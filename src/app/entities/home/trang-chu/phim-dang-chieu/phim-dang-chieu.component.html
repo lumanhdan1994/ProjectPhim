@@ -13,9 +13,9 @@
   <div class="tab-content">
     <div class="tab-pane container active" id="dangchieu">
       <!-- slick -->
-      <ng-container *ngIf="danhSachPhim">
+      <ng-container *ngIf="DSPhimDangChieu">
         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
-          <div ngxSlickItem *ngFor="let item of danhSachPhim" class="slide">
+          <div ngxSlickItem *ngFor="let item of DSPhimDangChieu" class="slide">
             <app-item-phim [phim]="item"></app-item-phim>
           </div>
         </ngx-slick-carousel>
@@ -25,7 +25,13 @@
     <!-- end dang chieu -->
 
     <div class="tab-pane container fade" id="sapchieu">
-
+      <ng-container *ngIf="DSPhimSapChieu">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+          <div ngxSlickItem *ngFor="let item of DSPhimSapChieu" class="slide">
+            <app-item-phim [phim]="item"></app-item-phim>
+          </div>
+        </ngx-slick-carousel>
+      </ng-container>
     </div>
     <!-- end sap chieu -->
   </div>
