@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       //Trang chủ
       {
-        path: "trangchu",
+        path: "",
         loadChildren: "./trang-chu/trang-chu.module#TrangChuModule"
       },
 
