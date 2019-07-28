@@ -1,0 +1,90 @@
+@import "../../../../../Helper/variable";
+
+#review{
+    background-color: $color-reset;
+    padding-top: 100px;
+    ul{
+        justify-content: center;
+        border: none;
+        height: 50px;
+        li{
+            a{
+                color: white;
+                border: none;
+                transition: .3s;
+                font-size: 20px;
+                &:hover{
+                    border: none;
+                    color: $color-text;
+                    font-size: 24px;
+                }
+            }
+            a.active{
+                background: none;
+                border: none;
+                font-size: 24px;
+                color: $color-text;
+            }
+        }
+    }
+    .tab-content{
+        padding: 50px 100px;
+        .tab-pane{
+            .myrow{
+                a{
+                    color: white;
+                    text-decoration: none;
+                    font-size: 18px;
+                    transition: .3s;
+                    display: inline-block;
+                    height: 56px;
+                    &:hover{
+                        color: $color-text;
+                    }
+                }
+                p{
+                    color: #b6b6b6;
+                    font-size: 15px;
+                }
+            }
+            .myrow.row1{
+                margin-bottom: 20px;
+                img{
+                    margin-bottom: 10px;
+                    width: 100%;
+                    border-radius: 5px;
+                    box-shadow: -4px 4px 15px black;
+                }
+            }
+            .myrow.row2{
+                .row2__img{
+                    margin-bottom: 10px;
+                    width: 100%;
+                    border-radius: 5px;
+                    box-shadow: 2px 2px 5px black;
+                }
+                .more__movie{
+                    .movie{
+                        display: flex;
+                        .movie__img{
+                            width: 60px !important;
+                            height: 60px !important;
+                            border-radius: 3px;
+                            margin-bottom: 10px
+                        }
+                        a{
+                            font-size: 17px;
+                            color: #808080;
+                            margin-left: 10px;
+                            line-height: 22px;
+                            &:hover{
+                                color: $color-text;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
