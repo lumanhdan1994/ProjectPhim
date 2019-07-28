@@ -1,0 +1,60 @@
+.movie{
+    display: block;
+    padding: 15px 20px;
+    position: relative;
+    border: none;
+    &::after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 80%;
+        height: 1px;
+        background-color: rgb(143, 143, 143);
+    }
+    img{
+        width: 46px;
+        height: 57px;
+        margin-right: 12px;
+        float: left;
+    }
+    .detail{    
+        padding: 10px 0; 
+        float: left;                   
+        h6{
+            font-size: 15px;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 7px;
+            span{
+                color: red;
+                font-weight: bold;
+                margin-right: 5px;
+            }
+        }
+        .time{
+            margin: 0;
+            font-size: 13px;
+            color: rgb(182, 182, 182);
+        }
+    }
+    .showtime{
+        span{
+            margin-top: 5px;
+            font-size: 20px;
+            padding: 3px 10px;
+            border-radius: 5px;
+            background-color: rgb(87, 87, 87);
+        }
+        a{
+            font-size: 18px;
+            margin-left: 20px;
+            color: white;
+            transition: all .3s;
+            &:hover{
+                text-decoration: none;
+                color: red;
+                font-weight: bold;
+            }
+        }
+    }
+}
