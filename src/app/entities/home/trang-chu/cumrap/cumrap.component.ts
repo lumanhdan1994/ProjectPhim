@@ -13,7 +13,8 @@ export class CumrapComponent implements OnInit {
   cumrap:any = [];
   thongTinCumRapTheoHeThong: any = [];
   thongTinLichChieuHeThongRap: any = [];
-  maHeThongRapDuocClick: any;
+  // maHeThongRapDuocClick: any = "BHDstar";
+  hinhAnhMaHeThongRapDuocClick: any = "http://movie0706.cybersoft.edu.vn/hinhanh/bhd-star-cineplex.png";
   danhSachPhim: any = [];
 
   constructor(private dataService: DataService) { }
@@ -21,6 +22,7 @@ export class CumrapComponent implements OnInit {
   ngOnInit() {
 
     this.layThongTinCumRap();
+
     const uri = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=BHDstar`
     this.dataService.get(uri).subscribe((data) => {
       this.thongTinCumRapTheoHeThong = data;
@@ -38,7 +40,14 @@ export class CumrapComponent implements OnInit {
   }  
 
   layThongTinCumRapTheoHeThong(maHeThongRap){
-    this.maHeThongRapDuocClick = maHeThongRap;
+    // this.maHeThongRapDuocClick = maHeThongRap;
+    this.cumrap.map((item) => {
+      if(item.maHeThongRap === maHeThongRap){
+        this.hinhAnhMaHeThongRapDuocClick = item.logo;
+        console.log(item);
+      }
+    })
+
     const uri = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
     this.dataService.get(uri).subscribe((data) => {
       this.thongTinCumRapTheoHeThong = data;
@@ -52,7 +61,6 @@ export class CumrapComponent implements OnInit {
     this.dataService.get(uri).subscribe((data: any) => {
      this.danhSachPhim = data;
      this.danhSachPhim.splice(10,8);
-     console.log(this.danhSachPhim);
     });
   }
 

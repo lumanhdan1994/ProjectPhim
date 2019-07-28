@@ -20,7 +20,7 @@
                         <ng-container *ngFor="let item of thongTinCumRapTheoHeThong">
                             <li class="nav-item">
                                 <a (click)="LayThongTinLichChieuHeThongRap(item.maCumRap)" class="nav-link active" data-toggle="tab" href="#rap1">
-                                    <img src="../../../../assets/img/rapcgv.jpg" alt="">
+                                    <img [src]="hinhAnhMaHeThongRapDuocClick" alt="logo">
                                     <div class="detail">
                                         <h6><span>{{item.tenCumRap}}</span></h6>
                                         <p class="diachi">
