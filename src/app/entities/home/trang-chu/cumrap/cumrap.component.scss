@@ -1,0 +1,173 @@
+$color-text : #fb4226;
+$color-dark : #000000;
+$color-reset : #212121;
+$color-light : #484848;
+
+#cumrap{
+    padding-top: 100px;
+    background-color: $color-reset;
+    animation: .5s;
+    ul.main{
+        justify-content: center;
+        border: none;
+        li{  
+            margin-right: 20px;
+            a{
+                background-color: white;
+                opacity: 0.5;
+                border-radius: 50%; 
+                width: 80px;
+                height: 80px;
+                padding: unset;
+                position: relative;
+                img{
+                    width: 100%;
+                }
+                img.width__img{
+                    width: 100%;
+                    position: absolute;
+                    top: 0%;
+                    left: 0%;
+                }
+                border: none;
+                &:hover{
+                    border: none;
+                    opacity: 1;
+                }
+            }
+            a.active{
+                border: none;
+                opacity: 1;
+            }
+        }
+    }
+    .tab-content{
+        padding: 50px 0;
+        .tab-pane{
+            background-color: $color-light; 
+            border-radius: 5px;  
+            padding: 20px 0;
+            ul{
+                border: none;
+                display: flex;
+                flex-direction: column;
+                li{
+                    a{
+                        color: white;
+                        border: none;
+                        opacity: 0.5;
+                        display: flex;
+                        padding-left: 20px;
+                        position: relative;
+                        margin-bottom: 5px;
+                        padding-top: 5px;
+                        &::after{
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            width: 90%;
+                            height: 1px;
+                            background-color: rgb(143, 143, 143);
+                        }
+                        img{
+                            width: 60px;
+                            height: 60px;
+                            margin-right: 20px;
+                        }
+                        .detail{
+                            h6{
+                                font-size: 16px;
+                                font-weight: bold;
+                                margin: 0;
+                                span{
+                                    color: red;
+                                    font-weight: bold;
+                                }
+                            }
+                            .diachi{
+                                margin: 0;
+                                font-size: 14px;
+                                color: rgb(182, 182, 182);
+                            }
+                        }
+                        &:hover{
+                            border: none;
+                            color: white;
+                            opacity: 1;
+                        }
+                    }
+                    a.active{
+                        background-color: unset;
+                        opacity: 1;
+                    }
+                }
+            }
+            .tab-content{
+                padding: 0;
+                border-left: 1px solid rgb(143, 143, 143);
+                .tab-pane{
+                    color: white;
+                    padding: 0;
+                    .movie{
+                        display: block;
+                        padding: 15px 20px;
+                        position: relative;
+                        &::after{
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            width: 80%;
+                            height: 1px;
+                            background-color: rgb(143, 143, 143);
+                        }
+                        img{
+                            margin-right: 20px;
+                            float: left;
+                        }
+                        .detail{    
+                            padding: 10px 0; 
+                            float: left;                   
+                            h6{
+                                font-size: 15px;
+                                font-weight: bold;
+                                margin: 0;
+                                margin-bottom: 7px;
+                                span{
+                                    color: red;
+                                    font-weight: bold;
+                                    margin-right: 5px;
+                                }
+                            }
+                            .time{
+                                margin: 0;
+                                font-size: 13px;
+                                color: rgb(182, 182, 182);
+                            }
+                        }
+                        .showtime{
+                            padding: 5px 5px;
+                            span{
+                                margin-top: 5px;
+                                font-size: 20px;
+                                padding: 3px 10px;
+                                border-radius: 5px;
+                                background-color: rgb(87, 87, 87);
+                            }
+                            a{
+                                font-size: 18px;
+                                margin-left: 20px;
+                                color: white;
+                                transition: all .3s;
+                                &:hover{
+                                    text-decoration: none;
+                                    color: red;
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
