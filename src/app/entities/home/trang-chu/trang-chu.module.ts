@@ -6,10 +6,12 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { PhimDangChieuComponent } from './phim-dang-chieu/phim-dang-chieu.component';
 import { ItemPhimComponent } from './phim-dang-chieu/item-phim/item-phim.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CumrapComponent } from './cumrap/cumrap.component';
+import { AppComponent } from './app/app.component';
 
 
 @NgModule({
-  declarations: [TrangChuComponent, CarouselComponent, PhimDangChieuComponent, ItemPhimComponent],
+  declarations: [TrangChuComponent, CarouselComponent, PhimDangChieuComponent, ItemPhimComponent, CumrapComponent, AppComponent],
   exports: [TrangChuComponent, CarouselComponent, PhimDangChieuComponent, ItemPhimComponent],
 
   imports: [CommonModule, TrangChuRoutingModule, SlickCarouselModule]

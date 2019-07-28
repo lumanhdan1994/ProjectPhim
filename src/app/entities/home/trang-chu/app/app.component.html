@@ -1,0 +1,32 @@
+<!-- STAR APP -->
+<section id="app">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6 left">
+                <h1>Ứng dụng tiện lợi dành cho người yêu điện ảnh</h1>
+                <p>Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp và đổi quà hấp dẫn.</p>
+                <button>App miễn phí - Tải về ngay!</button>
+                <p>123Phim có hai phiên bản <span><a href="#">IOS</a></span> & <span><a href="#">Android</a></span></p>
+            </div>
+
+            <div class="col-md-6 right">
+                <div class="app">
+                    <img src="../../../../assets/img/app.png" alt="app">
+                    <div class="myswiper-container">
+                        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+                            (init)="slickInit($event)" (breakpoint)="breakpoint($event)"
+                            (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+                            <div ngxSlickItem *ngFor="let slide of slides" class="swiper-slide">
+                                <img src="{{ slide.img }}" alt="" width="100%">
+                            </div>
+                        </ngx-slick-carousel>
+                    </div>
+                </div>
+                <!-- Swiper -->
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END APP -->

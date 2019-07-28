@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "./../../../shared/services/data.service";
 import { Subscription } from "rxjs";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-list-movie",
@@ -9,22 +10,39 @@ import { Subscription } from "rxjs";
 })
 export class ListMovieComponent implements OnInit {
   subListMovie: Subscription;
-
-  constructor(private dataService: DataService) {}
+  maPhim: any;
+  phimDetail: any;
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.getListMovie();
+    this.getParamsUrl();
+    this.getDetailMovie();
   }
 
-  getListMovie() {
-    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP01";
-    this.subListMovie = this.dataService.get(uri).subscribe((data: any) => {
-      console.log(data);
+  getParamsUrl() {
+    this.maPhim = this.activatedRoute.snapshot.paramMap.get("malichchieu");
+  }
+
+  getDetailMovie(){
+    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
+    this.dataService.get(uri).subscribe((data: any) => {
+      this.phimDetail = data;
     });
   }
+ 
+ 
+ 
+ 
+ 
+  // getListMovie() {
+  //   const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP01";
+  //   this.subListMovie = this.dataService.get(uri).subscribe((data: any) => {
+  //     console.log(data);
+  //   });
+  // }
 
-  ngOnDestroy() {
-    this.subListMovie.unsubscribe();
-    console.log("ngOnDestroy");
-  }
+  // ngOnDestroy() {
+  //   this.subListMovie.unsubscribe();
+  //   console.log("ngOnDestroy");
+  // }
 }

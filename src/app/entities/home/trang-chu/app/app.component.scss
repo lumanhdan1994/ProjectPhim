@@ -1,0 +1,118 @@
+$color-text : #fb4226;
+$color-dark : #000000;
+$color-reset : #212121;
+$color-light : #484848;
+
+// set up swiper
+html, body {
+    position: relative;
+    height: 100%;
+  }
+  body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+  }
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+// my style
+#app{
+    height: 650px;
+    background: url("../../../../../assets/img/background.jpg");
+    background-attachment: fixed;
+    .left{
+        padding: 160px 0px 0px 100px;
+        h1{
+            color: #fff;
+            font-weight: 700;
+            font-size: xx-large;
+            margin: 0 0 20px;
+        }
+        p{
+            color: #fff;
+            font-size: medium;
+            margin: 0 0 20px;
+        }
+        button{
+            background-color: #fb4226;
+            padding: 10px 10px;
+            color: #fff;
+            font-size: medium;
+            font-weight: 700;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        p:last-child {
+            color: #fff;
+            padding-top: 10px;
+            a{
+                color: white;
+                text-decoration: none;
+                border-bottom: 1px solid white;
+                &:hover{
+                    color: unset;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .right{
+        padding: 100px 0px;
+        .app{
+            width: 570px;
+            height: 497px;
+            position: relative;
+            img{
+
+            }
+            .myswiper-container{
+                position: absolute;
+                top: 11.1%;
+                left: 27.7%;
+                width: 37%;
+                height: 75%;
+                overflow: hidden;
+                ngx-slick-carousel{
+                    .swiper-slide{
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }   
+            }
+        }
+    }
+}
+
+@media (max-width: 768px){
+    #app{
+        height: 1150px;
+    }
+}
