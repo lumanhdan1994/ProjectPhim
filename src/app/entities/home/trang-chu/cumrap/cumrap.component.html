@@ -15,7 +15,7 @@
             <!-- Nav tabs -->
             <div class="row">
 
-                <div class="col-md-6">
+                <div class="col-md-6 hethongrap">
                     <ul class="nav nav-tabs">
                         <ng-container *ngFor="let item of thongTinCumRapTheoHeThong">
                             <li class="nav-item">
@@ -32,19 +32,16 @@
                         </ng-container>
                     </ul>
                 </div>
-
-                <div class="col-md-6">
+                <div class="line"></div>
+                <div class="col-md-6 lichchieuphim">
                     <!-- Tab panes -->
                     <div class="tab-content">
-
                         <div class="tab-pane container active" id="rap1">
-                            <ng-container *ngFor="let item of thongTinLichChieuHeThongRap">
-                                <div class="movie" *ngIf="item.maCumRap === maCumRapDuocClick">
-                                        <!-- *ngFor="let item2 of item.danhSachPhim" -->
-                                    <ng-container>
-                                        <img src="../../../../assets/img/cumrap-movie1.jpg" alt="">
+                            <ng-container *ngFor="let item of danhSachPhim">
+                                <div class="movie">                                       
+                                        <img [src]="item.hinhAnh" alt="">
                                         <div class="detail">
-                                            <h6><span>C13</span> Câu Chuyện Đồ Chơi 4 - Toy Story 4</h6>
+                                            <h6><span>C13</span>{{item.tenPhim}}</h6>
                                             <p class="time">
                                                 129 phút - 123Phim 8.9 - IMDb 8.2
                                             </p>
@@ -57,7 +54,6 @@
                                             <a href="#">15:00</a>
                                             <a href="#">18:00</a>
                                         </div>
-                                    </ng-container>
                                 </div>
                                 <div class="clear"></div>
                             </ng-container>

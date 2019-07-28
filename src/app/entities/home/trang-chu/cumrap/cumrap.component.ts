@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
 
@@ -12,22 +14,20 @@ export class CumrapComponent implements OnInit {
   thongTinCumRapTheoHeThong: any = [];
   thongTinLichChieuHeThongRap: any = [];
   maHeThongRapDuocClick: any;
-  maCumRapDuocClick: any = "CGV";
-
+  danhSachPhim: any = [];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
+
     this.layThongTinCumRap();
-    const uri = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=CGV`
+    const uri = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=BHDstar`
     this.dataService.get(uri).subscribe((data) => {
       this.thongTinCumRapTheoHeThong = data;
     })
-    const uri2 = `QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=CGV`;
-    this.dataService.get(uri2).subscribe((data: any) => {     
-      this.thongTinLichChieuHeThongRap = data[0].lstCumRap;
-      console.log(this.thongTinLichChieuHeThongRap);
-    });
+
+    this.layDanhSachPhim();
+
   }
 
   layThongTinCumRap(){
@@ -45,12 +45,14 @@ export class CumrapComponent implements OnInit {
     })
   }
 
-  LayThongTinLichChieuHeThongRap(maCumRapDuocClick) {
-    this.maCumRapDuocClick = maCumRapDuocClick;
-    const uriLichChieu = `QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${this.maHeThongRapDuocClick}`;
-    this.dataService.get(uriLichChieu).subscribe((data: any) => {     
-      this.thongTinLichChieuHeThongRap = data[0].lstCumRap;
-      console.log(this.thongTinLichChieuHeThongRap);
+
+
+  layDanhSachPhim() {
+    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
+    this.dataService.get(uri).subscribe((data: any) => {
+     this.danhSachPhim = data;
+     this.danhSachPhim.splice(10,8);
+     console.log(this.danhSachPhim);
     });
   }
 
