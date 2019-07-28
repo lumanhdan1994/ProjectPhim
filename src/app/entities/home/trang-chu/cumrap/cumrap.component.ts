@@ -10,17 +10,24 @@ export class CumrapComponent implements OnInit {
 
   cumrap:any = [];
   thongTinCumRapTheoHeThong: any = [];
-  danhSachPhim: any =[];
+  thongTinLichChieuHeThongRap: any = [];
+  maHeThongRapDuocClick: any;
+  maCumRapDuocClick: any = "CGV";
 
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.layThongTinCumRap();
-    const uri = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=BHDStar`
+    const uri = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=CGV`
     this.dataService.get(uri).subscribe((data) => {
       this.thongTinCumRapTheoHeThong = data;
     })
+    const uri2 = `QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=CGV`;
+    this.dataService.get(uri2).subscribe((data: any) => {     
+      this.thongTinLichChieuHeThongRap = data[0].lstCumRap;
+      console.log(this.thongTinLichChieuHeThongRap);
+    });
   }
 
   layThongTinCumRap(){
@@ -31,16 +38,19 @@ export class CumrapComponent implements OnInit {
   }  
 
   layThongTinCumRapTheoHeThong(maHeThongRap){
+    this.maHeThongRapDuocClick = maHeThongRap;
     const uri = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
     this.dataService.get(uri).subscribe((data) => {
       this.thongTinCumRapTheoHeThong = data;
     })
   }
 
-  layDanhSachPhim() {
-    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
-    this.dataService.get(uri).subscribe((data: any) => {     
-      this.danhSachPhim = data;
+  LayThongTinLichChieuHeThongRap(maCumRapDuocClick) {
+    this.maCumRapDuocClick = maCumRapDuocClick;
+    const uriLichChieu = `QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${this.maHeThongRapDuocClick}`;
+    this.dataService.get(uriLichChieu).subscribe((data: any) => {     
+      this.thongTinLichChieuHeThongRap = data[0].lstCumRap;
+      console.log(this.thongTinLichChieuHeThongRap);
     });
   }
 
