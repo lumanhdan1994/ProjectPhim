@@ -12,7 +12,7 @@ export class ListMovieComponent implements OnInit {
   subListMovie: Subscription;
   maPhim: any;
   phimDetail: any;
-  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) {}
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.getParamsUrl();
@@ -20,20 +20,22 @@ export class ListMovieComponent implements OnInit {
   }
 
   getParamsUrl() {
-    this.maPhim = this.activatedRoute.snapshot.paramMap.get("malichchieu");
+    this.maPhim = this.activatedRoute.snapshot.paramMap.get("id");
+    console.log(this.maPhim);
   }
 
-  getDetailMovie(){
-    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
+  getDetailMovie() {
+    const uri = `QuanLyPhim/LayThongTinPhim?MaPhim=${this.maPhim}`;
     this.dataService.get(uri).subscribe((data: any) => {
       this.phimDetail = data;
+      console.log(this.phimDetail);
     });
   }
- 
- 
- 
- 
- 
+
+
+
+
+
   // getListMovie() {
   //   const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP01";
   //   this.subListMovie = this.dataService.get(uri).subscribe((data: any) => {

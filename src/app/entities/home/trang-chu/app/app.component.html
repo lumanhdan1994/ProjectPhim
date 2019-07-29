@@ -14,9 +14,7 @@
                 <div class="app">
                     <img src="../../../../assets/img/app.png" alt="app">
                     <div class="myswiper-container">
-                        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
-                            (init)="slickInit($event)" (breakpoint)="breakpoint($event)"
-                            (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+                        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
                             <div ngxSlickItem *ngFor="let slide of slides" class="swiper-slide">
                                 <img src="{{ slide.img }}" alt="" width="100%">
                             </div>

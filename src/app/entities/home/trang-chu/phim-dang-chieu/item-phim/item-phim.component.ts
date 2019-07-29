@@ -16,7 +16,7 @@ export class ItemPhimComponent implements OnInit {
   }
 
   chitiet(){
-    this.router.navigate(['/chitietphim', this.phim.MaPhim]);
+    this.router.navigate(['/list-movie', this.phim.maPhim], {queryParams: {tenPhim : this.phim.tenPhim}});
   }
 
 }

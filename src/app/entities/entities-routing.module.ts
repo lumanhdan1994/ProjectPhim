@@ -8,8 +8,8 @@ const routes: Routes = [
     component: EntitiesComponent,
     children: [
       //Trang Home
-      { path: "", redirectTo: "trangchu", pathMatch: 'full' },
-      { path: "trangchu", loadChildren: "./home/home.module#HomeModule" },
+      { path: "", loadChildren: "./home/home.module#HomeModule" },
+
 
       //Trang Admin
       {
