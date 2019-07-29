@@ -20,7 +20,7 @@ export class ListMovieComponent implements OnInit {
   }
 
   getParamsUrl() {
-    this.maPhim = this.activatedRoute.snapshot.paramMap.get("id");
+    this.maPhim = this.activatedRoute.snapshot.paramMap.get("malichchieu");
     console.log(this.maPhim);
   }
 
