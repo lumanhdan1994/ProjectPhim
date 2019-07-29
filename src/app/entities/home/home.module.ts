@@ -5,6 +5,7 @@ import { HomeRoutingModule } from "./home-routing.module";
 import { HeaderComponent } from "src/app/layouts/header/header.component";
 import { FooterComponent } from "src/app/layouts/footer/footer.component";
 
+
 @NgModule({
   declarations: [HomeComponent, HeaderComponent, FooterComponent],
   imports: [CommonModule, HomeRoutingModule]

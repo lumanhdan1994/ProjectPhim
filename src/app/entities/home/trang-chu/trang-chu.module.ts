@@ -13,7 +13,7 @@ import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [TrangChuComponent, CarouselComponent, PhimDangChieuComponent, ItemPhimComponent, CumrapComponent, AppComponent, ReviewComponent],
-  exports: [TrangChuComponent, CarouselComponent, PhimDangChieuComponent, ItemPhimComponent],
+  // exports: [TrangChuComponent, CarouselComponent, PhimDangChieuComponent, ItemPhimComponent],
 
   imports: [CommonModule, TrangChuRoutingModule, SlickCarouselModule]
 })
