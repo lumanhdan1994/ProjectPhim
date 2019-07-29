@@ -24,9 +24,10 @@ export class ListMovieComponent implements OnInit {
   }
 
   getDetailMovie(){
-    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
+    const uri = `QuanLyPhim/LayThongTinPhim?MaPhim=${this.maPhim}`;
     this.dataService.get(uri).subscribe((data: any) => {
       this.phimDetail = data;
+      console.log(data);
     });
   }
  
