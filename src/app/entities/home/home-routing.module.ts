@@ -15,7 +15,7 @@ const routes: Routes = [
 
       //List Movie
       {
-        path: "list-movie",
+        path: "list-movie/:malichchieu",
         loadChildren: "./list-movie/list-movie.module#ListMovieModule"
       }
     ]
