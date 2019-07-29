@@ -10,12 +10,16 @@ const routes: Routes = [
       //Trang Home
       { path: "", loadChildren: "./home/home.module#HomeModule" },
 
+      //Trang Dat ve
+      {
+        path: "datve", loadChildren: "./datve/datve.module#DatveModule",
+      },
 
       //Trang Admin
       {
-        path: "admin",
-        loadChildren: "./admin/admin.module#AdminModule"
-      }
+        path: "admin", loadChildren: "./admin/admin.module#AdminModule",
+      },
+
     ]
   }
 ];
