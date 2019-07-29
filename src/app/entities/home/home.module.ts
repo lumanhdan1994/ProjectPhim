@@ -6,6 +6,7 @@ import { HeaderComponent } from "src/app/layouts/header/header.component";
 import { FooterComponent } from "src/app/layouts/footer/footer.component";
 import { ListMovieModule } from './list-movie/list-movie.module';
 
+
 @NgModule({
   declarations: [HomeComponent, HeaderComponent, FooterComponent],
   imports: [CommonModule, HomeRoutingModule, ListMovieModule]
