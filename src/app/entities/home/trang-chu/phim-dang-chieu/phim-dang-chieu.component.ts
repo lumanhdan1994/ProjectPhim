@@ -32,8 +32,6 @@ export class PhimDangChieuComponent implements OnInit {
           this.DSPhimSapChieu.push(item);
         }
       })
-      // console.log(this.DSPhimDangChieu);
-      // console.log(this.DSPhimSapChieu);
       // this.danhSachPhim = data;
     });
   }

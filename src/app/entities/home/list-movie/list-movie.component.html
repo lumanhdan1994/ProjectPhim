@@ -1,22 +1,114 @@
-<ng-container *ngIf="phimDetail">
-  <section id="ChiTietPhim">
-    <div class="bg-img">
-      <img [src]="phimDetail.hinhAnh" alt="">
-    </div>
-    <div class="detail-phim d-flex justify-content-between container">
-      <div class="img-phim">
-          <img [src]="phimDetail.hinhAnh" alt="">
-          <div class="trailer">
-              <a [href]="phimDetail.trailer"><i class="fa fa-play" aria-hidden="true"></i></a>
+<section id="chitietphim">
+    <ng-container *ngIf="phimDetail != null">
+      <img class="posterLandscapeFilm" [src]="phimDetail.hinhAnh" alt="background">
+      <div class="wrap">
+        <div class="container">
+  
+          <div class="row infor">
+            <div class="col-md-8 detail">
+              <div class="left">
+                <div class="img">
+                  <img [src]="phimDetail.hinhAnh" alt="phim">
+                </div>
+                <div class="trailer">
+                  <a [href]="phimDetail.trailer"><img src="../../../assets/img/play-video.png" alt="play"></a>
+                </div>
+              </div>
+              <!--  -->
+              <div class="right">
+                <p class="date">{{phimDetail.ngayKhoiChieu | date: 'dd-MM-yyyy'}}</p>
+                <p class="name"><span>C16</span>{{phimDetail.tenPhim}}</p>
+                <p class="time">99 phút - 5.3 IMDb - 2D/Digital</p>
+                <button class="btn btn-primary buyticket">Mua vé</button>
+              </div>
+            </div>
+            <!-- end col 8 -->
+  
+            <div class="col-md-4 star">
+  
+            </div>
+            <!-- end col 4 -->
           </div>
-      </div>
-      <div class="info-phim">
-        <p>{{phimDetail.ngayKhoiChieu | date:"dd.MM.yyyy"}}</p>
-        <p>{{phimDetail.tenPhim}}</p>
-        <button class="buyticket">Mua Vé</button>
-      </div>
-      <div class="danhgia-phim">
-        
+          <!-- end infor -->
+  
+          <div class="row showtime">
+            <!-- STAR SHOW TIME -->
+            <div id="showtime">
+              <div class="mycontainer">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#lichchieu">LỊCH CHIẾU</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#thongtin">THÔNG TIN</a>
+                  </li>
+                </ul>
+  
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div class="tab-pane active" id="lichchieu">
+                    
+                  </div>
+  
+                  <div class="tab-pane container fade" id="thongtin">
+                    <div class="row infor">
+  
+  
+  
+                      <div class="col-md-6 infor__left">
+                        <div class="row keyvalue">
+                          <div class="col-md-6 key">Ngày phát hành</div>
+                          <div class="col-md-6 value">{{phimDetail.NgayKhoiChieu | date: 'dd-MM-yyyy'}}</div>
+                        </div>
+                        <div class="row keyvalue">
+                          <div class="col-md-6 key">Đạo diễn</div>
+                          <div class="col-md-6 value">Masaaki Yuasa</div>
+                        </div>
+                        <div class="row keyvalue">
+                          <div class="col-md-6 key">Diễn viên</div>
+                          <div class="col-md-6 value"></div>
+                        </div>
+                        <div class="row keyvalue">
+                          <div class="col-md-6 key">Thể Loại</div>
+                          <div class="col-md-6 value">Phim hành động</div>
+                        </div>
+                        <div class="row keyvalue">
+                          <div class="col-md-6 key">Định dạng</div>
+                          <div class="col-md-6 value">2D/Digital</div>
+                        </div>
+                        <div class="row keyvalue">
+                          <div class="col-md-6 key">Quốc Gia SX</div>
+                          <div class="col-md-6 value">Mỹ</div>
+                        </div>
+                      </div>
+  
+  
+  
+                      <div class="col-md-6 infor__right">
+                        <div class="row key">
+                          <p>Nội dung</p>
+                        </div>
+                        <div class="row value">
+                          <p>{{phimDetail.MoTa}}</p>
+                        </div>
+                      </div>
+  
+  
+  
+  
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- END SHOW TIME -->
+  
+  
+          </div>
+        </div>
+      
       </div>
     </div>
 

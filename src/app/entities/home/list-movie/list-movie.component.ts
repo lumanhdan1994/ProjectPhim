@@ -24,11 +24,11 @@ export class ListMovieComponent implements OnInit {
     console.log(this.maPhim);
   }
 
-  getDetailMovie() {
+  getDetailMovie(){
     const uri = `QuanLyPhim/LayThongTinPhim?MaPhim=${this.maPhim}`;
     this.dataService.get(uri).subscribe((data: any) => {
       this.phimDetail = data;
-      console.log(this.phimDetail);
+      console.log(data);
     });
   }
 
