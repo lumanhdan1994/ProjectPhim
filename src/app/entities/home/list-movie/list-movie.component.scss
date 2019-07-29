@@ -1,390 +1,96 @@
-$color-text : #fb4226;
-$color-dark : #000000;
-$color-reset : #212121;
-$color-light : #484848;
+@import "./../../../../Helper/variable";
 
-#chitietphim{
+#ChiTietPhim {
+  width: 100%;
+
+  .bg-img {
+    width: 100%;
+    height: 90vh;
+    filter: blur(15px);
+    overflow: hidden;
     position: relative;
-    height: fit-content;
-    .posterLandscapeFilm{
-        position: absolute;
-        z-index: 1;
-        top: -300px;
-        left: 0;
-        width: 100%;
-        height: 1300px;
-        filter: blur(15px);
-        margin: -11px;
+    img {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
-    .wrap{
-        height: fit-content;
-        position: absolute;
-        z-index: 2;
+  }
+  .detail-phim {
+    .img-phim {
+      width: 255px;
+      height: 380px;
+      position: relative;
+      overflow: hidden;
+      img {
         width: 100%;
-        background: linear-gradient(to top, rgb(10, 32, 41) 50%, transparent 100%);
-        .container{
-            padding: 130px 138px 0 138px;
-            .infor{ //row
-                .detail{ // col-8
-                    display: flex;
-                    .left{
-                        margin-right: 7px;
-                        .img{
-                            position: relative;
-                            width: 217px;
-                            height: 306px;
-                            img{
-                                position: absolute;
-                                top: unset;
-                                filter: blur(0px);
-                                width: 100%;
-                                height: 100%;
-                                border-radius: 4px;
-                                box-shadow: 0 0 16px 0 rgba(0,0,0,.5);
-                            }
-                        }
-                        .trailer{
-                            a{
-                                img{
-                                    display: none;
-                                    filter: blur(0px);
-                                }
-                            }
-                        }
-                    }
-                    .right{
-                        padding: 60px 0;
-                        p{
-                            color: #e9e9e9;
-                            margin: 0;
-                            margin-bottom: 10px;
-                        }
-                        .date{
-                            font-size: 14px;
-                        }
-                        .name{
-                            font-size: 24px;
-                            span{
-                                margin-right: 6px;
-                                margin-top: 6px;
-                                float: left;
-                                background-color: #fb4226;
-                                color: #fff;
-                                font-size: 16px;
-                                border-radius: 4px;
-                                padding: 0 5px;
-                                display: inline-block;
-                                text-align: center;
-                            }
-                        }
-                        .time{
-                            font-size: 14px;
-                            font-weight: normal;
-                        }
-                        .buyticket{
-                            font-size: 16px;
-                            border-radius: 4px;
-                            text-align: center;
-                            background: 0 0;
-                            padding: 7px 25px;
-                            transition: all .2s;
-                            background-color: #fb4226;
-                            border: none;
-                            color: #fff; 
-                            &:focus{
-                                box-shadow: none;
-                            }
-                            &:hover{
-                                background-color: #b42a14;
-                            }
-                        }
-                    }
-                }
-                .star{ // col-4
+        height: 100%;
+      }
+      .trailer {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        a {
+          display: none;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: transparent;
+          border-radius: 50%;
+          width: 80px;
+          height: 80px;
+          border: 1.5px solid $bg-color;
+          box-shadow: 0px 0px 100px $color-text inset;
+          i {
+            position: absolute;
+            top: 50%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            color: $bg-color;
+            font-size: 30px;
+          }
+        }
+      }
+      &:hover {
+        .trailer {
+          a {
+            display: block;
+          }
+        }
+      }
+    }
+    .info-phim {
+      color: $text-color;
+      padding-left: 10px;
+      padding-top: 10px;
+      p:nth-child(1) {
+        font-size: 15px;
+        font-weight: 500;
+      }
+      p:nth-child(2) {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .buyticket {
+        width: 150px;
+        height: 40px;
+        background-color: $color-text;
+        color: $text-color;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        font-size: 15px;
+        font-weight: 500;
+      }
+    }
 
-                }
-            }
-            .showtime{
-                height: fit-content;
-                img{
-                    position: unset;
-                    width: unset;
-                    height: unset;
-                    filter: unset;
-                    margin: unset;
-                }
-                #showtime{
-                    width: 100%;
-                    height: fit-content;
-                    background: unset;
-                    padding: unset;
-                    .nav.nav-tabs{
-                        justify-content: center;
-                        border: none;
-                        .nav-item{
-                            .nav-link{
-                                margin-left: 10px;
-                                margin-right: 10px; 
-                                color:#fff;
-                                border:none;
-                                position:relative;
-                                cursor:pointer;
-                                // transition:800ms ease all;
-                                outline:none;
-                                &:hover{
-                                    color: $color-text;
-                                    font-weight: bold;
-                                }
-                                &:after{
-                                    content:'';
-                                    position:absolute;
-                                    top:0;
-                                    right:0;
-                                    height:2px;
-                                    width:0;
-                                    background: $color-text;
-                                    transition:400ms ease all;
-                                }
-                                &:after{
-                                    right:inherit;
-                                    top:inherit;
-                                    left:0;
-                                    bottom:0;
-                                }
-                                &:hover:after{
-                                    width:100%;
-                                    transition:400ms ease all;
-                                }
-                                &.active{
-                                    background-color: transparent;
-                                    color: $color-text; 
-                                    font-weight: bold; 
-                                }
-                            }
-                        }
-                    }
-                    .tab-content{
-                        margin: unset;
-                        #cumrap{
-                            background-color: unset;
-                            animation: .5s;
-                            padding: 50px 0;;
-                            width: 100%;
-                            ul.main{
-                                justify-content: center;
-                                border: none;
-                                padding: 0px;
-                                li{  
-                                    margin-right: 0px;
-                                    a{
-                                        background-color: white;
-                                        opacity: 0.5;
-                                        border-radius: 50%; 
-                                        width: 80px;
-                                        height: 80px;
-                                        padding: unset;
-                                        position: relative;
-                                        &:after{
-                                            display: none;
-                                        }
-                                        img{
-                                            width: 100%;
-                                        }
-                                        img.width__img{
-                                            width: 70%;
-                                            position: absolute;
-                                            top: 15%;
-                                            left: 15%;
-                                        }
-                                        border: none;
-                                        &:hover{
-                                            border: none;
-                                            opacity: 1;
-                                        }
-                                    }
-                                    a.active{
-                                        border: none;
-                                        opacity: 1;
-                                    }
-                                }
-                            }
-                            .tab-content{
-                                padding-top: 50px;
-                                .tab-pane{
-                                    background-color: $color-light; 
-                                    border-radius: 5px;  
-                                    padding: 20px 0;
-                                    ul{
-                                        border: none;
-                                        display: flex;
-                                        flex-direction: column;
-                                        li{
-                                            a{
-                                                color: white;
-                                                border: none;
-                                                opacity: 0.5;
-                                                display: flex;
-                                                padding-left: 20px;
-                                                position: relative;
-                                                margin-bottom: 5px;
-                                                padding-top: 5px;
-                                                &::after{
-                                                    content: '';
-                                                    position: absolute;
-                                                    bottom: 0;
-                                                    width: 90%;
-                                                    height: 1px;
-                                                    background-color: rgb(143, 143, 143);
-                                                }
-                                                img{
-                                                    width: 60px;
-                                                    height: 60px;
-                                                    margin-right: 20px;
-                                                }
-                                                .detail{
-                                                    h6{
-                                                        font-size: 16px;
-                                                        font-weight: bold;
-                                                        margin: 0;
-                                                        span{
-                                                            color: red;
-                                                            font-weight: bold;
-                                                        }
-                                                    }
-                                                    .diachi{
-                                                        margin: 0;
-                                                        font-size: 14px;
-                                                        color: rgb(182, 182, 182);
-                                                    }
-                                                }
-                                                &:hover{
-                                                    border: none;
-                                                    color: white;
-                                                    opacity: 1;
-                                                }
-                                            }
-                                            a.active{
-                                                background-color: unset;
-                                                opacity: 1;
-                                            }
-                                        }
-                                    }
-                                    .tab-content{
-                                        padding: 0;
-                                        border-left: 1px solid rgb(143, 143, 143);
-                                        .tab-pane{
-                                            color: white;
-                                            padding: 0;
-                                            .movie{
-                                                display: block;
-                                                padding: 15px 20px;
-                                                position: relative;
-                                                border: none;
-                                                &::after{
-                                                    content: '';
-                                                    position: absolute;
-                                                    bottom: 0;
-                                                    width: 80%;
-                                                    height: 1px;
-                                                    background-color: rgb(143, 143, 143);
-                                                }
-                                                img{
-                                                    width: 46px;
-                                                    height: 57px;
-                                                    margin-right: 12px;
-                                                    float: left;
-                                                }
-                                                .detail{    
-                                                    padding: 10px 0; 
-                                                    float: left;                   
-                                                    h6{
-                                                        font-size: 15px;
-                                                        font-weight: bold;
-                                                        margin: 0;
-                                                        margin-bottom: 7px;
-                                                        span{
-                                                            color: red;
-                                                            font-weight: bold;
-                                                            margin-right: 5px;
-                                                        }
-                                                    }
-                                                    .time{
-                                                        margin: 0;
-                                                        font-size: 13px;
-                                                        color: rgb(182, 182, 182);
-                                                    }
-                                                }
-                                                .showtime{
-                                                    span{
-                                                        margin-top: 5px;
-                                                        font-size: 20px;
-                                                        padding: 3px 10px;
-                                                        border-radius: 5px;
-                                                        background-color: rgb(87, 87, 87);
-                                                    }
-                                                    a{
-                                                        font-size: 18px;
-                                                        margin-left: 20px;
-                                                        color: white;
-                                                        transition: all .3s;
-                                                        &:hover{
-                                                            text-decoration: none;
-                                                            color: red;
-                                                            font-weight: bold;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        #thongtin{
-                            color: white;
-                            padding: 70px 0;
-                            height: 100%;
-                            .infor{
-                                .infor__left{
-                                    .keyvalue{
-                                        .key{
-                                            float: left;
-                                            font-size: 16px;
-                                            margin: 0 0 10px;
-                                        }
-                                        .value{
-                                            float: left;
-                                            font-size: 14px;
-                                            margin: 0 0 10px;
-                                        }
-                                    }
-                                }
-                                .infor__right{
-                                    .key{
-                                        float: left;
-                                        font-size: 16px;
-                                        margin: 0 0 10px;
-                                    }
-                                    .value{
-                                        float: left;
-                                        font-size: 14px;
-                                        margin: 0 0 10px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        #footer{
-            .container{
-                padding: unset;
-            }
-        }
-    }
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
-
-
-
-    

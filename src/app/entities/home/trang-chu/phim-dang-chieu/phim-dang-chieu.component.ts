@@ -10,7 +10,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class PhimDangChieuComponent implements OnInit {
 
-  danhSachPhim: any = [];
+  // danhSachPhim: any = [];
   DSPhimDangChieu: any =[];
   DSPhimSapChieu: any =[]
   constructor(private dataService: DataService) { }
@@ -32,7 +32,7 @@ export class PhimDangChieuComponent implements OnInit {
           this.DSPhimSapChieu.push(item);
         }
       })
-      this.danhSachPhim = data;
+      // this.danhSachPhim = data;
     });
   }
 }

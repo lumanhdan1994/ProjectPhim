@@ -34,7 +34,7 @@
         i {
           position: absolute;
           top: 50%;
-          left: 50%;
+          left: 55%;
           transform: translate(-50%, -50%);
           color: $color-text;
           font-size: 30px;
@@ -51,7 +51,12 @@
       bottom: -20%;
     }
     &:hover {
-      box-shadow: 0px 0px 7px black;
+      img {
+        filter: blur(3px);
+        transition: filter 0.3s;
+      }
+      box-shadow: 0px 0px 15px black;
+      transition: box-shadow 0.3s;
       .trailer {
         opacity: 1;
         transition: opacity 0.3s;
@@ -59,9 +64,9 @@
           display: block;
         }
       }
-      .buyticker{
-          bottom:0%;
-          transition: bottom 0.3s 0.1s
+      .buyticker {
+        bottom: 0%;
+        transition: bottom 0.3s 0.1s;
       }
     }
   }
