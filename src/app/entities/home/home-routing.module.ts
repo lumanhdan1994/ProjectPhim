@@ -12,6 +12,7 @@ const routes: Routes = [
         path: "trangchu",
         loadChildren: "./trang-chu/trang-chu.module#TrangChuModule"
       },
+      
       { path: "", redirectTo: "trangchu", pathMatch: 'full' },
 
       
