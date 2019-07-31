@@ -1,11 +1,11 @@
 <section id="datve">
-    <div class="mynav">
+    <div class="mynav sticky-top">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#chonve"><span>01</span>CHỌN VÉ + COMBO</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#chonghe"><span>02</span>CHỌN GHẾ</a>
+                <a id="navtagChonGhe" class="nav-link" data-toggle="tab" href="#chonghe"><span>02</span>CHỌN GHẾ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#thanhtoan"><span>03</span>THANH TOÁN</a>
@@ -76,10 +76,42 @@
                             </div>
                         </div>
                         <div class="row chonghe">
-                            <button class="btn btn-danger">Chọn ghế <i class="fas fa-arrow-right"></i></button>
+                            <button (click)="toChonGhe()" class="btn btn-danger">Chọn ghế <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
-                    <div class="tab-pane container fade" id="chonghe">...</div>
+
+
+
+
+
+
+
+                    <div class="tab-pane container fade" id="chonghe">
+                        <div class="row screen">
+                            <img src="../../../assets/img/screen.png" alt="">
+                        </div>
+                        <div class="row danhsachghe">
+                            <ng-container *ngFor="let item of mangGhe">
+                                <div class="ghe col-md-1">
+                                    <app-itemghe (eventDatGhe)="chonGhe($event)" [ghe]="item"></app-itemghe>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <div class="tab-pane container fade" id="thanhtoan">...</div>
                 </div>
             </div>
@@ -99,7 +131,11 @@
                 </div>
                 <div class="row myrow last">
                     <div class="col-md-6 star">Số ghế</div>
-                    <div class="col-md-6 end">Chưa đặt</div>
+                    <div class="col-md-6 end">
+                        <ng-container *ngFor="let item of mangGheDaChon">
+                            <p>{{item.ghe.tenGhe}},</p>
+                        </ng-container>
+                    </div>
                 </div>
                 <div class="row myrow">
                     <div class="col-md-6 star tongtien">Tổng tiền</div>

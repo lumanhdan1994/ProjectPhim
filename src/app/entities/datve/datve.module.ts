@@ -5,9 +5,10 @@ import { DatveRoutingModule } from './datve-routing.module';
 import { ChonveComponent } from './chonve/chonve.component';
 import { ChongheComponent } from './chonghe/chonghe.component';
 import { ThanhtoanComponent } from './thanhtoan/thanhtoan.component';
+import { ItemgheComponent } from './itemghe/itemghe.component';
 
 @NgModule({
-  declarations: [DatveComponent, ChonveComponent, ChongheComponent, ThanhtoanComponent],
+  declarations: [DatveComponent, ChonveComponent, ChongheComponent, ThanhtoanComponent, ItemgheComponent],
   imports: [
     CommonModule, DatveRoutingModule
   ]
