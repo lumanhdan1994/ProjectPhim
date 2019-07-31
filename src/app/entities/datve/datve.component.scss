@@ -63,7 +63,7 @@
         padding: 50px 0;
         .left{
             .infor{
-                padding: 60px 0;
+                border-bottom: 1px solid $color-border;
                 p{
                     color: #e9e9e9;
                     margin: 0;
@@ -88,7 +88,78 @@
                 .time{
                     font-size: 14px;
                     font-weight: normal;
-                    margin-left: 10px;
+                    margin-left: 20px;
+                    span{
+                        margin-right: 7px;
+                    }
+                }
+                .detailmovie{
+                    font-size: 14px;
+                    color: rgb(151, 151, 151);
+                }
+                .cumrap{
+                    padding: 50px 0;
+                    p{
+                        display: block;
+                        font-size: 14px;
+                        color: rgb(151, 151, 151);
+                    }
+                    p.inforp{
+                        font-size: 17px;
+                        color: white;
+                    }
+                }
+            }
+            .tab-content{
+                border-bottom: 1px solid $color-border;
+                #chonve{
+                    .chonve{
+                        margin: 50px 0;
+                        p{
+
+                        }
+                        .left{
+                            display: flex;
+                            justify-content: flex-star;
+                        }
+                        .middle{
+                            display: flex;
+                            justify-content: center;
+                        }
+                        .right{
+                            display: flex;
+                            justify-content: flex-end;
+                            button{
+                                width: 29px;
+                                height: 29px;
+                                background-color: unset;
+                                border: none;
+                                font-weight: bolder;
+                                font-size: 25px;
+                                transition: all ease .1s;
+                                &:focus{
+                                    outline: none;
+                                }
+                                &:active{                                    
+                                    font-size: 27px;
+                                }
+                            }
+                            span{
+                                margin: 6px 20px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 30px;
+                                height: 30px;
+                                background-color: rgb(104, 104, 104);
+                            }
+                        }
+                    }
+                    .chonghe{
+                        i{
+                            margin-left: 7px;
+                        }
+                    }
                 }
             }
         }
