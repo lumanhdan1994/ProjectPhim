@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+declare var $: any;
+
 @Component({
   selector: 'app-datve',
   templateUrl: './datve.component.html',
@@ -23,28 +25,28 @@ export class DatveComponent implements OnInit {
     if(this.soLuongVe > 0){
       this.soLuongVe --;
       this.giaVe = this.soLuongVe*85000;
-      this.tongTien =  this.giaVe + this.giaCombo
+      this.tongTien =  this.giaVe + this.giaCombo;      
     }
   }
 
   plusve(){
     this.soLuongVe ++;
     this.giaVe = this.soLuongVe*85000;
-    this.tongTien =  this.giaVe + this.giaCombo
+    this.tongTien =  this.giaVe + this.giaCombo;    
   }
 
   minuscombo(){
     if(this.soLuongCombo > 0){
       this.soLuongCombo --;
       this.giaCombo = this.soLuongCombo*45000;
-      this.tongTien =  this.giaVe + this.giaCombo
+      this.tongTien =  this.giaVe + this.giaCombo;      
     }
   }
 
   pluscombo(){
     this.soLuongCombo ++;
     this.giaCombo = this.soLuongCombo*45000;
-    this.tongTien =  this.giaVe + this.giaCombo
+    this.tongTien =  this.giaVe + this.giaCombo;    
   }
 
 
