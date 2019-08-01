@@ -1,14 +1,15 @@
 @import "../../../../Helper/variable";
 
 button{
+    margin: 2px;
     background-color: #686868;
     font-size: 13px;
     white-space: nowrap;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     border: none;
-    border-radius: 4px;
-    box-shadow: -2px 2px 10px black;
+    border-radius: 2px;
+    // box-shadow: -2px 2px 10px black;
     transition: all linear .15s;
     &:focus{
         outline: none;

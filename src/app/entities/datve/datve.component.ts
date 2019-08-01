@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/shared/services/data.service';
 
 declare var $: any;
 
@@ -9,45 +10,8 @@ declare var $: any;
 })
 export class DatveComponent implements OnInit {
 
-  mangGhe: any =  [
-    {tenGhe: "A01", trangThai: false},
-    {tenGhe: "A02", trangThai: false},
-    {tenGhe: "A03", trangThai: false},
-    {tenGhe: "A04", trangThai: false},
-    {tenGhe: "A05", trangThai: false},
-    {tenGhe: "A06", trangThai: false},
-    {tenGhe: "A07", trangThai: false},
-    {tenGhe: "A08", trangThai: false},
-    {tenGhe: "A09", trangThai: false},
-    {tenGhe: "A010", trangThai: false},
-    {tenGhe: "A011", trangThai: false},
-    {tenGhe: "A012", trangThai: false},
-    {tenGhe: "B01", trangThai: false},
-    {tenGhe: "B02", trangThai: false},
-    {tenGhe: "B03", trangThai: false},
-    {tenGhe: "B04", trangThai: false},
-    {tenGhe: "B05", trangThai: false},
-    {tenGhe: "B06", trangThai: false},
-    {tenGhe: "B07", trangThai: false},
-    {tenGhe: "B08", trangThai: false},
-    {tenGhe: "B09", trangThai: false},
-    {tenGhe: "B010", trangThai: false},
-    {tenGhe: "B011", trangThai: false},
-    {tenGhe: "B012", trangThai: false},
-    {tenGhe: "C01", trangThai: false},
-    {tenGhe: "C02", trangThai: false},
-    {tenGhe: "C03", trangThai: false},
-    {tenGhe: "C04", trangThai: false},
-    {tenGhe: "C05", trangThai: false},
-    {tenGhe: "C06", trangThai: false},
-    {tenGhe: "C07", trangThai: false},
-    {tenGhe: "C08", trangThai: false},
-    {tenGhe: "C09", trangThai: false},
-    {tenGhe: "C010", trangThai: false},
-    {tenGhe: "C011", trangThai: false},
-    {tenGhe: "C012", trangThai: false},
-  ]
-
+  thongTinPhim: any;
+  thongTinSuatChieu: any;
   soLuongVe: number = 0;
   giaVe: number = 0;
   soLuongCombo: number = 0;
@@ -57,10 +21,10 @@ export class DatveComponent implements OnInit {
   styleGheDaChon: boolean = false;
   mangGheDaChon: any = [];
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    console.log(this.tongTien);
+    this.layThongTinSuatChieu();
   }
 
   minusve(){
@@ -109,6 +73,14 @@ export class DatveComponent implements OnInit {
         }
       })
     }
+  }
+
+  layThongTinSuatChieu(){
+    const uri = "QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=16099";
+    this.dataService.get(uri).subscribe((data:any) => {
+      this.thongTinSuatChieu = data;   
+      console.log(this.thongTinSuatChieu);
+    })
   }
 
 }

@@ -1,4 +1,4 @@
-<section id="datve">
+<section id="datve" *ngIf="thongTinSuatChieu">
     <div class="mynav sticky-top">
         <ul class="nav nav-tabs">
             <li class="nav-item">
@@ -25,21 +25,21 @@
             <div class="left col-md-9">
                 <div class="infor row">
                     <div class="col-md-10">
-                        <p class="name"><span>C16</span>Home</p>
+                        <p class="name"><span>C16</span>{{thongTinSuatChieu.tenPhim}}</p>
                         <p class="time"><span><i class="fas fa-clock"></i></span>99 min</p>
                         <p class="detailmovie">Mô tả phim Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis, quidem.</p>
                         <div class="row cumrap">
                             <div class="col-md-4">
-                                <p>Tên rạp</p>
-                                <p class="inforp">Rạp CGV- tân bình</p>
+                                <p>Tên cụm rạp</p>
+                                <p class="inforp">{{thongTinSuatChieu.tenCumRap}}</p>
                             </div>
                             <div class="col-md-4">
-                                <p>Ngày chiếu</p>
-                                <p class="inforp">09-05-2000</p>
+                                <p>Địa chỉ</p>
+                                <p class="inforp">{{thongTinSuatChieu.diaChi}}</p>
                             </div>
                             <div class="col-md-4">
-                                <p>Suất</p>
-                                <p class="inforp">10:00</p>
+                                <p>Rạp</p>
+                                <p class="inforp">{{thongTinSuatChieu.tenRap}}</p>
                             </div>
                         </div>
                     </div>
@@ -91,10 +91,8 @@
                             <img src="../../../assets/img/screen.png" alt="">
                         </div>
                         <div class="row danhsachghe">
-                            <ng-container *ngFor="let item of mangGhe">
-                                <div class="ghe col-md-1">
-                                    <app-itemghe (eventDatGhe)="chonGhe($event)" [ghe]="item"></app-itemghe>
-                                </div>
+                            <ng-container *ngFor="let item of thongTinSuatChieu.danhSachGhe; let stt = index">
+                                <app-itemghe (eventDatGhe)="chonGhe($event)" [ghe]="item"></app-itemghe>
                             </ng-container>
                         </div>
                     </div>
@@ -133,7 +131,7 @@
                     <div class="col-md-6 star">Số ghế</div>
                     <div class="col-md-6 end">
                         <ng-container *ngFor="let item of mangGheDaChon">
-                            <p>{{item.ghe.tenGhe}},</p>
+                            <p>Chưa đặt</p>
                         </ng-container>
                     </div>
                 </div>
