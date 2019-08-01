@@ -1,11 +1,11 @@
-<section id="datve">
-    <div class="mynav">
+<section id="datve" *ngIf="thongTinSuatChieu">
+    <div class="mynav sticky-top">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#chonve"><span>01</span>CHỌN VÉ + COMBO</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#chonghe"><span>02</span>CHỌN GHẾ</a>
+                <a id="navtagChonGhe" class="nav-link" data-toggle="tab" href="#chonghe"><span>02</span>CHỌN GHẾ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#thanhtoan"><span>03</span>THANH TOÁN</a>
@@ -25,21 +25,21 @@
             <div class="left col-md-9">
                 <div class="infor row">
                     <div class="col-md-10">
-                        <p class="name"><span>C16</span>Home</p>
+                        <p class="name"><span>C16</span>{{thongTinSuatChieu.tenPhim}}</p>
                         <p class="time"><span><i class="fas fa-clock"></i></span>99 min</p>
                         <p class="detailmovie">Mô tả phim Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis, quidem.</p>
                         <div class="row cumrap">
                             <div class="col-md-4">
-                                <p>Tên rạp</p>
-                                <p class="inforp">Rạp CGV- tân bình</p>
+                                <p>Tên cụm rạp</p>
+                                <p class="inforp">{{thongTinSuatChieu.tenCumRap}}</p>
                             </div>
                             <div class="col-md-4">
-                                <p>Ngày chiếu</p>
-                                <p class="inforp">09-05-2000</p>
+                                <p>Địa chỉ</p>
+                                <p class="inforp">{{thongTinSuatChieu.diaChi}}</p>
                             </div>
                             <div class="col-md-4">
-                                <p>Suất</p>
-                                <p class="inforp">10:00</p>
+                                <p>Rạp</p>
+                                <p class="inforp">{{thongTinSuatChieu.tenRap}}</p>
                             </div>
                         </div>
                     </div>
@@ -76,10 +76,40 @@
                             </div>
                         </div>
                         <div class="row chonghe">
-                            <button class="btn btn-danger">Chọn ghế <i class="fas fa-arrow-right"></i></button>
+                            <button (click)="toChonGhe()" class="btn btn-danger">Chọn ghế <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
-                    <div class="tab-pane container fade" id="chonghe">...</div>
+
+
+
+
+
+
+
+                    <div class="tab-pane container fade" id="chonghe">
+                        <div class="row screen">
+                            <img src="../../../assets/img/screen.png" alt="">
+                        </div>
+                        <div class="row danhsachghe">
+                            <ng-container *ngFor="let item of thongTinSuatChieu.danhSachGhe; let stt = index">
+                                <app-itemghe (eventDatGhe)="chonGhe($event)" [ghe]="item"></app-itemghe>
+                            </ng-container>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <div class="tab-pane container fade" id="thanhtoan">...</div>
                 </div>
             </div>
@@ -99,7 +129,11 @@
                 </div>
                 <div class="row myrow last">
                     <div class="col-md-6 star">Số ghế</div>
-                    <div class="col-md-6 end">Chưa đặt</div>
+                    <div class="col-md-6 end">
+                        <ng-container *ngFor="let item of mangGheDaChon">
+                            <p>Chưa đặt</p>
+                        </ng-container>
+                    </div>
                 </div>
                 <div class="row myrow">
                     <div class="col-md-6 star tongtien">Tổng tiền</div>

@@ -106,7 +106,7 @@
                         color: rgb(151, 151, 151);
                     }
                     p.inforp{
-                        font-size: 17px;
+                        font-size: 15px;
                         color: white;
                     }
                 }
@@ -116,7 +116,7 @@
                 #chonve{   
                     border-bottom: 1px solid $color-border;    
                     border-top: 1px solid $color-border;              
-                    padding-bottom: 50px;
+                    padding-bottom: 50px !important;
                     animation:fall ease-in-out 1.5s;
                     animation-fill-mode: bold;
                     @keyframes fall {
@@ -180,6 +180,46 @@
                             i{
                                 margin-left: 7px;
                             }
+                        }
+                    }
+                }
+                #chonghe{
+                    animation:fall ease-in-out 1.5s;
+                    animation-fill-mode: bold;
+                    @keyframes fall {
+                        0%{
+                            opacity: 0;
+                            transform: (translateY(-150px));
+                        }
+                        100%{
+                            opacity: 1;
+                        }
+                    }
+                    .screen{
+                        img{
+                            width: 100%;
+                        }
+                    }
+                    .danhsachghe{
+                        padding-top: 10px;
+                        margin: auto;
+                        width: 300px;
+                        .ghe{
+                            padding: 10px 0;
+                            // button{
+                            //     background-color: #686868;
+                            //     font-size: 13px;
+                            //     white-space: nowrap;
+                            //     width: 40px;
+                            //     height: 40px;
+                            //     border: none;
+                            //     &:focus{
+                            //         outline: none;
+                            //     }
+                            // }
+                            // .styleghedachon{
+                            //     background-color: $color-text;
+                            // }
                         }
                     }
                 }
