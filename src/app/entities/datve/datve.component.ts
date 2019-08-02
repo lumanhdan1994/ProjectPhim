@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
 import { ItemgheComponent } from './itemghe/itemghe.component';
+import { ActivatedRoute } from '@angular/router';
 
 declare var $: any;
 
@@ -11,6 +12,8 @@ declare var $: any;
 })
 export class DatveComponent implements OnInit {
   @ViewChildren(ItemgheComponent) tagItemGhe: QueryList<ItemgheComponent>;
+  
+  maLichChieu: any;
   thongTinPhim: any;
   maPhim: any;
   thongTinSuatChieu: any;
@@ -26,9 +29,10 @@ export class DatveComponent implements OnInit {
   navtag2: boolean = true;
   navtag3: boolean = true;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getParamUrl();
     this.layThongTinSuatChieu();
   }
 
@@ -96,9 +100,12 @@ export class DatveComponent implements OnInit {
     }
   }
 
+  getParamUrl(){
+    this.maLichChieu = this.activatedRoute.snapshot.paramMap.get("id");
+  }
 
   layThongTinSuatChieu(){
-    const uri = "QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=16199";
+    const uri = `QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${this.maLichChieu}`;
     this.dataService.get(uri).subscribe((data:any) => {
       this.thongTinSuatChieu = data;  
       // lay thong tin chi tiet phim
