@@ -27,7 +27,7 @@
                     <div class="col-md-10">
                         <p class="name"><span>C16</span>{{thongTinSuatChieu.tenPhim}}</p>
                         <p class="time"><span><i class="fas fa-clock"></i></span>99 min</p>
-                        <p class="detailmovie">Mô tả phim Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis, quidem.</p>
+                        <p class="detailmovie">{{thongTinPhim.moTa}}</p>
                         <div class="row cumrap">
                             <div class="col-md-4">
                                 <p>Tên cụm rạp</p>
@@ -86,6 +86,7 @@
                         <div class="row danhsachghe">
                             <ng-container *ngFor="let item of thongTinSuatChieu.danhSachGhe; let stt = index">
                                 <app-itemghe (eventDatGhe)="chonGhe($event)" [ghe]="item"></app-itemghe>
+                                <br>
                             </ng-container>
                         </div>
                         <div class="row chonghe">
@@ -97,7 +98,7 @@
             </div>
             <div class="right col-md-3">
                 <div class="hinhanhphim row">
-                    <img src="http://movie0706.cybersoft.edu.vn/hinhanh/home.jpg" alt="">
+                    <img [src]="thongTinPhim.hinhAnh" alt="">
                 </div>
                 <div class="row myrow">
                     <div class="col-md-4 star">Số lượng vé</div>

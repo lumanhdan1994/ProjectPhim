@@ -41,6 +41,7 @@ export class ListMovieComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
   LayThongTinCumRap() {
     const uri = "QuanLyRap/LayThongTinHeThongRap";
     this.dataService.get(uri).subscribe((data: any) => {
@@ -66,6 +67,16 @@ export class ListMovieComponent implements OnInit {
   }
   GuiMaLichChieu(_maLichChieu) {
     this.router.navigate(["/datve", _maLichChieu]);
+=======
+  LayThongTinRap() {
+    // console.log(this.lichChieu);
+    // this.lichChieu.map(item => {
+    //   console.log(item);
+    // });
+    const uri = `QuanLyRap/LayThongTinHeThongRap?maHeThongRap=${
+      this.maHeThongRap
+    }`;
+>>>>>>> phucdinh
   }
 
   // getListMovie() {

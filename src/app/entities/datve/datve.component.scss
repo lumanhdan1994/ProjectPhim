@@ -8,6 +8,7 @@
 
 #datve{
     .mynav{
+        background-color: $primary-color;
         display: flex;
         justify-content: space-between;
         height: 70px;
@@ -203,7 +204,6 @@
                     .danhsachghe{
                         padding-top: 10px;
                         margin: auto;
-                        width: 300px;
                         .ghe{
                             padding: 10px 0;
                             // button{
