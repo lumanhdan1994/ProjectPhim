@@ -22,6 +22,7 @@
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "ngx-slick-carousel": "^0.4.4",
+    "percircle": "^1.0.27",
     "popper.js": "^1.15.0",
     "rxjs": "~6.4.0",
     "slick-carousel": "^1.8.1",
