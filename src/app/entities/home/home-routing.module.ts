@@ -12,16 +12,15 @@ const routes: Routes = [
         path: "trangchu",
         loadChildren: "./trang-chu/trang-chu.module#TrangChuModule"
       },
-      
+
       { path: "", redirectTo: "trangchu", pathMatch: 'full' },
 
-      
+
       //List Movie
       {
         path: "list-movie/:malichchieu",
         loadChildren: "./list-movie/list-movie.module#ListMovieModule"
       }
-
     ]
   }
 ];

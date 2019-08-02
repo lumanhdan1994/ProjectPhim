@@ -17,4 +17,4 @@ import { ReviewComponent } from './review/review.component';
 
   imports: [CommonModule, TrangChuRoutingModule, SlickCarouselModule]
 })
-export class TrangChuModule {}
+export class TrangChuModule { }

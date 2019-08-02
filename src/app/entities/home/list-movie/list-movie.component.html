@@ -1,24 +1,92 @@
 <ng-container *ngIf="phimDetail">
   <section id="ChiTietPhim">
     <div class="bg-img">
-      <img [src]="phimDetail.hinhAnh" alt="">
+      <img [src]="phimDetail.hinhAnh" alt="" />
     </div>
-    <div class="detail-phim d-flex justify-content-between container">
+    <div
+      class="detail-phim d-flex justify-content-center align-items-center container"
+    >
       <div class="img-phim">
-          <img [src]="phimDetail.hinhAnh" alt="">
-          <div class="trailer">
-              <a [href]="phimDetail.trailer"><i class="fa fa-play" aria-hidden="true"></i></a>
-          </div>
+        <img [src]="phimDetail.hinhAnh" alt="" />
+        <div class="trailer">
+          <a [href]="phimDetail.trailer"
+            ><i class="fa fa-play" aria-hidden="true"></i
+          ></a>
+        </div>
       </div>
       <div class="info-phim">
-        <p>{{phimDetail.ngayKhoiChieu | date:"dd.MM.yyyy"}}</p>
-        <p>{{phimDetail.tenPhim}}</p>
+        <p>{{ phimDetail.ngayKhoiChieu | date: "dd.MM.yyyy" }}</p>
+        <p>{{ phimDetail.tenPhim }}</p>
         <button class="buyticket">Mua Vé</button>
       </div>
-      <div class="danhgia-phim">
-        
+      <!-- <div class="danhgia-phim">
+        <div class="c100 p25 big">
+          <span>25%</span>
+          <div class="slice">
+            <div class="bar"></div>
+            <div class="fill"></div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="chitietphim-lichChieu">
+      <div class="container">
+        <ul class="nav nav-pills" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="pill" href="#lichchieu"
+              >Lịch Chiếu</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#info">Thông Tin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#danhgia">Đánh Giá</a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div id="lichchieu" class="container tab-pane active">
+            <div class="row">
+              <div class="col-sm-4">
+                <ng-container *ngIf="lichChieu">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li class="active" *ngFor="let item of lichChieu">
+                      <a href="#">{{ item.tenPhim }}</a>
+                    </li>
+                  </ul>
+                </ng-container>
+              </div>
+              <div class="col-sm-8">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex,
+                vitae facere? Ipsum quas repellat dolore enim sit iste soluta
+                sapiente voluptas assumenda at corrupti ad illo voluptates unde
+                dolor culpa, nobis id dicta! Officiis sint nobis nemo blanditiis
+                ex, laborum atque? Laudantium, esse. Totam, nesciunt? Ipsum
+                voluptas esse alias fugiat?
+              </div>
+            </div>
+          </div>
+          <div id="info" class="container tab-pane fade">
+            <br />
+            <h3>Menu 1</h3>
+            <p>
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+          <div id="danhgia" class="container tab-pane fade">
+            <br />
+            <h3>Menu 2</h3>
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-
   </section>
 </ng-container>
+<router-outlet></router-outlet>

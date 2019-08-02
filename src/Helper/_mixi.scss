@@ -1,0 +1,13 @@
+@mixin danhgia-percent($mau,$cutRighttoLeft, $cutLefttoRight, $deg ) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate($deg);
+  border-radius: 50%;
+  background-color: transparent;
+  border: 15px solid $mau;
+  width: 150px;
+  height: 150px;
+  clip: rect(0px, $cutRighttoLeft, 150px, $cutLefttoRight);
+}
+
