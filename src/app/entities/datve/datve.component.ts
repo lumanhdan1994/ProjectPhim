@@ -12,6 +12,7 @@ declare var $: any;
 export class DatveComponent implements OnInit {
   @ViewChildren(ItemgheComponent) tagItemGhe: QueryList<ItemgheComponent>;
   thongTinPhim: any;
+  maPhim: any;
   thongTinSuatChieu: any;
   soLuongVe: number = 0;
   giaVe: number = 0;
@@ -97,10 +98,31 @@ export class DatveComponent implements OnInit {
 
 
   layThongTinSuatChieu(){
-    const uri = "QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=16099";
+    const uri = "QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=16199";
     this.dataService.get(uri).subscribe((data:any) => {
-      this.thongTinSuatChieu = data;   
+      this.thongTinSuatChieu = data;  
+      // lay thong tin chi tiet phim
+      this.layThongTinChiTietPhim();
     })
+  }
+
+  layThongTinChiTietPhim() {
+    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
+    this.dataService.get(uri).subscribe((data: any) => {
+      // console.log(this.thongTinSuatChieu);
+      // console.log(data);
+      // console.log(this.thongTinSuatChieu.tenPhim);
+      data.map(item => {
+        if (item.tenPhim === this.thongTinSuatChieu.tenPhim) {
+          this.maPhim = item.maPhim;
+        }
+      })
+      const uri = `QuanLyPhim/LayThongTinPhim?MaPhim=${this.maPhim}`;
+      this.dataService.get(uri).subscribe((data: any) => {
+        this.thongTinPhim = data;
+        console.log(this.thongTinPhim);
+      });
+    });
   }
 
   eventScroll() {
