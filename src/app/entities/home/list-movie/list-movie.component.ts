@@ -45,10 +45,10 @@ export class ListMovieComponent implements OnInit {
   }
 
   LayThongTinRap() {
-    console.log(this.lichChieu);
-    this.lichChieu.map(item => {
-      console.log(item);
-    });
+    // console.log(this.lichChieu);
+    // this.lichChieu.map(item => {
+    //   console.log(item);
+    // });
     const uri = `QuanLyRap/LayThongTinHeThongRap?maHeThongRap=${
       this.maHeThongRap
     }`;
