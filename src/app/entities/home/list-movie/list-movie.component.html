@@ -46,45 +46,49 @@
         </ul>
 
         <!-- Tab panes -->
-        <div class="tab-content">
-          <div id="lichchieu" class="container tab-pane active">
-            <div class="row">
-              <div class="col-sm-4">
-                <ng-container *ngIf="lichChieu">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li class="active" *ngFor="let item of lichChieu">
-                      <a href="#">{{ item.tenPhim }}</a>
-                    </li>
-                  </ul>
-                </ng-container>
-              </div>
-              <div class="col-sm-8">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex,
-                vitae facere? Ipsum quas repellat dolore enim sit iste soluta
-                sapiente voluptas assumenda at corrupti ad illo voluptates unde
-                dolor culpa, nobis id dicta! Officiis sint nobis nemo blanditiis
-                ex, laborum atque? Laudantium, esse. Totam, nesciunt? Ipsum
-                voluptas esse alias fugiat?
+        <ng-container *ngIf="cumRap">
+          <div class="tab-content">
+            <div id="lichchieu" class="container tab-pane active">
+              <div class="row">
+                <div class="col-sm-4">
+                  <ng-container *ngFor="let item of cumRap">
+                    <a (click)="laymaRap(item.maHeThongRap)">
+                      <img [src]="item.logo" alt="" />
+                      <span>{{ item.tenHeThongRap }}</span>
+                    </a>
+                    <br />
+                  </ng-container>
+                </div>
+                <div class="col-sm-8">
+                  <ng-container *ngIf="thongTinXuatChieu; else KhongCoXuatChieu">
+                    <button *ngFor="let itemlichChieu of thongTinXuatChieu" (click)="GuiMaLichChieu(itemlichChieu.maLichChieu)">
+                      {{ itemlichChieu.maLichChieu }}
+                    </button>
+                  </ng-container>
+                  <ng-template #KhongCoXuatChieu>
+                    <p>Khong co xuat chieu</p>
+                  </ng-template>
+                </div>
               </div>
             </div>
+            <div id="info" class="container tab-pane fade">
+              <br />
+              <h3>Menu 1</h3>
+              <p>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+            <div id="danhgia" class="container tab-pane fade">
+              <br />
+              <h3>Menu 2</h3>
+              <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam.
+              </p>
+            </div>
           </div>
-          <div id="info" class="container tab-pane fade">
-            <br />
-            <h3>Menu 1</h3>
-            <p>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
-          </div>
-          <div id="danhgia" class="container tab-pane fade">
-            <br />
-            <h3>Menu 2</h3>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam.
-            </p>
-          </div>
-        </div>
+        </ng-container>
       </div>
     </div>
   </section>

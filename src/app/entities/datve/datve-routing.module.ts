@@ -4,7 +4,7 @@ import { DatveComponent } from './datve.component';
 
 const routes: Routes = [
   {
-    path: "datve", component: DatveComponent
+    path: "datve/:id", component: DatveComponent
   }
 ];
 

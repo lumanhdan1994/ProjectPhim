@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "./../../../shared/services/data.service";
 import { Subscription } from "rxjs";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 declare var $: any;
 
 @Component({
@@ -13,18 +13,18 @@ export class ListMovieComponent implements OnInit {
   subListMovie: Subscription;
   maPhim: any;
   phimDetail: any;
-  lichChieu: any[] = [];
-  thongTinHeThongRap: any;
-  maHeThongRap: any;
+  cumRap: any;
+  thongTinXuatChieu: any = [];
   constructor(
     private dataService: DataService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router:Router
   ) {}
 
   ngOnInit() {
     this.getParamsUrl();
     this.getDetailMovie();
-    this.LayThongTinRap();
+    this.LayThongTinCumRap();
     // console.log(this.lichChieu);
   }
 
@@ -38,20 +38,34 @@ export class ListMovieComponent implements OnInit {
     this.dataService.get(uri).subscribe((data: any) => {
       this.phimDetail = data;
       // console.log(this.phimDetail);
-      this.phimDetail.lichChieu.map(item => {
-        this.lichChieu.push(item);
-      });
     });
   }
 
-  LayThongTinRap() {
-    console.log(this.lichChieu);
-    this.lichChieu.map(item => {
-      console.log(item);
+  LayThongTinCumRap() {
+    const uri = "QuanLyRap/LayThongTinHeThongRap";
+    this.dataService.get(uri).subscribe((data: any) => {
+      this.cumRap = data;
+      console.log(this.cumRap);
     });
-    const uri = `QuanLyRap/LayThongTinHeThongRap?maHeThongRap=${
-      this.maHeThongRap
-    }`;
+  }
+
+  laymaRap(_maRap) {
+    console.log(_maRap);
+    let _thongTinXuatChieu: Array<any> = [];
+    // console.log(this.phimDetail.lichChieu);
+    this.phimDetail.lichChieu.map(item => {
+      // console.log(item);
+      if (_maRap === item.thongTinRap.maHeThongRap) {
+        _thongTinXuatChieu.push(item);
+      } else {
+        console.log("Khong co xuat chieu");
+      }
+    });
+    this.thongTinXuatChieu = _thongTinXuatChieu;
+    console.log(this.thongTinXuatChieu);
+  }
+  GuiMaLichChieu(_maLichChieu) {
+    this.router.navigate(["/datve", _maLichChieu]);
   }
 
   // getListMovie() {
