@@ -60,7 +60,7 @@
                   </ng-container>
                 </div>
                 <div class="col-sm-8">
-                  <ng-container *ngIf="thongTinXuatChieu; else KhongCoXuatChieu">
+                  <ng-container *ngIf="thongTinXuatChieu !=null; else KhongCoXuatChieu">
                     <button *ngFor="let itemlichChieu of thongTinXuatChieu" (click)="GuiMaLichChieu(itemlichChieu.maLichChieu)">
                       {{ itemlichChieu.maLichChieu }}
                     </button>
