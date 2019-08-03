@@ -1,4 +1,4 @@
-<section id="datve" *ngIf="thongTinSuatChieu">
+<section id="datve" *ngIf="thongTinSuatChieu && thongTinPhim">
     <div class="mynav sticky-top">
         <ul class="nav nav-tabs">
             <li class="nav-item">
@@ -80,18 +80,20 @@
                         </div>
                     </div>
                     <div class="tab-pane container fade" id="chonghe">
-                        <div class="row screen">
+                        <div class="screen">
                             <img src="../../../assets/img/screen.png" alt="">
                         </div>
-                        <div class="row danhsachghe">
+                        <div class="danhsachghe">
                             <ng-container *ngFor="let item of thongTinSuatChieu.danhSachGhe; let stt = index">
+                                <span class="anphabe" *ngIf="(stt+1)===1">A</span>
                                 <app-itemghe (eventDatGhe)="chonGhe($event)" [ghe]="item"></app-itemghe>
-                                <br>
+                                <br *ngIf="(stt+1)%12===0">
+                                <span class="anphabe" *ngIf="(stt+1)%12===0">{{anphabe[(stt+1)/12]}}</span>
                             </ng-container>
-                        </div>
-                        <div class="row chonghe">
-                            <button (click)="toChonVe()" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Quay lại</button>
-                        </div>
+                            <div class="back">
+                                <button (click)="toChonVe()" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Quay lại</button>
+                            </div>
+                        </div>                        
                     </div>
                     <div class="tab-pane container fade" id="thanhtoan">...</div>
                 </div>
@@ -113,8 +115,9 @@
                 <div class="row myrow last">
                     <div class="col-md-6 star">Số ghế</div>
                     <div class="col-md-6 end">
-                        <ng-container *ngFor="let item of mangGheDaChon">
-                            <p>{{item.ghe.tenGhe}},</p>
+                        <ng-container *ngFor="let item of mangTenGheDuocClick; let index = index">
+                            <!-- <p>{{item.ghe.tenGhe}},</p> -->
+                            <p>{{item}},</p>
                         </ng-container>
                     </div>
                 </div>
@@ -122,7 +125,11 @@
                     <div class="col-md-6 star tongtien">Tổng tiền</div>
                     <div class="col-md-6 end tongtien">{{tongTien}}</div>
                 </div>
+                <div class="row myrow">
+                    <button (click)="thanhToan()" class="btn btn-danger">Thanh toán</button>
+                </div>
             </div>
         </div>
     </div>
 </section>
+<!-- " (click)="thanhToan()" -->
