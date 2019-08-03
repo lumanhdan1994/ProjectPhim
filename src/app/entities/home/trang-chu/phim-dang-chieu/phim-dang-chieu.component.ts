@@ -22,7 +22,7 @@ export class PhimDangChieuComponent implements OnInit {
   }
 
   layDanhSachPhim() {
-    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
+    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP09";
     this.dataService.get(uri).subscribe((data: any) => {
       data.map(item => {
         if(item.maPhim %2 ==0){
