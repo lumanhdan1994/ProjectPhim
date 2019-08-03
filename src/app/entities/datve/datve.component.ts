@@ -81,37 +81,41 @@ export class DatveComponent implements OnInit {
   }
 
   chonGhe($event) {
-    if ($event.trangThaiChon === true) {
-      if (this.mangGheDaChon.length < this.soLuongVe) {
-        this.mangGheDaChon.push($event);
-        // console.log($event);
-        this.sttAnphabeDuocClick = Math.floor(($event.ghe.stt) / 12.0001);
-        // let tenGheDuocClick = this.anphabe[this.sttAnphabeDuocClick] + this.sttAnphabeDuocClick;
-        let sttGhe;
-        if ($event.ghe.stt % 12 === 0) {
-          sttGhe = 12;
+    if(this.soLuongVe === 0){
+      alert("Xin vui lòng chọn vé");
+    }else{
+      if ($event.trangThaiChon === true) {
+        if (this.mangGheDaChon.length < this.soLuongVe) {
+          this.mangGheDaChon.push($event);
+          // console.log($event);
+          this.sttAnphabeDuocClick = Math.floor(($event.ghe.stt) / 12.0001);
+          // let tenGheDuocClick = this.anphabe[this.sttAnphabeDuocClick] + this.sttAnphabeDuocClick;
+          let sttGhe;
+          if ($event.ghe.stt % 12 === 0) {
+            sttGhe = 12;
+          } else {
+            sttGhe = $event.ghe.stt % 12;
+          }
+          let tenGheDuocClick = this.anphabe[this.sttAnphabeDuocClick] + (sttGhe);
+          this.mangTenGheDuocClick.push(tenGheDuocClick);
         } else {
-          sttGhe = $event.ghe.stt % 12;
+          alert(`Hey! bạn chỉ được chọn ${this.soLuongVe} ghế thôi`);
+          this.tagItemGhe.map((item) => {
+            if (item.ghe.maGhe === $event.ghe.maGhe) {
+              item.styleGheDaChon = !item.styleGheDaChon;
+            }
+          })
         }
-        let tenGheDuocClick = this.anphabe[this.sttAnphabeDuocClick] + (sttGhe);
-        this.mangTenGheDuocClick.push(tenGheDuocClick);
-      } else {
-        alert(`Hey! bạn chỉ được chọn ${this.soLuongVe} ghế thôi`);
-        this.tagItemGhe.map((item) => {
-          if (item.ghe.maGhe === $event.ghe.maGhe) {
-            item.styleGheDaChon = !item.styleGheDaChon;
+      }
+  
+      if ($event.trangThaiChon === false) {
+        this.mangGheDaChon.map((item, index) => {
+          if (item.ghe.tenGhe === $event.ghe.tenGhe) {
+            this.mangGheDaChon.splice(index, 1);
+            this.mangTenGheDuocClick.splice(index, 1);
           }
         })
       }
-    }
-
-    if ($event.trangThaiChon === false) {
-      this.mangGheDaChon.map((item, index) => {
-        if (item.ghe.tenGhe === $event.ghe.tenGhe) {
-          this.mangGheDaChon.splice(index, 1);
-          this.mangTenGheDuocClick.splice(index, 1);
-        }
-      })
     }
   }
 
