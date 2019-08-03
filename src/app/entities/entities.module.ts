@@ -1,10 +1,11 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { CommonModule, DatePipe } from "@angular/common";
 import { EntitiesComponent } from "./entities.component";
 import { EntitiesRoutingModule } from "./entities-routing.module";
 
 @NgModule({
   declarations: [EntitiesComponent],
-  imports: [CommonModule, EntitiesRoutingModule]
+  imports: [CommonModule, EntitiesRoutingModule],
+  providers:[DatePipe]
 })
 export class EntitiesModule {}

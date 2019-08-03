@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "./../../../shared/services/data.service";
 import { Subscription } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
+import { formatDate, DatePipe } from '@angular/common';
+import { format } from 'url';
 declare var $: any;
 
 @Component({
@@ -15,11 +17,13 @@ export class ListMovieComponent implements OnInit {
   phimDetail: any;
   cumRap: any;
   thongTinXuatChieu: any = [];
+  date: any = [];
   constructor(
     private dataService: DataService,
     private activatedRoute: ActivatedRoute,
-    private router:Router
-  ) {}
+    private router: Router,
+    private datapipe: DatePipe
+  ) { }
 
   ngOnInit() {
     this.getParamsUrl();
@@ -45,24 +49,34 @@ export class ListMovieComponent implements OnInit {
     const uri = "QuanLyRap/LayThongTinHeThongRap";
     this.dataService.get(uri).subscribe((data: any) => {
       this.cumRap = data;
-      console.log(this.cumRap);
+      // console.log(this.cumRap);
     });
   }
 
   laymaRap(_maRap) {
-    console.log(_maRap);
+    // console.log(_maRap);
     let _thongTinXuatChieu: Array<any> = [];
-    // console.log(this.phimDetail.lichChieu);
-    this.phimDetail.lichChieu.map(item => {
-      // console.log(item);
-      if (_maRap === item.thongTinRap.maHeThongRap) {
-        _thongTinXuatChieu.push(item);
-      } else {
-        console.log("Khong co xuat chieu");
+    let _date: Array<any> = [];
+
+    let item = this.phimDetail.lichChieu;
+    for (let i = 0; i < item.length; i++) {
+      if (_maRap === item[i].thongTinRap.maHeThongRap) {
+        _thongTinXuatChieu.push(item[i]);
+        item[i].ngayChieuGioChieu = this.datapipe.transform(item[i].ngayChieuGioChieu, "dd-MM-yyyy");
+        _date.push(item[i].ngayChieuGioChieu);
       }
-    });
+    }
+    let _dateDul: Array<string> = [];
+    _date.map(item => {
+      if (!(_dateDul.indexOf(item) > -1)) {
+        _dateDul.push(item);
+      }
+      // console.log(_dateDul.indexOf(item) > -1)
+    })
     this.thongTinXuatChieu = _thongTinXuatChieu;
+    this.date = _dateDul;
     console.log(this.thongTinXuatChieu);
+    console.log(this.date);
   }
   GuiMaLichChieu(_maLichChieu) {
     this.router.navigate(["/datve", _maLichChieu]);

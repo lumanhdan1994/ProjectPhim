@@ -3,15 +3,11 @@
     <div class="bg-img">
       <img [src]="phimDetail.hinhAnh" alt="" />
     </div>
-    <div
-      class="detail-phim d-flex justify-content-center align-items-center container"
-    >
+    <div class="detail-phim d-flex justify-content-center align-items-center container">
       <div class="img-phim">
         <img [src]="phimDetail.hinhAnh" alt="" />
         <div class="trailer">
-          <a [href]="phimDetail.trailer"
-            ><i class="fa fa-play" aria-hidden="true"></i
-          ></a>
+          <a [href]="phimDetail.trailer"><i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
       </div>
       <div class="info-phim">
@@ -33,9 +29,7 @@
       <div class="container">
         <ul class="nav nav-pills" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="pill" href="#lichchieu"
-              >Lịch Chiếu</a
-            >
+            <a class="nav-link active" data-toggle="pill" href="#lichchieu">Lịch Chiếu</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="pill" href="#info">Thông Tin</a>
@@ -59,15 +53,23 @@
                     <br />
                   </ng-container>
                 </div>
-                <div class="col-sm-8">
-                  <ng-container *ngIf="thongTinXuatChieu !=null; else KhongCoXuatChieu">
-                    <button *ngFor="let itemlichChieu of thongTinXuatChieu" (click)="GuiMaLichChieu(itemlichChieu.maLichChieu)">
-                      {{ itemlichChieu.ngayChieuGioChieu | date:"hh:mm" }}
-                    </button>
-                  </ng-container>
-                  <ng-template #KhongCoXuatChieu>
-                    <p>Khong co xuat chieu</p>
-                  </ng-template>
+                <div class="col-sm-8 xuatchieu" *ngIf="thongTinXuatChieu.length != 0 && date.length != 0">
+                  <div class="xuatchieu-date">
+                    <span *ngFor="let itemDate of date">
+                      {{itemDate | date:"EEE"}}
+                    </span>
+                  </div>
+                  <div class="xuatchieu-content">
+                    <ng-container *ngIf="thongTinXuatChieu.length != 0; else KhongCoXuatChieu">
+                      <button *ngFor="let itemlichChieu of thongTinXuatChieu"
+                        (click)="GuiMaLichChieu(itemlichChieu.maLichChieu)">
+                        {{ itemlichChieu.ngayChieuGioChieu | date: "hh:mm" }}
+                      </button>
+                    </ng-container>
+                    <ng-template #KhongCoXuatChieu>
+                      <p>Khong co xuat chieu</p>
+                    </ng-template>
+                  </div>
                 </div>
               </div>
             </div>
