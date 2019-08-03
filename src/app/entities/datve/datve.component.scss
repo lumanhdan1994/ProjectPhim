@@ -185,6 +185,9 @@
                     }
                 }
                 #chonghe{
+                    position: relative;
+                    height: 94vh;
+                    border-bottom: 1px solid #303030;
                     animation:fall ease-in-out 1.5s;
                     animation-fill-mode: bold;
                     @keyframes fall {
@@ -202,8 +205,15 @@
                         }
                     }
                     .danhsachghe{
+                        width: 320px;
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
                         padding-top: 10px;
-                        margin: auto;
+                        .anphabe{
+                            display: inline-block;
+                            width: 25px;
+                        }
                         .ghe{
                             padding: 10px 0;
                             // button{
@@ -221,6 +231,9 @@
                             //     background-color: $color-text;
                             // }
                         }
+                    }
+                    .back{
+                        padding: 50px 0;
                     }
                 }
             }
@@ -281,6 +294,9 @@
                     font-size: 18px;
                     font-weight: bold;
                 }
+                button{
+                    width: 100%;
+                }
             }            
             .myrow.last{
                 border-bottom: 1px solid rgb(48, 48, 48);
@@ -290,4 +306,9 @@
 }
 .navtag-pointer{
     pointer-events: none;
+}
+.trangthaithanhtoan{
+    background-color: #ff4c31;
+    pointer-events: none;
+    cursor: default;
 }

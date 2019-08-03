@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class DatveComponent implements OnInit {
   @ViewChildren(ItemgheComponent) tagItemGhe: QueryList<ItemgheComponent>;
-  
+
   maLichChieu: any;
   thongTinPhim: any;
   maPhim: any;
@@ -21,13 +21,17 @@ export class DatveComponent implements OnInit {
   giaVe: number = 0;
   soLuongCombo: number = 0;
   giaCombo: number = 0;
-  tongTien:number = 0;
+  tongTien: number = 0;
   tenGheDaChon: any;
   styleGheDaChon: boolean = false;
   mangGheDaChon: any = [];
+  sttAnphabeDuocClick: any;
+  mangTenGheDuocClick: any = [];
   navtag1: boolean = true;
   navtag2: boolean = true;
   navtag3: boolean = true;
+  anphabe: any = ["A", "B", 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  // trangThaiThanhToan: boolean = false;
 
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
@@ -36,43 +40,43 @@ export class DatveComponent implements OnInit {
     this.layThongTinSuatChieu();
   }
 
-  minusve(){
-    if(this.soLuongVe > 0){
-      this.soLuongVe --;
-      this.giaVe = this.soLuongVe*85000;
-      this.tongTien =  this.giaVe + this.giaCombo;      
+  minusve() {
+    if (this.soLuongVe > 0) {
+      this.soLuongVe--;
+      this.giaVe = this.soLuongVe * 85000;
+      this.tongTien = this.giaVe + this.giaCombo;
     }
   }
 
-  plusve(){
-    if(this.tongTien < 800000){
-      this.soLuongVe ++;
-      this.giaVe = this.soLuongVe*85000;
-      this.tongTien =  this.giaVe + this.giaCombo;    
-    }    
-  }
-
-  minuscombo(){
-    if(this.soLuongCombo > 0){
-      this.soLuongCombo --;
-      this.giaCombo = this.soLuongCombo*45000;
-      this.tongTien =  this.giaVe + this.giaCombo;      
+  plusve() {
+    if (this.tongTien < 800000) {
+      this.soLuongVe++;
+      this.giaVe = this.soLuongVe * 85000;
+      this.tongTien = this.giaVe + this.giaCombo;
     }
   }
 
-  pluscombo(){
-    if(this.tongTien < 800000){
-      this.soLuongCombo ++;
-      this.giaCombo = this.soLuongCombo*45000;
-      this.tongTien =  this.giaVe + this.giaCombo;    
-    }   
+  minuscombo() {
+    if (this.soLuongCombo > 0) {
+      this.soLuongCombo--;
+      this.giaCombo = this.soLuongCombo * 45000;
+      this.tongTien = this.giaVe + this.giaCombo;
+    }
   }
 
-  toChonGhe(){
+  pluscombo() {
+    if (this.tongTien < 800000) {
+      this.soLuongCombo++;
+      this.giaCombo = this.soLuongCombo * 45000;
+      this.tongTien = this.giaVe + this.giaCombo;
+    }
+  }
+
+  toChonGhe() {
     $("#navtagChonGhe").click();
   }
 
-  toChonVe(){
+  toChonVe() {
     $("#navtagChonVe").click();
   }
 
@@ -80,6 +84,17 @@ export class DatveComponent implements OnInit {
     if ($event.trangThaiChon === true) {
       if (this.mangGheDaChon.length < this.soLuongVe) {
         this.mangGheDaChon.push($event);
+        // console.log($event);
+        this.sttAnphabeDuocClick = Math.floor(($event.ghe.stt) / 12.0001);
+        // let tenGheDuocClick = this.anphabe[this.sttAnphabeDuocClick] + this.sttAnphabeDuocClick;
+        let sttGhe;
+        if ($event.ghe.stt % 12 === 0) {
+          sttGhe = 12;
+        } else {
+          sttGhe = $event.ghe.stt % 12;
+        }
+        let tenGheDuocClick = this.anphabe[this.sttAnphabeDuocClick] + (sttGhe);
+        this.mangTenGheDuocClick.push(tenGheDuocClick);
       } else {
         alert(`Hey! bạn chỉ được chọn ${this.soLuongVe} ghế thôi`);
         this.tagItemGhe.map((item) => {
@@ -88,26 +103,27 @@ export class DatveComponent implements OnInit {
           }
         })
       }
-    } 
+    }
 
-
-    if($event.trangThaiChon === false) {
+    if ($event.trangThaiChon === false) {
       this.mangGheDaChon.map((item, index) => {
         if (item.ghe.tenGhe === $event.ghe.tenGhe) {
           this.mangGheDaChon.splice(index, 1);
+          this.mangTenGheDuocClick.splice(index, 1);
         }
       })
     }
   }
 
-  getParamUrl(){
+  getParamUrl() {
     this.maLichChieu = this.activatedRoute.snapshot.paramMap.get("id");
   }
 
-  layThongTinSuatChieu(){
+  layThongTinSuatChieu() {
     const uri = `QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${this.maLichChieu}`;
-    this.dataService.get(uri).subscribe((data:any) => {
-      this.thongTinSuatChieu = data;  
+    this.dataService.get(uri).subscribe((data: any) => {
+      this.thongTinSuatChieu = data;
+      console.log(this.thongTinSuatChieu);
       // lay thong tin chi tiet phim
       this.layThongTinChiTietPhim();
     })
@@ -116,9 +132,6 @@ export class DatveComponent implements OnInit {
   layThongTinChiTietPhim() {
     const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
     this.dataService.get(uri).subscribe((data: any) => {
-      // console.log(this.thongTinSuatChieu);
-      // console.log(data);
-      // console.log(this.thongTinSuatChieu.tenPhim);
       data.map(item => {
         if (item.tenPhim === this.thongTinSuatChieu.tenPhim) {
           this.maPhim = item.maPhim;
@@ -127,9 +140,20 @@ export class DatveComponent implements OnInit {
       const uri = `QuanLyPhim/LayThongTinPhim?MaPhim=${this.maPhim}`;
       this.dataService.get(uri).subscribe((data: any) => {
         this.thongTinPhim = data;
-        console.log(this.thongTinPhim);
       });
     });
+  }
+
+  thanhToan() {
+    if (this.soLuongVe === 0) {
+      alert(`Xin vui lòng chọn vé!`);
+    } else if (this.mangGheDaChon.length === 0) {
+      alert(`Xin vui lòng chọn ghế!`);
+    }else if(this.mangGheDaChon.length != this.soLuongVe) {
+      alert(`Bạn chưa đặt đủ số lượng ghế!`);
+    } else {
+      alert("xong");
+    }
   }
 
   eventScroll() {
@@ -141,13 +165,13 @@ export class DatveComponent implements OnInit {
             "opacity": "0.7",
             "transition": "all 0.3s"
           });
-          $("#NavBar").mouseenter(()=>{
+          $("#NavBar").mouseenter(() => {
             $("#NavBar").css({
               "opacity": "1",
               "transition": "all 0.3s"
             });
           });
-          $("#NavBar").mouseleave(()=>{
+          $("#NavBar").mouseleave(() => {
             $("#NavBar").css({
               "opacity": "0.7",
               "transition": "all 0.3s"
