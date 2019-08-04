@@ -14,7 +14,7 @@
 
         <div class="dangnhap log-in d-flex align-items-center">
             <i class="fas fa-user-circle"></i>
-            <button id="thanhtoan" data-toggle="modal" data-target="#myModal" (click)="openBottomSheet()">Đăng Nhập</button>
+            <button id="thanhtoan" data-toggle="modal" data-target="#myModal">Đăng Nhập</button>
         </div>
     </div>
 
@@ -133,9 +133,10 @@
 
 
 
-
-
 <!-- The Modal -->
 <div class="modal" id="myModal">
-  <app-form></app-form>
+    <div class="modal-dialog">
+        <app-form></app-form>
+    </div>
+
 </div>

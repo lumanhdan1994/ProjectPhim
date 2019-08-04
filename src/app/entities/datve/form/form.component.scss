@@ -1,0 +1,34 @@
+    .modal-content{
+        background-color: rgba(0, 0, 0, 0.863);
+        .nav-tabs{
+            border: none;
+            .nav-item{
+                &:focus{
+                    border: none;
+                }                
+                .nav-link{
+                    color: white;
+                    background-color: none;
+                    &:hover{
+                        border: none;
+                        background-color: none;
+                    }
+                    &:focus{
+                        outline: none;
+                        border: none;
+                        background-color: none !important;
+                    }
+                }                
+                .nav-link.active{
+                    outline: none;
+                    border: none;
+                    background-color: none !important;
+                }
+            }
+        }
+        .tab-content{
+            #login{
+
+            }
+        }
+    }
