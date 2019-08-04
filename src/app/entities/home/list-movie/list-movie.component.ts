@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "./../../../shared/services/data.service";
 import { Subscription } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
-import { formatDate, DatePipe } from '@angular/common';
-import { format } from 'url';
+import { DatePipe } from '@angular/common';
 declare var $: any;
 
 @Component({
@@ -14,9 +13,11 @@ declare var $: any;
 export class ListMovieComponent implements OnInit {
   subListMovie: Subscription;
   maPhim: any;
+  maRap: any;
   phimDetail: any;
   cumRap: any;
-  thongTinXuatChieu: any = [];
+  thongTinSuatChieu: any = [];
+  thongTinSuatChieuTheoRap: any = [];
   date: any = [];
   constructor(
     private dataService: DataService,
@@ -54,33 +55,46 @@ export class ListMovieComponent implements OnInit {
   }
 
   laymaRap(_maRap) {
-    // console.log(_maRap);
-    let _thongTinXuatChieu: Array<any> = [];
-    let _date: Array<any> = [];
-
-    let item = this.phimDetail.lichChieu;
-    for (let i = 0; i < item.length; i++) {
-      if (_maRap === item[i].thongTinRap.maHeThongRap) {
-        _thongTinXuatChieu.push(item[i]);
-        item[i].ngayChieuGioChieu = this.datapipe.transform(item[i].ngayChieuGioChieu, "dd-MM-yyyy");
-        _date.push(item[i].ngayChieuGioChieu);
+   
+    let lichChieuTheoMaRap: Array<any>= [];
+    this.phimDetail.lichChieu.map(item => {
+      if (item.thongTinRap.maHeThongRap === _maRap) {
+        lichChieuTheoMaRap.push(item);
       }
-    }
-    let _dateDul: Array<string> = [];
-    _date.map(item => {
-      if (!(_dateDul.indexOf(item) > -1)) {
-        _dateDul.push(item);
-      }
-      // console.log(_dateDul.indexOf(item) > -1)
     })
-    this.thongTinXuatChieu = _thongTinXuatChieu;
-    this.date = _dateDul;
-    console.log(this.thongTinXuatChieu);
-    console.log(this.date);
+    this.thongTinSuatChieu = lichChieuTheoMaRap;
+    let _date: Array<string> = [];
+    lichChieuTheoMaRap.map(item => {
+      _date.push(item.ngayChieuGioChieu.slice(0, 10));
+    })
+    // console.log(_date);
+
+    let _dateDeduplicate: Array<string> = [];
+    _date.map(item => {
+      if (!(_dateDeduplicate.indexOf(item) > -1)) {
+        _dateDeduplicate.push(item);
+      }
+    })
+    this.date = _dateDeduplicate;
+    this.thongTinSuatChieuTheoRap = [];
+    // console.log(_dateDeduplicate);
+  }
+
+  LayNgayChieu(dayOfWeek) {
+    let _thongTinSuatChieuTheoRap: Array<any> = [];
+    this.thongTinSuatChieu.map(item => {
+      if (item.ngayChieuGioChieu.slice(0, 10) === dayOfWeek) {
+        _thongTinSuatChieuTheoRap.push(item);
+      }
+    })
+    this.thongTinSuatChieuTheoRap = _thongTinSuatChieuTheoRap;
+    console.log(this.thongTinSuatChieuTheoRap);
   }
   GuiMaLichChieu(_maLichChieu) {
     this.router.navigate(["/datve", _maLichChieu]);
   }
+
+  
 
   // getListMovie() {
   //   const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP01";
