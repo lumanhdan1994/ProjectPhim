@@ -3,6 +3,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { ItemgheComponent } from './itemghe/itemghe.component';
 import { ActivatedRoute } from '@angular/router';
 
+
 declare var $: any;
 
 @Component({
@@ -156,7 +157,7 @@ export class DatveComponent implements OnInit {
     }else if(this.mangGheDaChon.length != this.soLuongVe) {
       alert(`Bạn chưa đặt đủ số lượng ghế!`);
     } else {
-      alert("xong");
+      $("#thanhtoan").click();
     }
   }
 
@@ -187,4 +188,5 @@ export class DatveComponent implements OnInit {
       })
     })
   }
+
 }

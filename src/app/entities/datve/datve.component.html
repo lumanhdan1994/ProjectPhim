@@ -12,11 +12,9 @@
             </li>
         </ul>
 
-        <div class="dangnhap">
-            <a href="#" class="log-in d-flex align-items-center">
-                <i class="fas fa-user-circle"></i>
-                <span>Đăng Nhập</span>
-            </a>
+        <div class="dangnhap log-in d-flex align-items-center">
+            <i class="fas fa-user-circle"></i>
+            <button id="thanhtoan" data-toggle="modal" data-target="#myModal" (click)="openBottomSheet()">Đăng Nhập</button>
         </div>
     </div>
 
@@ -132,4 +130,12 @@
         </div>
     </div>
 </section>
-<!-- " (click)="thanhToan()" -->
+
+
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <app-form></app-form>
+</div>
