@@ -53,22 +53,19 @@
                     <br />
                   </ng-container>
                 </div>
-                <div class="col-sm-8 xuatchieu" *ngIf="thongTinXuatChieu.length != 0 && date.length != 0">
-                  <div class="xuatchieu-date">
-                    <span *ngFor="let itemDate of date">
-                      {{itemDate | date:"EEE"}}
-                    </span>
+                <div class="col-sm-8 xuatchieu">
+                  <div class="xuatchieu-date" *ngIf="date.length != 0; else KhongCoSuatChieu">
+                    <button *ngFor="let item of date" (click)="LayNgayChieu(item)">
+                      {{ item | date: "EEE" }}
+                    </button>
                   </div>
-                  <div class="xuatchieu-content">
-                    <ng-container *ngIf="thongTinXuatChieu.length != 0; else KhongCoXuatChieu">
-                      <button *ngFor="let itemlichChieu of thongTinXuatChieu"
-                        (click)="GuiMaLichChieu(itemlichChieu.maLichChieu)">
-                        {{ itemlichChieu.ngayChieuGioChieu | date: "hh:mm" }}
-                      </button>
+                  <ng-template #KhongCoSuatChieu>
+                    <p>Không Có Suất Chiếu</p>
+                  </ng-template>
+                  <div class="xuatchieu-content" *ngIf="thongTinSuatChieuTheoRap.length != 0">
+                    <ng-container *ngFor="let item of thongTinSuatChieuTheoRap">
+                      <button (click)="GuiMaLichChieu(item.maLichChieu)"> {{item.ngayChieuGioChieu | date:"hh:mm"}}</button>
                     </ng-container>
-                    <ng-template #KhongCoXuatChieu>
-                      <p>Khong co xuat chieu</p>
-                    </ng-template>
                   </div>
                 </div>
               </div>
