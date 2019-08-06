@@ -12,27 +12,27 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane container active" id="dangnhap">
-            <form autocomplete="off" class="form">
+            <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="dangNhap(registerForm.value)">
                 <label for="inp" class="inp">
-                    <input class="form-control" name="userName" type="text" id="inp" placeholder="&nbsp;">
+                    <input class="form-control" name="userName" type="text">
                     <span class="label">Tài khoản</span>
                     <span class="border"></span>
                 </label>
 
                 <label for="inp" class="inp">
-                    <input class="form-control" name="userName" type="text" id="inp" placeholder="&nbsp;">
+                    <input class="form-control" name="userName" type="text">
                     <span class="label">Mật khẩu</span>
                     <span class="border"></span>
                 </label>
 
-                <div class="button_cont" align="center"><a class="example_a" target="_blank"
-                        rel="nofollow noopener">Đăng nhập</a></div>
+                <div class="button_cont" align="center"><button  [disabled]="!registerForm.valid" class="example_a" target="_blank"
+                        rel="nofollow noopener">Đăng nhập</button></div>
             </form>
         </div>
         <div class="tab-pane container fade" id="dangki">
             <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="dangKy(registerForm.value)">
                 <label for="inp" class="inp px-2">
-                    <input class="form-control" name="hoTen" #HoTen="ngModel" ngModel required type="text" id="inp" placeholder="&nbsp;">
+                    <input class="form-control" name="hoTen" #HoTen="ngModel" ngModel required type="text">
                     <!-- Check Validation -->
                     <div *ngIf="HoTen.errors && (HoTen.dirty || HoTen.touched)" class="danger">
                         <!-- Kiểm tra rỗng -->
@@ -45,13 +45,18 @@
                 </label>
 
                 <label for="inp" class="inp">
-                    <input class="form-control" name="taiKhoan" #TaiKhoan="ngModel" ngModel required type="text" id="inp"
-                        placeholder="&nbsp;">
+                    <input class="form-control" minlength="7" maxlength="15" name="taiKhoan" #TaiKhoan="ngModel" ngModel required type="text"
+                    >
                     <!-- Check Validation -->
                     <div *ngIf="TaiKhoan.errors && (TaiKhoan.dirty || TaiKhoan.touched)" class="danger">
                         <!-- Kiểm tra rỗng -->
                         <div *ngIf="TaiKhoan.errors.required">
                             (*)Vui lòng không được để trống
+                        </div>
+
+                         <!-- Kiểm tra độ dài ký tự -->
+                         <div *ngIf="(TaiKhoan.errors.minlength || TaiKhoan.errors.maxlength)">
+                            (*)Độ dài 7-15 ký tự
                         </div>
                     </div>
                     <span class="label">Tài khoản</span>
@@ -59,8 +64,8 @@
                 </label>
 
                 <label for="inp" class="inp px-2 w-50">
-                    <input class="form-control" name="matKhau" #MatKhau="ngModel" ngModel required type="password" id="inp"
-                        placeholder="&nbsp;">
+                    <input class="form-control" name="matKhau" #MatKhau="ngModel" ngModel required type="password"
+                    >
                     <!-- Check Validation -->
                     <div *ngIf="MatKhau.errors && (MatKhau.dirty || MatKhau.touched)" class="danger">
                         <!-- Kiểm tra rỗng -->
@@ -73,14 +78,14 @@
                 </label>
 
                 <label for="inp" class="inp px-2 w-50">
-                    <input class="form-control" name="nhapLaiMatKhau" #NhapLaiMatKhau="ngModel" ngModel required type="password" id="inp"
-                        placeholder="&nbsp;">
+                    <input class="form-control" name="nhapLaiMatKhau" #NhapLaiMatKhau="ngModel" ngModel required type="password"
+                    >
                     <!-- Check Validation -->
-                    <div *ngIf="(NhapLaiMatKhau.errors || MatKhau.value!=NhapLaiMatKhau.value) && ( NhapLaiMatKhau.touched)" class="danger">
+                    <div *ngIf="(NhapLaiMatKhau.errors || MatKhau.value!=NhapLaiMatKhau.value) && ( NhapLaiMatKhau.dirty || NhapLaiMatKhau.touched)" class="danger">
                         <!-- Kiểm tra rỗng -->
-                        <div *ngIf="NhapLaiMatKhau.errors.required">
+                        <!-- <div *ngIf="NhapLaiMatKhau.errors.required">
                             (*)Vui lòng không được để trống
-                        </div>
+                        </div> -->
                         <div *ngIf="MatKhau.value!=NhapLaiMatKhau.value">
                             (*)Mật khẩu không trùng
                         </div>
@@ -90,7 +95,7 @@
                 </label>
 
                 <label for="inp" class="inp">
-                    <input class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" #Email="ngModel" ngModel required type="text" id="inp" placeholder="&nbsp;">
+                    <input class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" #Email="ngModel" ngModel required type="text">
                     <!-- Check Validation -->
                     <div *ngIf="Email.errors && (Email.dirty || Email.touched)" class="danger">
                         <!-- Kiểm tra rỗng -->
@@ -114,7 +119,7 @@
                 </label>
 
                 <label for="inp" class="inp">
-                    <input class="form-control" name="soDT" #SoDT="ngModel" ngModel required type="text" id="inp" placeholder="&nbsp;">
+                    <input class="form-control" name="soDT" #SoDT="ngModel" ngModel required type="text">
                     <!-- Check Validation -->
                     <div *ngIf="SoDT.errors && (SoDT.dirty || SoDT.touched)" class="danger">
                         <!-- Kiểm tra rỗng -->
@@ -127,7 +132,7 @@
                 </label>
 
 
-                <div class="button_cont" align="center"><button class="example_a" target="_blank" rel="nofollow noopener" >Đăng kí</button></div>
+                <div class="button_cont" align="center"><button class="example_a" [disabled]="!registerForm.valid" target="_blank" rel="nofollow noopener" >Đăng kí</button></div>
             </form>
         </div>
     </div>

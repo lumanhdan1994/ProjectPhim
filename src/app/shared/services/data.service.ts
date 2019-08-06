@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap, catchError } from "rxjs/operators";
 import { environment } from "src/environments/environment";
@@ -68,12 +68,13 @@ export class DataService {
   }
 
   handleErr(err) {
-    if (err.codeStatus === 404) {
+    if (err.status === 500) {
       //Các bạn viết thêm Noti hiển thị cho người dùng thấy thông báo lỗi
-      console.log(err.message);
+      console.log(err.error);
+      return throwError(err.error);
     }
 
-    return err;
+    return throwError("Something went wrong, please try again later.");
 
     // if (error.error instanceof ErrorEvent) {
     //   // A client-side or network error occurred. Handle it accordingly.
