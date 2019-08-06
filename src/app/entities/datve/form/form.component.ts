@@ -9,6 +9,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 export class FormComponent implements OnInit {
 
   mangMaLoaiNguoiDung: [];
+  clickSubmit: boolean = false;
 
   constructor(private dataService: DataService) { }
 
@@ -24,6 +25,7 @@ export class FormComponent implements OnInit {
   }
 
   dangKy(value) {
+    this.clickSubmit = true;
     if(value.maLoaiNguoiDung === "Khách hàng"){
       value.maLoaiNguoiDung = "KhachHang";
     }else{
@@ -43,7 +45,6 @@ export class FormComponent implements OnInit {
 
     this.dataService.post(uri, nguoiDung).subscribe((data: any) => {
       
-      console.log(data);
       if(data === "Email đã tồn tại!"){
         alert(data);
       }else if(data === "Tài khoản đã tồn tại!") {
@@ -51,6 +52,21 @@ export class FormComponent implements OnInit {
       }else{
         alert("Đăng kí thàng công!");
       }
+    })
+  }
+
+  dangNhap(taikhoan){
+    console.log(taikhoan);
+    const uri = `QuanLyNguoiDung/DangNhap`;
+    const taikhoanuser ={
+      taiKhoan: taikhoan.taiKhoan ,
+      matKhau: taikhoan.matKhau,
+    }
+    
+    this.dataService.post(uri, taikhoanuser).subscribe((data: any) => {
+      
+      console.log(data);
+      
     })
   }
 
