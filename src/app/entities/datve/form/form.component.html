@@ -1,4 +1,4 @@
-<div class="modal-content">
+<div class="modal-content" *ngIf="mangMaLoaiNguoiDung">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs mynav">
         <li class="nav-item">
@@ -12,7 +12,7 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane container active" id="dangnhap">
-            <form class="form">
+            <form autocomplete="off" class="form">
                 <label for="inp" class="inp">
                     <input class="form-control" name="userName" type="text" id="inp" placeholder="&nbsp;">
                     <span class="label">Tài khoản</span>
@@ -30,30 +30,17 @@
             </form>
         </div>
         <div class="tab-pane container fade" id="dangki">
-            <form #registerForm="ngForm" (ngSubmit)="dangKy(registerForm.value)">
-                <label for="inp" class="inp w-50 px-2">
-                    <input class="form-control" name="ho" #Ho="ngModel" ngModel required type="text" id="inp" placeholder="&nbsp;">
+            <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="dangKy(registerForm.value)">
+                <label for="inp" class="inp px-2">
+                    <input class="form-control" name="hoTen" #HoTen="ngModel" ngModel required type="text" id="inp" placeholder="&nbsp;">
                     <!-- Check Validation -->
-                    <div *ngIf="Ho.errors && (Ho.dirty || Ho.touched)" class="danger">
+                    <div *ngIf="HoTen.errors && (HoTen.dirty || HoTen.touched)" class="danger">
                         <!-- Kiểm tra rỗng -->
-                        <div *ngIf="Ho.errors.required">
+                        <div *ngIf="HoTen.errors.required">
                             (*)Vui lòng không được để trống
                         </div>
                     </div>
-                    <span class="label">Họ</span>
-                    <span class="border"></span>
-                </label>
-
-                <label for="inp" class="inp w-50 px-2">
-                    <input class="form-control" name="ten" #Ten="ngModel" ngModel required type="text" id="inp" placeholder="&nbsp;">
-                    <!-- Check Validation -->
-                    <div *ngIf="Ten.errors && (Ten.dirty || Ten.touched)" class="danger">
-                        <!-- Kiểm tra rỗng -->
-                        <div *ngIf="Ten.errors.required">
-                            (*)Vui lòng không được để trống
-                        </div>
-                    </div>
-                    <span class="label">Tên</span>
+                    <span class="label">Họ tên</span>
                     <span class="border"></span>
                 </label>
 
@@ -71,7 +58,7 @@
                     <span class="border"></span>
                 </label>
 
-                <label for="inp" class="inp w-50 px-2">
+                <label for="inp" class="inp px-2 w-50">
                     <input class="form-control" name="matKhau" #MatKhau="ngModel" ngModel required type="password" id="inp"
                         placeholder="&nbsp;">
                     <!-- Check Validation -->
@@ -85,15 +72,17 @@
                     <span class="border"></span>
                 </label>
 
-                <label for="inp" class="inp w-50 px-2">
+                <label for="inp" class="inp px-2 w-50">
                     <input class="form-control" name="nhapLaiMatKhau" #NhapLaiMatKhau="ngModel" ngModel required type="password" id="inp"
                         placeholder="&nbsp;">
                     <!-- Check Validation -->
-                    <div *ngIf="NhapLaiMatKhau.errors && (NhapLaiMatKhau.dirty || NhapLaiMatKhau.touched)"
-                        class="danger">
+                    <div *ngIf="(NhapLaiMatKhau.errors || MatKhau.value!=NhapLaiMatKhau.value) && ( NhapLaiMatKhau.touched)" class="danger">
                         <!-- Kiểm tra rỗng -->
                         <div *ngIf="NhapLaiMatKhau.errors.required">
                             (*)Vui lòng không được để trống
+                        </div>
+                        <div *ngIf="MatKhau.value!=NhapLaiMatKhau.value">
+                            (*)Mật khẩu không trùng
                         </div>
                     </div>
                     <span class="label">Nhập lại mật khẩu</span>
@@ -101,12 +90,16 @@
                 </label>
 
                 <label for="inp" class="inp">
-                    <input class="form-control" name="email" #Email="ngModel" ngModel required type="text" id="inp" placeholder="&nbsp;">
+                    <input class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" #Email="ngModel" ngModel required type="text" id="inp" placeholder="&nbsp;">
                     <!-- Check Validation -->
                     <div *ngIf="Email.errors && (Email.dirty || Email.touched)" class="danger">
                         <!-- Kiểm tra rỗng -->
                         <div *ngIf="Email.errors.required">
                             (*)Vui lòng không được để trống
+                        </div>
+                        <!-- Check định dạng -->
+                        <div *ngIf="Email.errors.pattern">
+                            Email không đúng định dạng!
                         </div>
                     </div>
                     <span class="label">Email</span>
@@ -114,17 +107,10 @@
                 </label>
 
                 <label for="inp" class="inp">
-                    <input class="form-control" name="sinhNhat" #SinhNhat="ngModel" ngModel required type="text" id="inp"
-                        placeholder="&nbsp;">
-                    <!-- Check Validation -->
-                    <div *ngIf="SinhNhat.errors && (SinhNhat.dirty || SinhNhat.touched)" class="danger">
-                        <!-- Kiểm tra rỗng -->
-                        <div *ngIf="SinhNhat.errors.required">
-                            (*)Vui lòng không được để trống
-                        </div>
-                    </div>
-                    <span class="label">Sinh nhật</span>
-                    <span class="border"></span>
+                    <select class="form-control" name="maLoaiNguoiDung" type="text" id="inp select" placeholder="Maloai">
+                        <option value="">{{mangMaLoaiNguoiDung[0].tenLoai}}</option>
+                        <option value="">{{mangMaLoaiNguoiDung[1].tenLoai}}</option>
+                    </select>
                 </label>
 
                 <label for="inp" class="inp">
@@ -141,8 +127,7 @@
                 </label>
 
 
-                <div class="button_cont" align="center"><a class="example_a" target="_blank"
-                        rel="nofollow noopener">Đăng kí</a></div>
+                <div class="button_cont" align="center"><button class="example_a" target="_blank" rel="nofollow noopener" >Đăng kí</button></div>
             </form>
         </div>
     </div>
