@@ -14,7 +14,19 @@
 
         <div class="dangnhap log-in d-flex align-items-center">
             <i class="fas fa-user-circle"></i>
-            <button id="thanhtoan" data-toggle="modal" data-target="#myModal">Đăng Nhập</button>
+            <ng-container *ngIf="checkLogIn; else LogIn">
+                <button id="thanhtoan" data-toggle="modal" data-target="#myModal">Đăng Nhập</button>
+            </ng-container>
+            <ng-template #LogIn>
+                <div class="ml-1" id="thanhtoan">
+                    Xin chào {{inforUser.hoTen}}
+                </div>
+                <div id="thanhtoan">
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-sign-in-alt"></i>
+                    <button>Đăng xuất</button>
+                </div>
+            </ng-template>
         </div>
     </div>
 
@@ -136,7 +148,7 @@
 <!-- The Modal -->
 <div class="modal" id="myModal">
     <div class="modal-dialog">
-        <app-form></app-form>
+        <app-form (eventDangNhap)="checkDangNhap($event)"></app-form>
     </div>
 
 </div>

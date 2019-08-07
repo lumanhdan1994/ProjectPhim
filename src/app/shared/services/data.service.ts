@@ -36,12 +36,12 @@ export class DataService {
 
   post(uri: string, data?: object): Observable<any> {
     return this.http.post(urlAPI + "/" + uri, data, httpOptions).pipe(
-      tap(
-        () => {},
+      // tap(
+      //   () => {},
         catchError(err => {
           return this.handleErr(err);
         })
-      )
+      // )
     );
   }
 
@@ -70,6 +70,7 @@ export class DataService {
   handleErr(err) {
     if (err.status === 500) {
       //Các bạn viết thêm Noti hiển thị cho người dùng thấy thông báo lỗi
+      alert(err.error);
       console.log(err.error);
       return throwError(err.error);
     }

@@ -50,7 +50,17 @@
       }
     .tab-content{
         .tab-pane{
-
+          #question{
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            text-decoration: underline;
+            color: rgb(129, 127, 127);
+            &:hover{
+              color: $color-text;
+            }
+          }
         }
     }
 }

@@ -2,35 +2,40 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs mynav">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#dangnhap">Đăng nhập</a>
+            <a class="nav-link active" data-toggle="tab" id="tab-dangnhap" href="#dangnhap">Đăng nhập</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#dangki">Đăng kí</a>
+            <a class="nav-link" data-toggle="tab" id="tab-dangki" href="#dangki">Đăng kí</a>
         </li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane container active" id="dangnhap">
+            <!-- Đăng nhập -->
             <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="dangNhap(registerForm.value)">
                 <label for="inp" class="inp">
-                    <input class="form-control" name="userName" type="text">
+                    <input class="form-control" name="taiKhoan" ngModel type="text">
                     <span class="label">Tài khoản</span>
                     <span class="border"></span>
                 </label>
 
                 <label for="inp" class="inp">
-                    <input class="form-control" name="userName" type="text">
+                    <input class="form-control" name="matKhau" ngModel type="text">
                     <span class="label">Mật khẩu</span>
                     <span class="border"></span>
                 </label>
 
-                <div class="button_cont" align="center"><button  [disabled]="!registerForm.valid" class="example_a" target="_blank"
-                        rel="nofollow noopener">Đăng nhập</button></div>
+                <div class="button_cont" align="center">
+                    <button  [disabled]="!registerForm.valid" class="example_a" target="_blank" rel="nofollow noopener">Đăng nhập</button>
+                </div>
+                <span (click)="toLogIn()" id="question">Bạn chưa có tài khoản?</span>
             </form>
         </div>
+
+        <!-- Đăng kí -->
         <div class="tab-pane container fade" id="dangki">
-            <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="dangKy(registerForm.value)">
+            <form autocomplete="off" #registerForm2="ngForm" (ngSubmit)="dangKy(registerForm2.value)">
                 <label for="inp" class="inp px-2">
                     <input class="form-control" name="hoTen" #HoTen="ngModel" ngModel required type="text">
                     <!-- Check Validation -->
@@ -130,9 +135,9 @@
                     <span class="label">Số điện thoại</span>
                     <span class="border"></span>
                 </label>
-
-
-                <div class="button_cont" align="center"><button class="example_a" [disabled]="!registerForm.valid" target="_blank" rel="nofollow noopener" >Đăng kí</button></div>
+                <div class="button_cont" align="center">
+                    <button class="example_a" [disabled]="!registerForm.valid" target="_blank" rel="nofollow noopener">Đăng kí</button>
+                </div>
             </form>
         </div>
     </div>
