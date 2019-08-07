@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
 import { ItemgheComponent } from './itemghe/itemghe.component';
 import { ActivatedRoute } from '@angular/router';
+import { FormComponent } from './form/form.component';
 
 
 declare var $: any;
@@ -32,7 +33,8 @@ export class DatveComponent implements OnInit {
   navtag2: boolean = true;
   navtag3: boolean = true;
   anphabe: any = ["A", "B", 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  // trangThaiThanhToan: boolean = false;
+  checkLogIn: boolean = true;
+  inforUser: any = {};
 
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
@@ -188,4 +190,9 @@ export class DatveComponent implements OnInit {
     })
   }
 
+  checkDangNhap(form){
+    this.checkLogIn = form.checkLogIn;
+    this.inforUser = form.inforUser;
+    $("#myModal").click();
+  }
 }

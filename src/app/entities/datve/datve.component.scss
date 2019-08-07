@@ -49,10 +49,13 @@
             }
         }
         .dangnhap{
+            font-size: 14px;
             display: flex;
             align-items: center;
-            padding-right: 10px;
+            padding: 10px;
+            margin: 13px 15px 13px 0;
             text-decoration: none;
+            border: 1px solid rgb(116, 116, 116);
             button{
                 padding-left: 5px;
                 background-color: transparent;
@@ -60,6 +63,9 @@
                 &:focus{
                     outline: none;
                 }
+            }
+            i{
+                font-size: 18px;
             }
         }
     }
