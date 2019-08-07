@@ -41,6 +41,12 @@ export class DatveComponent implements OnInit {
   ngOnInit() {
     this.getParamUrl();
     this.layThongTinSuatChieu();
+    let taiKhoanDaDangNhap = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
+    if(taiKhoanDaDangNhap != null){
+      this.checkLogIn = taiKhoanDaDangNhap.checkLogIn;  
+      this.inforUser = taiKhoanDaDangNhap.inforUser;
+      console.log(this.inforUser);
+    }
   }
 
   minusve() {
@@ -76,7 +82,11 @@ export class DatveComponent implements OnInit {
   }
 
   toChonGhe() {
-    $("#navtagChonGhe").click();
+    if(this.soLuongVe === 0){
+      alert("Vui lòng đặt vé!");
+    }else{
+      $("#navtagChonGhe").click();
+    }
   }
 
   toChonVe() {
@@ -194,5 +204,10 @@ export class DatveComponent implements OnInit {
     this.checkLogIn = form.checkLogIn;
     this.inforUser = form.inforUser;
     $("#myModal").click();
+  }
+
+  dangXuat(){
+    localStorage.clear();
+    location.reload()
   }
 }

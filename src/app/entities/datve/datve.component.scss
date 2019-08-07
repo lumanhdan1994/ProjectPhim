@@ -56,6 +56,14 @@
             margin: 13px 15px 13px 0;
             text-decoration: none;
             border: 1px solid rgb(116, 116, 116);
+            #thanhtoan{
+                transition: .2s;
+                &:hover{
+                    color: $color-text;
+                    font-size: 15px;
+                    font-weight: bolder;
+                }
+            }
             button{
                 padding-left: 5px;
                 background-color: transparent;
@@ -65,7 +73,7 @@
                 }
             }
             i{
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     }
@@ -319,5 +327,22 @@
 .trangthaithanhtoan{
     background-color: #ff4c31;
     pointer-events: none;
+    cursor: default;
+}
+
+#thanhtoan{
+    cursor: pointer;
+    width: 95px;
+    white-space: nowrap;
+    button{
+        transition: .2s;
+    }
+    &:hover button{
+        color: $color-text;
+        font-weight: bold;
+        font-size: 17px;
+    }
+}
+#userName{
     cursor: default;
 }

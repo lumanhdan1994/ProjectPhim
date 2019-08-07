@@ -18,13 +18,13 @@
                 <button id="thanhtoan" data-toggle="modal" data-target="#myModal">Đăng Nhập</button>
             </ng-container>
             <ng-template #LogIn>
-                <div class="ml-1" id="thanhtoan">
+                <div class="ml-1" *ngIf="inforUser">
                     Xin chào {{inforUser.hoTen}}
                 </div>
+                <span class="mx-2">|</span>
                 <div id="thanhtoan">
-                    <span class="mx-2">|</span>
                     <i class="fas fa-sign-in-alt"></i>
-                    <button>Đăng xuất</button>
+                    <button (click)="dangXuat()">Đăng xuất</button>
                 </div>
             </ng-template>
         </div>
