@@ -57,6 +57,11 @@
             font-size: 12px;
             text-decoration: underline;
             color: rgb(129, 127, 127);
+            background-color: transparent;
+            border: none;
+            margin-top: 10px;
+            transition: .15s all ease;
+            cursor: pointer;
             &:hover{
               color: $color-text;
             }
