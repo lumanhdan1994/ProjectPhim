@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "./../../../shared/services/data.service";
 import { Subscription } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
-import { DatePipe } from '@angular/common';
 declare var $: any;
 
 @Component({
@@ -13,24 +12,25 @@ declare var $: any;
 export class ListMovieComponent implements OnInit {
   subListMovie: Subscription;
   maPhim: any;
-  maRap: any;
   phimDetail: any;
   cumRap: any;
-  thongTinSuatChieu: any = [];
   thongTinSuatChieuTheoRap: any = [];
   date: any = [];
+  DateSelect: string;
+  lichChieuTheoMaRap: any;
+
+
+  btnDateSelect: boolean = false;
   constructor(
     private dataService: DataService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private datapipe: DatePipe
   ) { }
 
   ngOnInit() {
     this.getParamsUrl();
     this.getDetailMovie();
-    this.LayThongTinCumRap();
-    // console.log(this.lichChieu);
+    // this.LayThongTinCumRap();
   }
 
   getParamsUrl() {
@@ -39,10 +39,11 @@ export class ListMovieComponent implements OnInit {
   }
 
   getDetailMovie() {
-    const uri = `QuanLyPhim/LayThongTinPhim?MaPhim=${this.maPhim}`;
+    const uri = `QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${this.maPhim}`;
     this.dataService.get(uri).subscribe((data: any) => {
       this.phimDetail = data;
-      // console.log(this.phimDetail);
+      console.log(this.phimDetail);
+      this.LayThongTinCumRap();
     });
   }
 
@@ -50,24 +51,25 @@ export class ListMovieComponent implements OnInit {
     const uri = "QuanLyRap/LayThongTinHeThongRap";
     this.dataService.get(uri).subscribe((data: any) => {
       this.cumRap = data;
-      // console.log(this.cumRap);
+      // console.log(this.cumRap)
     });
   }
-
   laymaRap(_maRap) {
-   
-    let lichChieuTheoMaRap: Array<any>= [];
-    this.phimDetail.lichChieu.map(item => {
-      if (item.thongTinRap.maHeThongRap === _maRap) {
-        lichChieuTheoMaRap.push(item);
+    this.lichChieuTheoMaRap = "";
+
+    this.phimDetail.heThongRapChieu.map(item => {
+      if (item.maHeThongRap === _maRap) {
+        this.lichChieuTheoMaRap = item;
       }
     })
-    this.thongTinSuatChieu = lichChieuTheoMaRap;
     let _date: Array<string> = [];
-    lichChieuTheoMaRap.map(item => {
-      _date.push(item.ngayChieuGioChieu.slice(0, 10));
-    })
-    // console.log(_date);
+    if (this.lichChieuTheoMaRap) {
+      this.lichChieuTheoMaRap.cumRapChieu.map(item => {
+        item.lichChieuPhim.map(itemLichChieu => {
+          _date.push(itemLichChieu.ngayChieuGioChieu.slice(0, 10));
+        })
+      })
+    }
 
     let _dateDeduplicate: Array<string> = [];
     _date.map(item => {
@@ -76,25 +78,16 @@ export class ListMovieComponent implements OnInit {
       }
     })
     this.date = _dateDeduplicate;
-    this.thongTinSuatChieuTheoRap = [];
-    // console.log(_dateDeduplicate);
   }
-
-  LayNgayChieu(dayOfWeek) {
-    let _thongTinSuatChieuTheoRap: Array<any> = [];
-    this.thongTinSuatChieu.map(item => {
-      if (item.ngayChieuGioChieu.slice(0, 10) === dayOfWeek) {
-        _thongTinSuatChieuTheoRap.push(item);
-      }
-    })
-    this.thongTinSuatChieuTheoRap = _thongTinSuatChieuTheoRap;
-    console.log(this.thongTinSuatChieuTheoRap);
+  LayLichChieuTheoNgay(dayOfWeek) {
+    this.DateSelect = dayOfWeek;
+    // console.log(this.DateSelect);
   }
   GuiMaLichChieu(_maLichChieu) {
     this.router.navigate(["/datve", _maLichChieu]);
   }
 
-  
+
 
   // getListMovie() {
   //   const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP01";
