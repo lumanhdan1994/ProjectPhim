@@ -35,6 +35,11 @@ export class DatveComponent implements OnInit {
   anphabe: any = ["A", "B", 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   checkLogIn: boolean = true;
   inforUser: any = {};
+  checkThanhToan: boolean = false;
+  checkChonGhe: boolean = false;
+  checkFormThanhToan: boolean = false;
+  checkToThanhToan: boolean = false;
+  count: number = 0;
 
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
@@ -55,6 +60,9 @@ export class DatveComponent implements OnInit {
       this.giaVe = this.soLuongVe * 85000;
       this.tongTien = this.giaVe + this.giaCombo;
     }
+    if(this.soLuongVe === 0){
+      this.checkChonGhe = false;
+    }
   }
 
   plusve() {
@@ -62,6 +70,9 @@ export class DatveComponent implements OnInit {
       this.soLuongVe++;
       this.giaVe = this.soLuongVe * 85000;
       this.tongTien = this.giaVe + this.giaCombo;
+    }
+    if(this.soLuongVe !== 0){
+      this.checkChonGhe = true;
     }
   }
 
@@ -127,7 +138,13 @@ export class DatveComponent implements OnInit {
             this.mangGheDaChon.splice(index, 1);
             this.mangTenGheDuocClick.splice(index, 1);
           }
+          if(this.mangGheDaChon.length != this.soLuongVe){
+            this.checkThanhToan = false;
+          }
         })
+      }
+      if(this.mangGheDaChon.length === this.soLuongVe){
+        this.checkThanhToan = true;
       }
     }
   }
@@ -166,10 +183,33 @@ export class DatveComponent implements OnInit {
     } else if (this.mangGheDaChon.length === 0) {
       alert(`Xin vui lòng chọn ghế!`);
     }else if(this.mangGheDaChon.length != this.soLuongVe) {
-      alert(`Bạn chưa đặt đủ số lượng ghế!`);
+      alert(`Bạn chưa đặt đủ số lượng ghế!`);      
     } else {
-      $("#thanhtoan").click();
+      this.count++;
+      if(this.checkLogIn === false){
+        $("#navtagThanhToan").click();
+        $("#btn-formthanhtoan").click();
+        if(this.count > 1 ){
+          if (this.checkFormThanhToan === false) {
+            alert("Vui lòng điền đầy đủ thông tin!");
+          } else {
+            alert("đặt vé thành công!");
+          }
+        }
+      } else {
+        $("#thanhtoan").click();
+      }
+
     }
+  }
+
+  // clickTagThanhToan(){
+  //   this.checkToThanhToan = !this.checkToThanhToan;
+  //   console.log(this.checkToThanhToan);
+  // }
+
+  btnFormThanhToan(value){
+    this.checkFormThanhToan = true;
   }
 
   eventScroll() {

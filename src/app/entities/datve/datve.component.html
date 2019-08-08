@@ -8,7 +8,7 @@
                 <a [ngClass]="{'navtag-pointer': navtag2}" id="navtagChonGhe" class="nav-link" data-toggle="tab" href="#chonghe"><span>02</span>CHỌN GHẾ</a>
             </li>
             <li class="nav-item">
-                <a [ngClass]="{'navtag-pointer': navtag3}" class="nav-link" data-toggle="tab" href="#thanhtoan"><span>03</span>THANH TOÁN</a>
+                <a [ngClass]="{'navtag-pointer': navtag3}" id="navtagThanhToan" class="nav-link" data-toggle="tab" href="#chonhinhthucthanhtoan"><span>03</span>THANH TOÁN</a>
             </li>
         </ul>
 
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="row chonghe">
-                            <button (click)="toChonGhe()" class="btn btn-danger">Chọn ghế <i class="fas fa-arrow-right"></i></button>
+                            <button (click)="toChonGhe()" [ngClass]="{checkThanhToan: checkChonGhe}" class="example_a">Chọn ghế <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                     <div class="tab-pane container fade" id="chonghe">
@@ -101,11 +101,76 @@
                                 <span class="anphabe" *ngIf="(stt+1)%12===0">{{anphabe[(stt+1)/12]}}</span>
                             </ng-container>
                             <div class="back">
-                                <button (click)="toChonVe()" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Quay lại</button>
+                                <button (click)="toChonVe()" class="example_a"><i class="fas fa-arrow-left"></i> Quay lại</button>
                             </div>
                         </div>                        
                     </div>
-                    <div class="tab-pane container fade" id="thanhtoan">...</div>
+                    <div class="tab-pane container fade" id="chonhinhthucthanhtoan">
+                        <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="btnFormThanhToan(registerForm.value)">
+                            <label for="inp" class="inp">
+                                <select class="form-control" name="maLoaiNguoiDung" type="text" id="inp select" placeholder="Maloai">
+                                    <option value="">Thẻ ATM nội địa</option>
+                                    <option value="">Thẻ VISA/MASTER/JCB</option>
+                                </select>
+                                <span class="label">Hình thức thanh toán</span>
+                                <span class="border"></span>
+                            </label>
+                            
+                            <label for="inp" class="inp px-2">
+                                <input class="form-control" name="soThe" #SoThe="ngModel" ngModel required type="text">
+                                <!-- Check Validation -->
+                                <div *ngIf="SoThe.errors && (SoThe.dirty || SoThe.touched)">
+                                    <!-- Kiểm tra rỗng -->
+                                    <div *ngIf="SoThe.errors.required" class="danger">
+                                        (*)Vui lòng không được để trống
+                                    </div>
+                                </div>
+                                <span class="label">Số thẻ</span>
+                                <span class="border"></span>
+                            </label>
+                            
+                            <label for="inp" class="inp px-2">
+                                <input class="form-control" name="tenChuThe" #TenChuThe="ngModel" ngModel required type="text">
+                                <!-- Check Validation -->
+                                <div *ngIf="TenChuThe.errors && (TenChuThe.dirty || TenChuThe.touched)">
+                                    <!-- Kiểm tra rỗng -->
+                                    <div *ngIf="TenChuThe.errors.required" class="danger">
+                                        (*)Vui lòng không được để trống
+                                    </div>
+                                </div>
+                                <span class="label">Tên chủ thẻ</span>
+                                <span class="border"></span>
+                            </label>
+                            
+                            <label for="inp" class="inp px-2">
+                                <input class="form-control" name="ngayHetHan" #NgayHetHan="ngModel" ngModel required type="text">
+                                <!-- Check Validation -->
+                                <div *ngIf="NgayHetHan.errors && (NgayHetHan.dirty || NgayHetHan.touched)">
+                                    <!-- Kiểm tra rỗng -->
+                                    <div *ngIf="NgayHetHan.errors.required" class="danger">
+                                        (*)Vui lòng không được để trống
+                                    </div>
+                                </div>
+                                <span class="label">Ngày hết hạn</span>
+                                <span class="border"></span>
+                            </label>
+                            
+                            <label for="inp" class="inp px-2">
+                                <input class="form-control" name="cvv" #CVV="ngModel" ngModel required type="text">
+                                <!-- Check Validation -->
+                                <div *ngIf="CVV.errors && (CVV.dirty || CVV.touched)">
+                                    <!-- Kiểm tra rỗng -->
+                                    <div *ngIf="CVV.errors.required" class="danger">
+                                        (*)Vui lòng không được để trống
+                                    </div>
+                                </div>
+                                <span class="label">CVV/CVC2</span>
+                                <span class="border"></span>
+                            </label>
+                            
+                            <button [disabled]="!registerForm.form.valid" id="btn-formthanhtoan"></button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="right col-md-3">
@@ -136,7 +201,7 @@
                     <div class="col-md-6 end tongtien">{{tongTien}}</div>
                 </div>
                 <div class="row myrow">
-                    <button (click)="thanhToan()" class="btn btn-danger">Thanh toán</button>
+                    <button (click)="thanhToan()" [ngClass]="{checkThanhToan: checkThanhToan}" class="btn-thanhtoan">Thanh toán</button>
                 </div>
             </div>
         </div>

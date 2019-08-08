@@ -101,11 +101,14 @@ select.form-control{
   border-radius: 0px !important;
   color: #9098a9;
   padding-left: 0px !important;
+  font-size: 15px;
+  margin: 11px 0;
 }
 option{
-  background-color: black !important;
+  background-color: rgb(78, 78, 78) !important;
   border: none;
-  color: #9098a9
+  outline: none;
+  color: #9098a9;
 }
 option:hover{
   color: #9098a9;

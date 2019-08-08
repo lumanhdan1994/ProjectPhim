@@ -75,7 +75,6 @@ export class FormComponent implements OnInit {
       }
       this.eventDangNhap.emit(form);
       localStorage.setItem("taiKhoanDaDangNhap", JSON.stringify(form));
-      location.reload()
     })
   }
 

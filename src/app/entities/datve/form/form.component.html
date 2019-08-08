@@ -27,7 +27,7 @@
                 </label>
 
                 <div class="button_cont" align="center">
-                    <button  [disabled]="!registerForm.valid" class="example_a" target="_blank" rel="nofollow noopener">Đăng nhập</button>
+                    <button  [disabled]="!registerForm.form.valid" class="example_a" target="_blank" rel="nofollow noopener">Đăng nhập</button>
                 </div>
                 <span (click)="toLogIn()" id="question">Bạn chưa có tài khoản?</span>
             </form>
@@ -119,8 +119,10 @@
                 <label for="inp" class="inp">
                     <select class="form-control" name="maLoaiNguoiDung" type="text" id="inp select" placeholder="Maloai">
                         <option value="">{{mangMaLoaiNguoiDung[0].tenLoai}}</option>
-                        <option value="">{{mangMaLoaiNguoiDung[1].tenLoai}}</option>
+                        <option value="">{{mangMaLoaiNguoiDung[1].tenLoai}}</option>                        
                     </select>
+                    <span class="label">Loại người dùng</span>
+                    <span class="border"></span>
                 </label>
 
                 <label for="inp" class="inp">
@@ -136,7 +138,7 @@
                     <span class="border"></span>
                 </label>
                 <div class="button_cont" align="center">
-                    <button class="example_a" [disabled]="!registerForm.valid" target="_blank" rel="nofollow noopener">Đăng kí</button>
+                    <button class="example_a" [disabled]="!registerForm2.form.valid" target="_blank" rel="nofollow noopener">Đăng kí</button>
                 </div>
             </form>
         </div>
