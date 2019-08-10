@@ -58,8 +58,7 @@
                     <div class="tab-pane container active p-0" id="chonve">
                         <div class="row chonve">
                             <div class="left col-md-4 p-0">
-                                <p>Vé người lớn</p> <br>
-                                <p>(vé 2D)</p>
+                                <p>Vé thường</p> <br>
                             </div>
                             <div class="middle col-md-4">
                                 85.000
@@ -68,6 +67,20 @@
                                 <button (click)="minusve()">-</button>
                                 <span>{{soLuongVe}}</span>
                                 <button (click)="plusve()">+</button>
+                            </div>
+                        </div>
+
+                        <div class="row chonve">
+                            <div class="left col-md-4 p-0">
+                                <p>Vé vip</p> <br>
+                            </div>
+                            <div class="middle col-md-4">
+                                90.000
+                            </div>
+                            <div class="right col-md-4">
+                                <button (click)="minusveVip()">-</button>
+                                <span>{{soLuongVeVip}}</span>
+                                <button (click)="plusveVip()">+</button>
                             </div>
                         </div>
 
@@ -177,10 +190,17 @@
                 <div class="hinhanhphim row">
                     <img [src]="thongTinPhim.hinhAnh" alt="">
                 </div>
+
                 <div class="row myrow">
-                    <div class="col-md-4 star">Số lượng vé</div>
+                    <div class="col-md-4 star">Vé thường</div>
                     <div class="col-md-4 middle">{{soLuongVe}}</div>
                     <div class="col-md-4 end">{{giaVe}}</div>
+                </div>
+
+                <div class="row myrow">
+                    <div class="col-md-4 star">Vé vip</div>
+                    <div class="col-md-4 middle">{{soLuongVeVip}}</div>
+                    <div class="col-md-4 end">{{giaVeVip}}</div>
                 </div>
                 <div class="row myrow">
                     <div class="col-md-4 star">Số lượng combo</div>
