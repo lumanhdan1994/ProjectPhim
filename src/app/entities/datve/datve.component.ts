@@ -232,6 +232,14 @@ export class DatveComponent implements OnInit {
     const uri = `QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${this.maLichChieu}`;
     this.dataService.get(uri).subscribe((data: any) => {
       this.thongTinSuatChieu = data;
+      // console.log(this.thongTinSuatChieu);
+      this.thongTinSuatChieu.danhSachGhe.map((item) => {
+        if(item.stt > 48 && item.stt < 121){
+          item.loaiGhe = "Vip"
+        } else {
+          item.loaiGhe = "Thuong"
+        }
+      })
       // lay thong tin chi tiet phim
       this.layThongTinChiTietPhim();
     })

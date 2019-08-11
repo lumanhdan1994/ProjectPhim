@@ -16,6 +16,7 @@ export class ItemgheComponent implements OnInit {
   styleGheVip: boolean = false;
 
   ngOnInit() {
+    console.log(this.ghe.daDat);
     if(this.ghe.loaiGhe === "Vip"){
       this.styleGheVip = true;
     }
