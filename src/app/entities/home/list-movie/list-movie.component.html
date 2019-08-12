@@ -41,50 +41,58 @@
 
         <!-- Tab panes -->
         <ng-container *ngIf="cumRap">
-          <div class="tab-content">
-            <div id="lichchieu" class="container tab-pane active">
+          <div class="tab-content suatchieu">
+            <div id="lichchieu" class="container tab-pane active suatchieu__content">
               <div class="row">
-                <div class="col-sm-4">
-                  <ng-container *ngFor="let item of cumRap">
-                    <a (click)="laymaRap(item.maHeThongRap)">
+                <div class="col-sm-4 content__cumrap">
+                  <ul>
+                    <li *ngFor="let item of cumRap" class="dscumrap" (click)="laymaRap(item.maHeThongRap)">
                       <img [src]="item.logo" alt="" />
                       <span>{{ item.tenHeThongRap }}</span>
-                    </a>
-                    <br />
-                  </ng-container>
+                    </li>
+                  </ul>
                 </div>
-                <div class="col-sm-8 xuatchieu">
-                  <div class="xuatchieu-date" *ngIf="date.length != 0; else KhongCoSuatChieu">
-                    <button *ngFor="let item of date" (click)="LayNgayChieu(item)">
-                      {{ item | date: "EEE" }}
+                <div class="col-sm-8 content__lichchieu">
+                  <div class="content__date d-flex" *ngIf="date.length != 0;else KhongCoSuatChieu">
+                    <button [ngClass]="{'active':btnDateSelect}" *ngFor="let item of date" (click)="LayLichChieuTheoNgay(item)" class='btnLich'>
+                      {{ item | date: "EEE dd" }}
                     </button>
                   </div>
                   <ng-template #KhongCoSuatChieu>
                     <p>Không Có Suất Chiếu</p>
                   </ng-template>
-                  <div class="xuatchieu-content" *ngIf="thongTinSuatChieuTheoRap.length != 0">
-                    <ng-container *ngFor="let item of thongTinSuatChieuTheoRap">
-                      <button (click)="GuiMaLichChieu(item.maLichChieu)"> {{item.ngayChieuGioChieu | date:"hh:mm"}}</button>
-                    </ng-container>
-                  </div>
+                  <ng-container *ngIf="lichChieuTheoMaRap">
+                    <app-movie *ngIf="DateSelect" [SuatChieu]="lichChieuTheoMaRap" [DateSelected]="DateSelect"></app-movie>
+                  </ng-container>
+                  <!-- <ng-container *ngIf="thongTinRap.length != 0">
+                    <p *ngFor="let item of thongTinRap">
+                      <span>{{item.tenCumRap}}</span>
+                    </p>
+                    <div class="xuatchieu-content" *ngIf="thongTinSuatChieuTheoRap.length != 0" >
+                      <ng-container *ngFor="let item of thongTinSuatChieuTheoRap">
+                        <button (click)="GuiMaLichChieu(item.maLichChieu)">
+                          {{item.ngayChieuGioChieu | date:"hh:mm"}}</button>
+                      </ng-container>
+                    </div>
+                  </ng-container> -->
                 </div>
               </div>
-            </div>
-            <div id="info" class="container tab-pane fade">
-              <br />
-              <h3>Menu 1</h3>
-              <p>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
-            <div id="danhgia" class="container tab-pane fade">
-              <br />
-              <h3>Menu 2</h3>
-              <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam.
-              </p>
+              <div id="info" class="container tab-pane fade">
+                <br />
+                <h3>Menu 1</h3>
+                <p>
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
+              <div id="danhgia" class="container tab-pane fade">
+                <br />
+                <h3>Menu 2</h3>
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam.
+                </p>
+              </div>
             </div>
           </div>
         </ng-container>

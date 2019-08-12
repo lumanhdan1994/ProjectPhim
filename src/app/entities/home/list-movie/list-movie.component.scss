@@ -1,6 +1,27 @@
 @import "./../../../../Helper/variable";
 @import "./../../../../Helper/mixi";
 
+::-webkit-scrollbar {
+    height: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: $bg-color;
+    border-radius: 25px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #fb422654; 
+    border-radius: 25px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $color-text; 
+  }
+
 #ChiTietPhim {
   width: 100%;
 
@@ -208,8 +229,7 @@ Due to the split circle of progress-left and progress right, we must use the ani
       @if $i > ($howManySteps/2) {
         .progress[data-percentage="#{$stepName}"] {
           .progress-right .progress-bar {
-            animation: loading-#{($howManySteps/2)}
-              $animationTime
+            animation: loading-#{($howManySteps/2)} $animationTime
               linear
               forwards; //set the animation to longest animation
           }
@@ -244,9 +264,66 @@ Due to the split circle of progress-left and progress right, we must use the ani
   .chitietphim-lichChieu {
     color: white;
     .container {
-      .nav{
+      .nav {
         justify-content: center !important;
         padding-top: 55px;
+      }
+    }
+  }
+
+  .suatchieu {
+    width: 100%;
+    height: 547px;
+    background-color: $bg-color;
+    border-radius: 10px;
+    margin: 30px 0;
+    .content__cumrap {
+      margin: 0;
+      padding: 0;
+      ul{
+        border-right: 1px solid #48484825;
+        padding: 0;
+        margin: 0;
+      }
+      .dscumrap {
+        list-style: none;
+        padding: 10px 0;
+        padding-left: 20px;
+        border-bottom: 1px solid #48484825;
+        cursor: pointer;
+        img {
+          width: 70px;
+          height: 70px;
+        }
+        span {
+          padding-left: 15px;
+          font-size: 17px;
+          font-weight: 500;
+          color: $text-color-dark;
+        }
+      }
+    }
+    .content__lichchieu{
+      
+      .content__date{
+        width: 100%;
+        overflow-x: scroll;
+        .active{
+            background-color: $bg-color !important;
+            color: $color-text !important;
+          }
+        button{
+          border: none;
+          background-color: $bg-color;
+          color: $text-color-dark;
+          font-size: 20px;
+          margin: 5px 30px;
+          
+          &:hover{
+            background-color: $bg-color;
+            color: $color-text;
+          }
+        }
       }
     }
   }
