@@ -248,6 +248,37 @@
                             //     background-color: $color-text;
                             // }
                         }
+                        .note{
+                            position: absolute;
+                            width: 100%;
+                            display: flex;
+                            button{
+                                margin: 2px;
+                                background-color: #686868;
+                                font-size: 13px;
+                                white-space: nowrap;
+                                width: 20px;
+                                height: 20px;
+                                border: none;
+                                border-radius: 2px;
+                                transition: all linear .15s;
+                                &:focus{
+                                    outline: none;
+                                }
+                            }
+                            .ghedangchon{
+                                background-color: $color-text;
+                            }
+                            .gheVip{
+                                background-color: rgb(207, 162, 37);
+                            }
+                            .gheVip.styleghedachon{
+                                background-color: $color-text;
+                            }
+                            .ghedadat{
+                                background-color: rgba(0, 0, 0, 0.89);
+                            }
+                        }
                     }
                     .back{
                         padding: 50px 0;

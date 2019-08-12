@@ -113,10 +113,17 @@
                                 <br *ngIf="(stt+1)%12===0">
                                 <span class="anphabe" *ngIf="(stt+1)%12===0">{{anphabe[(stt+1)/12]}}</span>
                             </ng-container>
-                            <div class="back">
-                                <button (click)="toChonVe()" class="example_a"><i class="fas fa-arrow-left"></i> Quay lại</button>
-                            </div>
-                        </div>                        
+                            <br>                            
+                        </div>
+                        <div class="note">
+                            <button class="gheVip"></button> Ghế vip <br>
+                            <button></button> Ghế Thường <br>
+                            <button class="ghedangchon"></button> Ghế đang chọn <br>
+                            <button class="ghedadat"></button> Ghế đã đặt <br>
+                        </div>
+                        <div class="back">
+                            <button (click)="toChonVe()" class="example_a"><i class="fas fa-arrow-left"></i> Quay lại</button>
+                        </div>
                     </div>
                     <div class="tab-pane container fade" id="chonhinhthucthanhtoan">
                         <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="btnFormThanhToan(registerForm.value)">
