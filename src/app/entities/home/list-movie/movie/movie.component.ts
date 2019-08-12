@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
+import { Router } from '@angular/router';
+import { __asyncDelegator } from 'tslib';
 
 @Component({
   selector: 'app-movie',
@@ -9,27 +11,48 @@ import { DataService } from 'src/app/shared/services/data.service';
 export class MovieComponent implements OnInit {
   @Input() SuatChieu: any;
   @Input() DateSelected: string;
+  @Output() LayMaLichChieu = new EventEmitter();
 
   ThongTinCumRap: any;
   SuatChieuDeduplicate: any;
-  constructor(private dataService: DataService) { }
-
+  constructor(private dataService: DataService,
+    private router: Router) { }
+  
   ngOnInit() {
-    console.log(this.SuatChieu)
-    // this.Deduplicate();
-    this.LayThongTinRap()
+    this.Deduplicate();
+    // this.LayThongTinRap();
   }
-  Deduplicate() {
-    const SuatChieuDeduplicate: any = { ...(this.SuatChieu)};
-    SuatChieuDeduplicate.cumRapChieu.map(item => {
-      item.lichChieuPhim.map((itemlichChieu, index) => {
-        if (itemlichChieu.ngayChieuGioChieu.slice(0, 10) !== this.DateSelected) {
-          item.lichChieuPhim.splice(index)
-        }
-      })
-    })
-    this.SuatChieuDeduplicate= SuatChieuDeduplicate
+  ngOnChanges() {
     console.log(this.SuatChieu)
+    this.SuatChieu
+    this.Deduplicate();
+  }
+
+  Deduplicate() {
+    this.SuatChieuDeduplicate = { ...this.SuatChieu };
+    console.log(this.SuatChieu)
+    let lichChieuClone: any = [];
+    let pickingTime: {};
+    let CumRapCLone: any = [];
+    CumRapCLone = [...this.SuatChieuDeduplicate.cumRapChieu.map(item => item)]
+    CumRapCLone.map(item => {
+      lichChieuClone = [...item.lichChieuPhim]
+    })
+    // console.log(lichChieuClone)
+
+    lichChieuClone = lichChieuClone.filter(item => (item.ngayChieuGioChieu.slice(0, 10) === this.DateSelected))
+    // console.log(lichChieuClone)
+
+    CumRapCLone.map((item) => {
+      // lichChieuClone = item.lichChieuPhim;
+      // pickingTime = lichChieuClone.filter(item => (item.ngayChieuGioChieu.slice(0, 10) === this.DateSelected))
+      item.pickingTime = [...lichChieuClone]
+    })
+    this.SuatChieuDeduplicate.cumRapChieu = CumRapCLone
+    // console.log(CumRapCLone)
+    // console.log(this.SuatChieuDeduplicate)
+    // console.log(this.SuatChieu)
+    this.LayThongTinRap();
   }
 
   LayThongTinRap() {
@@ -38,4 +61,12 @@ export class MovieComponent implements OnInit {
       this.ThongTinCumRap = data;
     })
   }
+
+  GuiMaLichChieu(_maLichChieu) {
+    // this.LayMaLichChieu = _maLichChieu
+    console.log(_maLichChieu)
+    this.router.navigate(["/datve", _maLichChieu])
+  }
+
+
 }

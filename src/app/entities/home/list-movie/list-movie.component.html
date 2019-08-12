@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-sm-8 content__lichchieu">
                   <div class="content__date d-flex" *ngIf="date.length != 0;else KhongCoSuatChieu">
-                    <button [ngClass]="{'active':btnDateSelect}" *ngFor="let item of date" (click)="LayLichChieuTheoNgay(item)">
+                    <button [ngClass]="{'active':btnDateSelect}" *ngFor="let item of date" (click)="LayLichChieuTheoNgay(item)" class='btnLich'>
                       {{ item | date: "EEE dd" }}
                     </button>
                   </div>

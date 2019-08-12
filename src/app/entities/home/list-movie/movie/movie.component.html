@@ -1,11 +1,12 @@
-<div *ngIf="SuatChieu">
-    <!-- <ng-container *ngFor="let item of SuatChieuDeduplicate.cumRapChieu">
+<div *ngIf="SuatChieu" id="SuatChieu">
+    <ng-container *ngFor="let item of SuatChieuDeduplicate.cumRapChieu">
         <p>{{item.tenCumRap}}</p>
         <ng-container *ngFor="let itemDiaChi of ThongTinCumRap">
             <p *ngIf="itemDiaChi.maCumRap === item.maCumRap">Địa Chỉ: {{itemDiaChi.diaChi}}</p>
         </ng-container>
-        <button *ngFor="let itemlichChieu of item.lichChieuPhim">
-            {{itemlichChieu.ngayChieuGioChieu | date:"hh:mm"}}
+        <button *ngFor="let itempickingTime of item.pickingTime" (click)="GuiMaLichChieu(itempickingTime.maLichChieu)">
+            {{itempickingTime.ngayChieuGioChieu | date:"hh:mm"}}
         </button>
-    </ng-container> -->
+    </ng-container>
 </div>
+<router-outlet></router-outlet>

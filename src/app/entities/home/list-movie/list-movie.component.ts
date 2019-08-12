@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, EventEmitter } from "@angular/core";
 import { DataService } from "./../../../shared/services/data.service";
 import { Subscription } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
+import { MovieComponent } from './movie/movie.component';
 declare var $: any;
 
 @Component({
@@ -10,6 +11,7 @@ declare var $: any;
   styleUrls: ["./list-movie.component.scss"]
 })
 export class ListMovieComponent implements OnInit {
+  @ViewChild(MovieComponent, { static: false }) btnTime: MovieComponent;
   subListMovie: Subscription;
   maPhim: any;
   phimDetail: any;
@@ -17,7 +19,7 @@ export class ListMovieComponent implements OnInit {
   thongTinSuatChieuTheoRap: any = [];
   date: any = [];
   DateSelect: string;
-  lichChieuTheoMaRap: any;
+  lichChieuTheoMaRap: any = new EventEmitter;
 
 
   btnDateSelect: boolean = false;
@@ -30,12 +32,10 @@ export class ListMovieComponent implements OnInit {
   ngOnInit() {
     this.getParamsUrl();
     this.getDetailMovie();
-    // this.LayThongTinCumRap();
   }
 
   getParamsUrl() {
     this.maPhim = this.activatedRoute.snapshot.paramMap.get("malichchieu");
-    // console.log(this.maPhim);
   }
 
   getDetailMovie() {
@@ -51,12 +51,10 @@ export class ListMovieComponent implements OnInit {
     const uri = "QuanLyRap/LayThongTinHeThongRap";
     this.dataService.get(uri).subscribe((data: any) => {
       this.cumRap = data;
-      // console.log(this.cumRap)
     });
   }
   laymaRap(_maRap) {
-    this.lichChieuTheoMaRap = "";
-
+    this.lichChieuTheoMaRap = null;
     this.phimDetail.heThongRapChieu.map(item => {
       if (item.maHeThongRap === _maRap) {
         this.lichChieuTheoMaRap = item;
@@ -78,13 +76,12 @@ export class ListMovieComponent implements OnInit {
       }
     })
     this.date = _dateDeduplicate;
+    // console.log(this.lichChieuTheoMaRap)
+    
   }
   LayLichChieuTheoNgay(dayOfWeek) {
     this.DateSelect = dayOfWeek;
     // console.log(this.DateSelect);
-  }
-  GuiMaLichChieu(_maLichChieu) {
-    this.router.navigate(["/datve", _maLichChieu]);
   }
 
 
