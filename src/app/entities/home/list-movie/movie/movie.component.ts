@@ -24,13 +24,12 @@ export class MovieComponent implements OnInit {
   }
   ngOnChanges() {
     console.log(this.SuatChieu)
-    this.SuatChieu
     this.Deduplicate();
   }
 
   Deduplicate() {
     this.SuatChieuDeduplicate = { ...this.SuatChieu };
-    console.log(this.SuatChieu)
+    // console.log(this.SuatChieu)
     let lichChieuClone: any = [];
     let pickingTime: {};
     let CumRapCLone: any = [];
