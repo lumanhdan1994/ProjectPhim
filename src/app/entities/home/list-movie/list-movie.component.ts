@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, EventEmitter } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { DataService } from "./../../../shared/services/data.service";
 import { Subscription } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MovieComponent } from './movie/movie.component';
+import { JsonpClientBackend } from '@angular/common/http';
 declare var $: any;
 
 @Component({
@@ -19,10 +20,9 @@ export class ListMovieComponent implements OnInit {
   thongTinSuatChieuTheoRap: any = [];
   date: any = [];
   DateSelect: string;
-  lichChieuTheoMaRap: any = new EventEmitter;
+  lichChieuTheoMaRap: any;
+  flagCheck: boolean = false;
 
-
-  btnDateSelect: boolean = false;
   constructor(
     private dataService: DataService,
     private activatedRoute: ActivatedRoute,
@@ -76,11 +76,33 @@ export class ListMovieComponent implements OnInit {
       }
     })
     this.date = _dateDeduplicate;
+    if (this.date.length != 0) {
+      this.flagCheck = true;
+    }
+    this.AfterTheaterSelected();
     // console.log(this.lichChieuTheoMaRap)
-    
+
   }
-  LayLichChieuTheoNgay(dayOfWeek) {
+
+  AfterTheaterSelected() {
+    if (this.flagCheck) {
+      console.log("asd")
+      // let dom = document.querySelectorAll(".btnLich");
+      // dom[0].
+      $($(".btnLich")[0]).click();
+      this.flagCheck = false;
+    }
+  }
+  LayLichChieuTheoNgay(dayOfWeek, sttBtn) {
     this.DateSelect = dayOfWeek;
+    $(".btnLich").map(index => {
+      if (index === sttBtn) {
+        $($(".btnLich")[sttBtn]).addClass("active")
+      } else {
+        $($(".btnLich")[index]).removeClass("active")
+        
+      }
+    })
     // console.log(this.DateSelect);
   }
 
