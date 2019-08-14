@@ -279,21 +279,24 @@ export class DatveComponent implements OnInit {
             alert("đặt vé thành công!");
             const uri = "QuanLyDatVe/DatVe";
             let thongTinVe = {
-              maGhe: Number,
-              giaVe: Number
+              maGhe: "",
+              giaVe: ""
             };  
             let mangThongTinVe = [];
             this.mangGheDaChon.map((item) => {
               thongTinVe.maGhe = item.ghe.maGhe;
               thongTinVe.giaVe = item.ghe.giaVe;
-              mangThongTinVe.push(thongTinVe);
+              // console.log(thongTinVe);
+              mangThongTinVe.push(item);
               console.log(mangThongTinVe);
             })
-            this.mangGheVipDaChon.map((item) => {
-              thongTinVe.maGhe = item.ghe.maGhe;
-              thongTinVe.giaVe = item.ghe.giaVe;
-              mangThongTinVe.push(thongTinVe);
-            })
+              // console.log(mangThongTinVe);
+              // console.log(this.mangGheDaChon)
+            //   this.mangGheVipDaChon.map((item) => {
+            //   thongTinVe.maGhe = item.ghe.maGhe;
+            //   thongTinVe.giaVe = item.ghe.giaVe;
+            //   mangThongTinVe.push(thongTinVe);
+            // })
             const thongTinDatVe = {
               maLichChieu: this.maLichChieu,
               danhSachVe: mangThongTinVe,
