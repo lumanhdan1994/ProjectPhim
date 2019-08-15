@@ -98,6 +98,7 @@
       p:nth-child(2) {
         font-size: 20px;
         font-weight: 700;
+        letter-spacing: 5px;
       }
       .buyticket {
         width: 150px;
@@ -319,11 +320,19 @@ Due to the split circle of progress-left and progress right, we must use the ani
       .content__date{
         width: 100%;
         overflow-x: scroll;
+        animation: smoothDisplay 0.4s;
         .active{
           background-color: $bg-color !important;
           color: $color-text !important;
         }
-        
+        @keyframes smoothDisplay {
+          0%{
+            opacity: 0;
+          }
+          100%{
+            opacity: 1;
+          }
+        }
         button{
           border: none;
           background-color: $bg-color;
@@ -335,6 +344,57 @@ Due to the split circle of progress-left and progress right, we must use the ani
             background-color: $bg-color;
             color: $color-text;
           }
+        }
+      }
+    }
+  }
+  .chitietphim-lichChieu{
+    .nav{
+      .nav-item{
+        .nav-link.active{
+          background-color: $color-text !important;
+          &:hover{
+          color: white !important;
+          }
+        }
+        .nav-link{
+          color: white !important;
+          &:hover{
+            color: $color-text !important;
+          }
+        }
+      }
+    }
+    #info{
+      .info__left{
+        table{
+          tr{
+            td{
+              line-height: 35px;
+              letter-spacing: 2px;
+              font-size: 15px;
+              font-weight: 400;
+              &:first-child{
+                font-weight: 500;
+                padding-right: 25px;
+              }
+              i{
+                font-size: 20px;
+                color: #ffb43e;
+              }
+            }
+          }
+        }
+      }
+      .info__right{
+        p:nth-child(1){
+          font-weight: 500;
+        }
+        p{
+          line-height: 35px;
+          letter-spacing: 2px;
+          font-size: 15px;
+          font-weight: 400;
         }
       }
     }
