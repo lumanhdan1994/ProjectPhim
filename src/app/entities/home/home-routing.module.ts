@@ -20,7 +20,13 @@ const routes: Routes = [
       {
         path: "list-movie/:malichchieu",
         loadChildren: "./list-movie/list-movie.module#ListMovieModule"
-      }
+      },
+
+       //Trang đặt vé thành công
+      {
+        path: "datvethanhcong",
+        loadChildren: "./dat-ve-thanh-cong/dat-ve-thanh-cong.module#DatVeThanhCongModule"
+      },
     ]
   }
 ];
