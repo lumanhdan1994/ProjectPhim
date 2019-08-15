@@ -303,9 +303,20 @@ export class DatveComponent implements OnInit {
               danhSachVe: mangThongTinVe,
               taiKhoanNguoiDung: this.taiKhoanDaDangNhap.inforUser.taiKhoan,
             };
-            console.log(thongTinDatVe);
+            // console.log(thongTinDatVe);
             // api đặt vé
-            this.dataService.post(uri, thongTinDatVe).subscribe((data) => {
+            const thongTinDatVe2 = 
+            {
+              "maLichChieu": "16532",
+              "danhSachVe": [
+                {
+                  "maGhe": 51269,
+                  "giaVe": 75000
+                }
+              ],
+              "taiKhoanNguoiDung": "phucdinh95"
+            }
+            this.dataService.post(uri, thongTinDatVe2).subscribe((data) => {
               console.log(data);
             })
           }
