@@ -44,6 +44,7 @@ export class DatveComponent implements OnInit {
   checkToThanhToan: boolean = false;
   count: number = 0;
   taiKhoanDaDangNhap: any = {};
+  accessToken: "";
 
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
@@ -288,25 +289,25 @@ export class DatveComponent implements OnInit {
               thongTinVe.giaVe = item.ghe.giaVe;
               // console.log(thongTinVe);
               mangThongTinVe.push(item);
-              console.log(mangThongTinVe);
+              // console.log(mangThongTinVe);
             })
               // console.log(mangThongTinVe);
               // console.log(this.mangGheDaChon)
-            //   this.mangGheVipDaChon.map((item) => {
-            //   thongTinVe.maGhe = item.ghe.maGhe;
-            //   thongTinVe.giaVe = item.ghe.giaVe;
-            //   mangThongTinVe.push(thongTinVe);
-            // })
+              this.mangGheVipDaChon.map((item) => {
+              thongTinVe.maGhe = item.ghe.maGhe;
+              thongTinVe.giaVe = item.ghe.giaVe;
+              mangThongTinVe.push(thongTinVe);
+            })
             const thongTinDatVe = {
               maLichChieu: this.maLichChieu,
               danhSachVe: mangThongTinVe,
               taiKhoanNguoiDung: this.taiKhoanDaDangNhap.inforUser.taiKhoan,
             };
-            // console.log(mangThongTinVe);
+            console.log(thongTinDatVe);
             // api đặt vé
-            // this.dataService.post(uri, thongTinDatVe).subscribe((data) => {
-
-            // })
+            this.dataService.post(uri, thongTinDatVe).subscribe((data) => {
+              console.log(data);
+            })
           }
         }
       } else {
@@ -351,6 +352,7 @@ export class DatveComponent implements OnInit {
   checkDangNhap(form){
     this.checkLogIn = form.checkLogIn;
     this.inforUser = form.inforUser;
+    console.log(this.inforUser);
     $("#myModal").click();
   }
 

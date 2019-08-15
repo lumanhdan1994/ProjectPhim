@@ -12,6 +12,7 @@ export class FormComponent implements OnInit {
 
   mangMaLoaiNguoiDung: [];
   checkDangNhap: boolean = true;
+  accessToken: "";
   @Output() eventDangNhap = new EventEmitter();
 
   constructor(private dataService: DataService) { }
