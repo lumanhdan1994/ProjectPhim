@@ -13,10 +13,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         const token = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"))
-        // console.log(token);
+        console.log(token.inforUser.accessToken);
 
         const authReq = req.clone({
-            setHeaders: { AuthInterceptor: `Bearer${token.accessToken}` }
+            setHeaders: { Authorization : `Bearer ${token.inforUser.accessToken}` }
         });
 
         return next.handle(authReq);
