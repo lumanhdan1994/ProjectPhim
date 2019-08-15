@@ -22,7 +22,7 @@ export class ListMovieComponent implements OnInit {
   DateSelect: string;
   lichChieuTheoMaRap: any;
   flagCheck: boolean = false;
-
+  mangDanhGia: Array<number> = [];
   constructor(
     private dataService: DataService,
     private activatedRoute: ActivatedRoute,
@@ -33,7 +33,9 @@ export class ListMovieComponent implements OnInit {
     this.getParamsUrl();
     this.getDetailMovie();
   }
-
+  // ngDoCheck() {
+  //   $($('.nav-link')[0]).click();
+  // }
   getParamsUrl() {
     this.maPhim = this.activatedRoute.snapshot.paramMap.get("malichchieu");
   }
@@ -44,7 +46,14 @@ export class ListMovieComponent implements OnInit {
       this.phimDetail = data;
       console.log(this.phimDetail);
       this.LayThongTinCumRap();
+      let star = 0;
+      while (star < this.phimDetail.danhGia) {
+        star++;
+        this.mangDanhGia.push(star);
+      }
+      console.log(this.mangDanhGia)
     });
+
   }
 
   LayThongTinCumRap() {
@@ -78,8 +87,8 @@ export class ListMovieComponent implements OnInit {
     this.date = _dateDeduplicate;
     if (this.date.length != 0) {
       this.flagCheck = true;
+      setTimeout(() => this.AfterTheaterSelected(), 1);
     }
-    this.AfterTheaterSelected();
     // console.log(this.lichChieuTheoMaRap)
 
   }
@@ -87,8 +96,7 @@ export class ListMovieComponent implements OnInit {
   AfterTheaterSelected() {
     if (this.flagCheck) {
       console.log("asd")
-      // let dom = document.querySelectorAll(".btnLich");
-      // dom[0].
+      
       $($(".btnLich")[0]).click();
       this.flagCheck = false;
     }
@@ -100,7 +108,7 @@ export class ListMovieComponent implements OnInit {
         $($(".btnLich")[sttBtn]).addClass("active")
       } else {
         $($(".btnLich")[index]).removeClass("active")
-        
+
       }
     })
     // console.log(this.DateSelect);

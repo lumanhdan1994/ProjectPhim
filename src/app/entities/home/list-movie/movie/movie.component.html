@@ -1,5 +1,5 @@
 <div *ngIf="SuatChieu" id="SuatChieu">
-    <!-- <img [src]="SuatChieu.hinhAnh" alt=""> -->
+    <!-- <img [src]="SuatChieu.hinhAnh"> -->
     <div *ngFor="let item of SuatChieuDeduplicate.cumRapChieu">
         <p>{{item.tenCumRap}}</p>
         <ng-container *ngFor="let itemDiaChi of ThongTinCumRap">
