@@ -312,11 +312,17 @@ export class DatveComponent implements OnInit {
                 {
                   "maGhe": 51269,
                   "giaVe": 75000
+                },
+                {
+                  "maGhe": 51270,
+                  "giaVe": 75000
                 }
               ],
               "taiKhoanNguoiDung": "phucdinh95"
             }
-            this.dataService.post(uri, thongTinDatVe2).subscribe((data) => {
+            
+            
+            this.dataService.post(uri, thongTinDatVe).subscribe((data) => {
               console.log(data);
             })
           }
