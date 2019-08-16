@@ -1,6 +1,13 @@
-<ng-container *ngIf="styleGheVip; else gheThuong">
-    <button class="gheVip" [ngClass]="{styleghedachon: styleGheDaChon}" (click)="chonGhe()"></button>
+
+<ng-container *ngIf="!styleGheDaDat; else chonghe">
+    <button class="styleghedadat"></button>
 </ng-container>
-<ng-template #gheThuong> 
-    <button [ngClass]="{styleghedachon: styleGheDaChon}" (click)="chonGhe()"></button>
+
+<ng-template #chonghe>
+    <ng-container *ngIf="styleGheVip; else gheThuong">
+        <button class="gheVip" [ngClass]="{styleghedachon: styleGheDaChon}" (click)="chonGhe()"></button>
+    </ng-container>
+    <ng-template #gheThuong>
+        <button class="ghethuong" [ngClass]="{styleghedachon: styleGheDaChon}" (click)="chonGhe()"></button>
+    </ng-template>
 </ng-template>

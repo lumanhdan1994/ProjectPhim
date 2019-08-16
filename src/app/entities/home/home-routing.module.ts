@@ -24,7 +24,7 @@ const routes: Routes = [
 
        //Trang đặt vé thành công
       {
-        path: "datvethanhcong",
+        path: "datvethanhcong/:inforve",
         loadChildren: "./dat-ve-thanh-cong/dat-ve-thanh-cong.module#DatVeThanhCongModule"
       },
     ]

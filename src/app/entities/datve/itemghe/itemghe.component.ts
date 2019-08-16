@@ -14,11 +14,15 @@ export class ItemgheComponent implements OnInit {
 
   styleGheDaChon: boolean;
   styleGheVip: boolean = false;
+  styleGheDaDat: boolean = false;
 
   ngOnInit() {
-    // console.log(this.ghe.daDat);
+    console.log(this.ghe.daDat);
     if(this.ghe.loaiGhe === "Vip"){
       this.styleGheVip = true;
+    }
+    if(this.ghe.daDat === false){
+      this.styleGheDaDat = true;
     }
   }
 

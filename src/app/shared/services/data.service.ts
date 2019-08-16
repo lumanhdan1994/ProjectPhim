@@ -5,10 +5,16 @@ import { tap, catchError } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 
 let urlAPI = "http://movie0706.cybersoft.edu.vn/api/";
+if(JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"))){
+  var accessToken = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap")).inforUser.accessToken;
+}else{
+  accessToken = null;
+}
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Authorization" : `Bearer ${accessToken}`,
   })
 };
 
@@ -36,12 +42,12 @@ export class DataService {
 
   post(uri: string, data?: object): Observable<any> {
     return this.http.post(urlAPI + "/" + uri, data, httpOptions).pipe(
-      // tap(
-      //   () => {},
-        catchError(err => {
-          return this.handleErr(err);
-        })
-      // )  
+      tap(
+        () => {},
+        // catchError(err => {
+        //   return this.handleErr(err);
+        // })
+      )  
     );
   }
 
