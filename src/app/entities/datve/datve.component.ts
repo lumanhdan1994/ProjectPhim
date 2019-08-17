@@ -299,6 +299,9 @@ export class DatveComponent implements OnInit {
               };
               mangThongTinVe = [...mangThongTinVe, thongTinVe]
             })
+            if( this.taiKhoanDaDangNhap === null ){
+              this.taiKhoanDaDangNhap = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
+            }
             let thongTinDatVe = {
               maLichChieu: parseInt(this.maLichChieu),
               danhSachVe: mangThongTinVe,
@@ -307,15 +310,9 @@ export class DatveComponent implements OnInit {
             this.dataService.post(uri, thongTinDatVe).subscribe(
               (data) => {
                 let datVeThanhCongInfor = {
-
+                  
                 };
                 this.router.navigate(['/datvethanhcong', datVeThanhCongInfor]);
-              },
-
-              (err) => {
-                this.thongTinDatVe = err;
-                console.log(this.thongTinDatVe);
-                alert(err.error.text);
               }
             )
           }
@@ -362,7 +359,6 @@ export class DatveComponent implements OnInit {
   checkDangNhap(form) {
     this.checkLogIn = form.checkLogIn;
     this.inforUser = form.inforUser;
-    console.log(this.inforUser);
     $("#myModal").click();
   }
 
