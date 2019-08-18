@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
 import { ItemgheComponent } from './itemghe/itemghe.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { FormComponent } from './form/form.component';
 
 
@@ -279,9 +279,6 @@ export class DatveComponent implements OnInit {
             alert("Vui lòng điền đầy đủ thông tin!");
           } else {
             const uri = "QuanLyDatVe/DatVe";
-
-
-
             let mangThongTinVe = [];
 
             this.mangGheDaChon.map((item) => {
@@ -299,8 +296,12 @@ export class DatveComponent implements OnInit {
               };
               mangThongTinVe = [...mangThongTinVe, thongTinVe]
             })
+<<<<<<< HEAD
             
             if( this.taiKhoanDaDangNhap === null ){
+=======
+            if (this.taiKhoanDaDangNhap === null) {
+>>>>>>> phucdinh
               this.taiKhoanDaDangNhap = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
             }
 
@@ -312,10 +313,17 @@ export class DatveComponent implements OnInit {
 
             this.dataService.post(uri, thongTinDatVe).subscribe(
               (data) => {
-                let datVeThanhCongInfor = {
-                  
-                };
-                this.router.navigate(['/datvethanhcong', datVeThanhCongInfor]);
+
+              }, (err) => {
+                this.router.navigate(['/datvethanhcong'], {
+                  queryParams: { 
+                    tongTien: this.tongTien,
+                    maLichChieu: this.maLichChieu,
+                    maPhim: this.maPhim,
+                    soLuongCombo: this.soLuongCombo,
+                    ghe: this.mangTenGheDuocClick,
+                   },
+                })
               }
             )
           }
