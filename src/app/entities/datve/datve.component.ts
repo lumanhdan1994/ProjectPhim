@@ -46,6 +46,7 @@ export class DatveComponent implements OnInit {
   taiKhoanDaDangNhap: any = {};
   thongTinDatVe: any = {};
 
+  
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
