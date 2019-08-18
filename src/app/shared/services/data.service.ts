@@ -5,10 +5,9 @@ import { tap, catchError } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 
 let urlAPI = "http://movie0706.cybersoft.edu.vn/api/";
+
 if(JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"))){
   var accessToken = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap")).inforUser.accessToken;
-}else{
-  accessToken = null;
 }
 
 const httpOptions = {

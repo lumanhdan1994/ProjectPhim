@@ -299,14 +299,17 @@ export class DatveComponent implements OnInit {
               };
               mangThongTinVe = [...mangThongTinVe, thongTinVe]
             })
+            
             if( this.taiKhoanDaDangNhap === null ){
               this.taiKhoanDaDangNhap = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
             }
+
             let thongTinDatVe = {
               maLichChieu: parseInt(this.maLichChieu),
               danhSachVe: mangThongTinVe,
               taiKhoanNguoiDung: this.taiKhoanDaDangNhap.inforUser.taiKhoan,
             };
+
             this.dataService.post(uri, thongTinDatVe).subscribe(
               (data) => {
                 let datVeThanhCongInfor = {
