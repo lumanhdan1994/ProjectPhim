@@ -46,6 +46,7 @@ export class DatveComponent implements OnInit {
   taiKhoanDaDangNhap: any = {};
   thongTinDatVe: any = {};
 
+  
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -296,12 +297,7 @@ export class DatveComponent implements OnInit {
               };
               mangThongTinVe = [...mangThongTinVe, thongTinVe]
             })
-<<<<<<< HEAD
-            
-            if( this.taiKhoanDaDangNhap === null ){
-=======
             if (this.taiKhoanDaDangNhap === null) {
->>>>>>> phucdinh
               this.taiKhoanDaDangNhap = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
             }
 
