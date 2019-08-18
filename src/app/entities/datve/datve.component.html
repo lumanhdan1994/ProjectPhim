@@ -1,4 +1,4 @@
-<section id="datve" *ngIf="thongTinSuatChieu && thongTinPhim">
+<section id="datve">
     <div class="mynav sticky-top">
         <ul class="nav nav-tabs">
             <li class="nav-item">
@@ -31,218 +31,231 @@
                 </div>
             </ng-template>
         </div>
+
+
     </div>
 
-    <div class="container">
-        <div class="mycontent row">
-            <div class="left col-md-9">
-                <div class="infor row">
-                    <div class="col-md-10">
-                        <p class="name"><span>C16</span>{{thongTinSuatChieu.tenPhim}}</p>
-                        <p class="time"><span><i class="fas fa-clock"></i></span>99 min</p>
-                        <p class="detailmovie">{{thongTinPhim.moTa}}</p>
-                        <div class="row cumrap">
-                            <div class="col-md-4">
-                                <p>Tên cụm rạp</p>
-                                <p class="inforp">{{thongTinSuatChieu.tenCumRap}}</p>
+    <ng-container *ngIf="thongTinSuatChieu && thongTinPhim; else spinners">
+        <div class="container">
+            <div class="mycontent row">
+                <div class="left col-md-9">
+                    <div class="infor row">
+                        <div class="col-md-10">
+                            <p class="name"><span>C16</span>{{thongTinSuatChieu.tenPhim}}</p>
+                            <p class="time"><span><i class="fas fa-clock"></i></span>99 min</p>
+                            <p class="detailmovie">{{thongTinPhim.moTa}}</p>
+                            <div class="row cumrap">
+                                <div class="col-md-4">
+                                    <p>Tên cụm rạp</p>
+                                    <p class="inforp">{{thongTinSuatChieu.tenCumRap}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Địa chỉ</p>
+                                    <p class="inforp">{{thongTinSuatChieu.diaChi}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Rạp</p>
+                                    <p class="inforp">{{thongTinSuatChieu.tenRap}}</p>
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <p>Địa chỉ</p>
-                                <p class="inforp">{{thongTinSuatChieu.diaChi}}</p>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane container active p-0" id="chonve">
+                            <div class="row chonve">
+                                <div class="left col-md-4 p-0">
+                                    <p>Vé thường</p> <br>
+                                </div>
+                                <div class="middle col-md-4">
+                                    85.000
+                                </div>
+                                <div class="right col-md-4">
+                                    <button (click)="minusve()">-</button>
+                                    <span>{{soLuongVe}}</span>
+                                    <button (click)="plusve()">+</button>
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <p>Rạp</p>
-                                <p class="inforp">{{thongTinSuatChieu.tenRap}}</p>
+
+                            <div class="row chonve">
+                                <div class="left col-md-4 p-0">
+                                    <p>Vé vip</p> <br>
+                                </div>
+                                <div class="middle col-md-4">
+                                    90.000
+                                </div>
+                                <div class="right col-md-4">
+                                    <button (click)="minusveVip()">-</button>
+                                    <span>{{soLuongVeVip}}</span>
+                                    <button (click)="plusveVip()">+</button>
+                                </div>
                             </div>
+
+                            <div class="row chonve">
+                                <div class="left col-md-4 p-0">
+                                    <p>Combo</p>
+                                    <p>(1 bắp + 1 nước)</p>
+                                </div>
+                                <div class="middle col-md-4">
+                                    45.000
+                                </div>
+                                <div class="right col-md-4">
+                                    <button (click)="minuscombo()">-</button>
+                                    <span>{{soLuongCombo}}</span>
+                                    <button (click)="pluscombo()">+</button>
+                                </div>
+                            </div>
+                            <div class="row chonghe">
+                                <button (click)="toChonGhe()" [ngClass]="{checkThanhToan: checkChonGhe}"
+                                    class="example_a">Chọn ghế <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="tab-pane container fade" id="chonghe">
+                            <div class="screen">
+                                <img src="../../../assets/img/screen.png" alt="">
+                            </div>
+                            <div class="danhsachghe">
+                                <ng-container *ngFor="let item of thongTinSuatChieu.danhSachGhe; let stt = index">
+                                    <span class="anphabe" *ngIf="(stt+1)===1">A</span>
+                                    <app-itemghe (eventDatGhe)="chonGhe($event)" [ghe]="item"></app-itemghe>
+                                    <br *ngIf="(stt+1)%12===0">
+                                    <span class="anphabe" *ngIf="(stt+1)%12===0">{{anphabe[(stt+1)/12]}}</span>
+                                </ng-container>
+                                <br>
+                            </div>
+                            <div class="note d-flex align-items-center justify-content-center">
+                                <button class="gheVip"></button><span>Ghế vip</span><br>
+                                <button></button><span>Ghế Thường</span><br>
+                                <button class="ghedangchon"></button><span>Ghế đang chọn</span><br>
+                                <button class="ghedadat"></button><span>Ghế đã đặt</span><br>
+                            </div>
+                            <div class="back">
+                                <button (click)="toChonVe()" class="example_a"><i class="fas fa-arrow-left"></i> Quay
+                                    lại</button>
+                            </div>
+                        </div>
+                        <div class="tab-pane container fade" id="chonhinhthucthanhtoan">
+                            <form autocomplete="off" #registerForm="ngForm"
+                                (ngSubmit)="btnFormThanhToan(registerForm.value)">
+                                <label for="inp" class="inp">
+                                    <select class="form-control" name="maLoaiNguoiDung" type="text" id="inp select"
+                                        placeholder="Maloai">
+                                        <option value="">Thẻ ATM nội địa</option>
+                                        <option value="">Thẻ VISA/MASTER/JCB</option>
+                                    </select>
+                                    <span class="label">Hình thức thanh toán</span>
+                                    <span class="border"></span>
+                                </label>
+
+                                <label for="inp" class="inp px-2">
+                                    <input class="form-control" name="soThe" #SoThe="ngModel" ngModel required
+                                        type="text">
+                                    <!-- Check Validation -->
+                                    <div *ngIf="SoThe.errors && (SoThe.dirty || SoThe.touched)">
+                                        <!-- Kiểm tra rỗng -->
+                                        <div *ngIf="SoThe.errors.required" class="danger">
+                                            (*)Vui lòng không được để trống
+                                        </div>
+                                    </div>
+                                    <span class="label">Số thẻ</span>
+                                    <span class="border"></span>
+                                </label>
+
+                                <label for="inp" class="inp px-2">
+                                    <input class="form-control" name="tenChuThe" #TenChuThe="ngModel" ngModel required
+                                        type="text">
+                                    <!-- Check Validation -->
+                                    <div *ngIf="TenChuThe.errors && (TenChuThe.dirty || TenChuThe.touched)">
+                                        <!-- Kiểm tra rỗng -->
+                                        <div *ngIf="TenChuThe.errors.required" class="danger">
+                                            (*)Vui lòng không được để trống
+                                        </div>
+                                    </div>
+                                    <span class="label">Tên chủ thẻ</span>
+                                    <span class="border"></span>
+                                </label>
+
+                                <label for="inp" class="inp px-2">
+                                    <input class="form-control" name="ngayHetHan" #NgayHetHan="ngModel" ngModel required
+                                        type="text">
+                                    <!-- Check Validation -->
+                                    <div *ngIf="NgayHetHan.errors && (NgayHetHan.dirty || NgayHetHan.touched)">
+                                        <!-- Kiểm tra rỗng -->
+                                        <div *ngIf="NgayHetHan.errors.required" class="danger">
+                                            (*)Vui lòng không được để trống
+                                        </div>
+                                    </div>
+                                    <span class="label">Ngày hết hạn</span>
+                                    <span class="border"></span>
+                                </label>
+
+                                <label for="inp" class="inp px-2">
+                                    <input class="form-control" name="cvv" #CVV="ngModel" ngModel required type="text">
+                                    <!-- Check Validation -->
+                                    <div *ngIf="CVV.errors && (CVV.dirty || CVV.touched)">
+                                        <!-- Kiểm tra rỗng -->
+                                        <div *ngIf="CVV.errors.required" class="danger">
+                                            (*)Vui lòng không được để trống
+                                        </div>
+                                    </div>
+                                    <span class="label">CVV/CVC2</span>
+                                    <span class="border"></span>
+                                </label>
+
+                                <button [disabled]="!registerForm.form.valid" id="btn-formthanhtoan"></button>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="tab-content">
-                    <div class="tab-pane container active p-0" id="chonve">
-                        <div class="row chonve">
-                            <div class="left col-md-4 p-0">
-                                <p>Vé thường</p> <br>
-                            </div>
-                            <div class="middle col-md-4">
-                                85.000
-                            </div>
-                            <div class="right col-md-4">
-                                <button (click)="minusve()">-</button>
-                                <span>{{soLuongVe}}</span>
-                                <button (click)="plusve()">+</button>
-                            </div>
-                        </div>
-
-                        <div class="row chonve">
-                            <div class="left col-md-4 p-0">
-                                <p>Vé vip</p> <br>
-                            </div>
-                            <div class="middle col-md-4">
-                                90.000
-                            </div>
-                            <div class="right col-md-4">
-                                <button (click)="minusveVip()">-</button>
-                                <span>{{soLuongVeVip}}</span>
-                                <button (click)="plusveVip()">+</button>
-                            </div>
-                        </div>
-
-                        <div class="row chonve">
-                            <div class="left col-md-4 p-0">
-                                <p>Combo</p>
-                                <p>(1 bắp + 1 nước)</p>
-                            </div>
-                            <div class="middle col-md-4">
-                                45.000
-                            </div>
-                            <div class="right col-md-4">
-                                <button (click)="minuscombo()">-</button>
-                                <span>{{soLuongCombo}}</span>
-                                <button (click)="pluscombo()">+</button>
-                            </div>
-                        </div>
-                        <div class="row chonghe">
-                            <button (click)="toChonGhe()" [ngClass]="{checkThanhToan: checkChonGhe}"
-                                class="example_a">Chọn ghế <i class="fas fa-arrow-right"></i></button>
-                        </div>
+                <div class="right col-md-3">
+                    <div class="hinhanhphim row">
+                        <img [src]="thongTinPhim.hinhAnh" alt="">
                     </div>
-                    <div class="tab-pane container fade" id="chonghe">
-                        <div class="screen">
-                            <img src="../../../assets/img/screen.png" alt="">
-                        </div>
-                        <div class="danhsachghe">
-                            <ng-container *ngFor="let item of thongTinSuatChieu.danhSachGhe; let stt = index">
-                                <span class="anphabe" *ngIf="(stt+1)===1">A</span>
-                                <app-itemghe (eventDatGhe)="chonGhe($event)" [ghe]="item"></app-itemghe>
-                                <br *ngIf="(stt+1)%12===0">
-                                <span class="anphabe" *ngIf="(stt+1)%12===0">{{anphabe[(stt+1)/12]}}</span>
+
+                    <div class="row myrow">
+                        <div class="col-md-4 star">Vé thường</div>
+                        <div class="col-md-4 middle">{{soLuongVe}}</div>
+                        <div class="col-md-4 end">{{giaVe}}</div>
+                    </div>
+
+                    <div class="row myrow">
+                        <div class="col-md-4 star">Vé vip</div>
+                        <div class="col-md-4 middle">{{soLuongVeVip}}</div>
+                        <div class="col-md-4 end">{{giaVeVip}}</div>
+                    </div>
+                    <div class="row myrow">
+                        <div class="col-md-4 star">Số lượng combo</div>
+                        <div class="col-md-4 middle">{{soLuongCombo}}</div>
+                        <div class="col-md-4 end">{{giaCombo}}</div>
+                    </div>
+                    <div class="row myrow last">
+                        <div class="col-md-6 star">Số ghế</div>
+                        <div class="col-md-6 end">
+                            <ng-container *ngFor="let item of mangTenGheDuocClick; let index = index">
+                                <!-- <p>{{item.ghe.tenGhe}},</p> -->
+                                <p>{{item}},</p>
                             </ng-container>
-                            <br>
-                        </div>
-                        <div class="note d-flex align-items-center justify-content-center">
-                            <button class="gheVip"></button><span>Ghế vip</span><br>
-                            <button></button><span>Ghế Thường</span><br>
-                            <button class="ghedangchon"></button><span>Ghế đang chọn</span><br>
-                            <button class="ghedadat"></button><span>Ghế đã đặt</span><br>
-                        </div>
-                        <div class="back">
-                            <button (click)="toChonVe()" class="example_a"><i class="fas fa-arrow-left"></i> Quay
-                                lại</button>
                         </div>
                     </div>
-                    <div class="tab-pane container fade" id="chonhinhthucthanhtoan">
-                        <form autocomplete="off" #registerForm="ngForm"
-                            (ngSubmit)="btnFormThanhToan(registerForm.value)">
-                            <label for="inp" class="inp">
-                                <select class="form-control" name="maLoaiNguoiDung" type="text" id="inp select"
-                                    placeholder="Maloai">
-                                    <option value="">Thẻ ATM nội địa</option>
-                                    <option value="">Thẻ VISA/MASTER/JCB</option>
-                                </select>
-                                <span class="label">Hình thức thanh toán</span>
-                                <span class="border"></span>
-                            </label>
-
-                            <label for="inp" class="inp px-2">
-                                <input class="form-control" name="soThe" #SoThe="ngModel" ngModel required type="text">
-                                <!-- Check Validation -->
-                                <div *ngIf="SoThe.errors && (SoThe.dirty || SoThe.touched)">
-                                    <!-- Kiểm tra rỗng -->
-                                    <div *ngIf="SoThe.errors.required" class="danger">
-                                        (*)Vui lòng không được để trống
-                                    </div>
-                                </div>
-                                <span class="label">Số thẻ</span>
-                                <span class="border"></span>
-                            </label>
-
-                            <label for="inp" class="inp px-2">
-                                <input class="form-control" name="tenChuThe" #TenChuThe="ngModel" ngModel required
-                                    type="text">
-                                <!-- Check Validation -->
-                                <div *ngIf="TenChuThe.errors && (TenChuThe.dirty || TenChuThe.touched)">
-                                    <!-- Kiểm tra rỗng -->
-                                    <div *ngIf="TenChuThe.errors.required" class="danger">
-                                        (*)Vui lòng không được để trống
-                                    </div>
-                                </div>
-                                <span class="label">Tên chủ thẻ</span>
-                                <span class="border"></span>
-                            </label>
-
-                            <label for="inp" class="inp px-2">
-                                <input class="form-control" name="ngayHetHan" #NgayHetHan="ngModel" ngModel required
-                                    type="text">
-                                <!-- Check Validation -->
-                                <div *ngIf="NgayHetHan.errors && (NgayHetHan.dirty || NgayHetHan.touched)">
-                                    <!-- Kiểm tra rỗng -->
-                                    <div *ngIf="NgayHetHan.errors.required" class="danger">
-                                        (*)Vui lòng không được để trống
-                                    </div>
-                                </div>
-                                <span class="label">Ngày hết hạn</span>
-                                <span class="border"></span>
-                            </label>
-
-                            <label for="inp" class="inp px-2">
-                                <input class="form-control" name="cvv" #CVV="ngModel" ngModel required type="text">
-                                <!-- Check Validation -->
-                                <div *ngIf="CVV.errors && (CVV.dirty || CVV.touched)">
-                                    <!-- Kiểm tra rỗng -->
-                                    <div *ngIf="CVV.errors.required" class="danger">
-                                        (*)Vui lòng không được để trống
-                                    </div>
-                                </div>
-                                <span class="label">CVV/CVC2</span>
-                                <span class="border"></span>
-                            </label>
-
-                            <button [disabled]="!registerForm.form.valid" id="btn-formthanhtoan"></button>
-                        </form>
+                    <div class="row myrow">
+                        <div class="col-md-6 star tongtien">Tổng tiền</div>
+                        <div class="col-md-6 end tongtien">{{tongTien}}</div>
                     </div>
-                </div>
-            </div>
-            <div class="right col-md-3">
-                <div class="hinhanhphim row">
-                    <img [src]="thongTinPhim.hinhAnh" alt="">
-                </div>
-
-                <div class="row myrow">
-                    <div class="col-md-4 star">Vé thường</div>
-                    <div class="col-md-4 middle">{{soLuongVe}}</div>
-                    <div class="col-md-4 end">{{giaVe}}</div>
-                </div>
-
-                <div class="row myrow">
-                    <div class="col-md-4 star">Vé vip</div>
-                    <div class="col-md-4 middle">{{soLuongVeVip}}</div>
-                    <div class="col-md-4 end">{{giaVeVip}}</div>
-                </div>
-                <div class="row myrow">
-                    <div class="col-md-4 star">Số lượng combo</div>
-                    <div class="col-md-4 middle">{{soLuongCombo}}</div>
-                    <div class="col-md-4 end">{{giaCombo}}</div>
-                </div>
-                <div class="row myrow last">
-                    <div class="col-md-6 star">Số ghế</div>
-                    <div class="col-md-6 end">
-                        <ng-container *ngFor="let item of mangTenGheDuocClick; let index = index">
-                            <!-- <p>{{item.ghe.tenGhe}},</p> -->
-                            <p>{{item}},</p>
-                        </ng-container>
+                    <div class="row myrow">
+                        <button (click)="thanhToan()" [ngClass]="{checkThanhToan: checkThanhToan}"
+                            class="btn-thanhtoan">Thanh toán</button>
                     </div>
-                </div>
-                <div class="row myrow">
-                    <div class="col-md-6 star tongtien">Tổng tiền</div>
-                    <div class="col-md-6 end tongtien">{{tongTien}}</div>
-                </div>
-                <div class="row myrow">
-                    <button (click)="thanhToan()" [ngClass]="{checkThanhToan: checkThanhToan}"
-                        class="btn-thanhtoan">Thanh toán</button>
                 </div>
             </div>
         </div>
-    </div>
+    </ng-container>
+
+    <ng-template #spinners>
+        <h2 class="animate">Loading</h2>
+    </ng-template>
+
+
+
+
 </section>
 
 

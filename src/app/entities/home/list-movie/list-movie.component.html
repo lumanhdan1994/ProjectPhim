@@ -1,4 +1,11 @@
-<ng-container *ngIf="phimDetail">
+
+
+<ng-template #spinners>
+    <h2 class="animate">Loading</h2>
+</ng-template>
+
+
+<ng-container *ngIf="phimDetail; else spinners">
   <section id="ChiTietPhim">
     <div class="bg-img">
       <img [src]="phimDetail.hinhAnh" alt="" />
