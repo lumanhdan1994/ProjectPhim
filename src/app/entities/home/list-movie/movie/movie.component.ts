@@ -19,11 +19,12 @@ export class MovieComponent implements OnInit {
     private router: Router) { }
   
   ngOnInit() {
+    console.log(this.SuatChieu)
     this.Deduplicate();
+    
     // this.LayThongTinRap();
   }
   ngOnChanges() {
-    console.log(this.SuatChieu)
     this.Deduplicate();
   }
 
@@ -43,14 +44,10 @@ export class MovieComponent implements OnInit {
     // console.log(lichChieuClone)
 
     CumRapCLone.map((item) => {
-      // lichChieuClone = item.lichChieuPhim;
-      // pickingTime = lichChieuClone.filter(item => (item.ngayChieuGioChieu.slice(0, 10) === this.DateSelected))
       item.pickingTime = [...lichChieuClone]
     })
     this.SuatChieuDeduplicate.cumRapChieu = CumRapCLone
-    // console.log(CumRapCLone)
-    // console.log(this.SuatChieuDeduplicate)
-    // console.log(this.SuatChieu)
+    console.log(this.SuatChieu)
     this.LayThongTinRap();
   }
 

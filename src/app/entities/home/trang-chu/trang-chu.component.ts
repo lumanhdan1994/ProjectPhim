@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class TrangChuComponent implements OnInit {
   constructor() {
-    console.log("constructor");
+    // console.log("constructor");
   }
 
   // ngOnChanges() {
@@ -15,7 +15,7 @@ export class TrangChuComponent implements OnInit {
   // }
 
   ngOnInit() {
-    console.log("ngOnInit");
+    // console.log("ngOnInit");
   }
 
   // ngAfterViewInit() {

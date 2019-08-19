@@ -10,12 +10,12 @@ import { AuthInterceptor } from './common/guards/jwt.interception';
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-      useValue: "/"
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true,
+    //   useValue: "/"
+    // }
   ],
   bootstrap: [AppComponent]
 })
