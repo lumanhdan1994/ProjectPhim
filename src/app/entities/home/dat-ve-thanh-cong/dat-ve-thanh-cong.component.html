@@ -1,64 +1,73 @@
 <router-outlet></router-outlet>
-<section id="checkout">
-    <div class="container">
-        <div class="mycontent row">
-            <div class="left col-md-8">
-                <div class="infor row">
-                    <div class="col-md-12">
-                        <h3>Đặt vé thành công!</h3>
-                        <div class="row cumrap">
-                            <div class="col-md-4">
-                                <p>Tên cụm rạp</p>
-                                <p class="inforp">{{thongTinSuatChieu.tenCumRap}}</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p>Địa chỉ</p>
-                                <p class="inforp">{{thongTinSuatChieu.diaChi}}</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p>Rạp</p>
-                                <p class="inforp">{{thongTinSuatChieu.tenRap}}</p>
-                            </div>
-                        </div>
-                        <div class="row cumrap">
-                            <div class="col-md-4">
-                                <p>Combo</p>
-                                <p class="inforp">1 bắp + 1 nước</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p>Số lượng</p>
-                                <p class="inforp">{{inforTicket.soLuongCombo}}</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p>Ghế</p>
-                                <ng-container *ngFor="let item of inforTicket.ghe">
-                                    <span class="inforp">{{item}},</span>
-                                </ng-container>
-                            </div>
-                        </div>
 
-                        <div class="row cumrap tongTien">
-                            <div class="col-md-4">
-                                <p>Mã GD</p>
-                                <p class="inforp">No.1005200312</p>
-                                <img class="qrcode" src="../../../../assets/img/qrcode.png" alt="qrcode">
+<ng-container *ngIf="thongTinSuatChieu && thongTinPhim.hinhAnh && maPhim; else spinners">
+    <section id="checkout">
+        <div class="container">
+            <div class="mycontent row">
+                <div class="left col-md-8">
+                    <div class="infor row">
+                        <div class="col-md-12">
+                            <h3>Đặt vé thành công!</h3>
+                            <div class="row cumrap">
+                                <div class="col-md-4">
+                                    <p>Tên cụm rạp</p>
+                                    <p class="inforp">{{thongTinSuatChieu.tenCumRap}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Địa chỉ</p>
+                                    <p class="inforp">{{thongTinSuatChieu.diaChi}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Rạp</p>
+                                    <p class="inforp">{{thongTinSuatChieu.tenRap}}</p>
+                                </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="row cumrap">
+                                <div class="col-md-4">
+                                    <p>Combo</p>
+                                    <p class="inforp">1 bắp + 1 nước</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Số lượng</p>
+                                    <p class="inforp">{{inforTicket.soLuongCombo}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Ghế</p>
+                                    <ng-container *ngFor="let item of inforTicket.ghe">
+                                        <span class="inforp">{{item}},</span>
+                                    </ng-container>
+                                </div>
+                            </div>
 
-                            </div>
-                            <div class="col-md-4">
-                                <p>Tổng tiền</p>
-                                <p class="inforp tongTien">{{inforTicket.tongTien}}</p>
+                            <div class="row cumrap tongTien">
+                                <div class="col-md-4">
+                                    <p>Mã GD</p>
+                                    <p class="inforp">No.1005200312</p>
+                                    <img class="qrcode" src="../../../../assets/img/qrcode.png" alt="qrcode">
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Tổng tiền</p>
+                                    <p class="inforp tongTien">{{inforTicket.tongTien}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
-            <div class="right col-md-4">
-                <img [src]="thongTinPhim.hinhAnh" alt="phim">
-                <p class="detail-movie">{{thongTinPhim.tenPhim}}</p>
+                </div>
+                <div class="right col-md-4">
+                    <img [src]="thongTinPhim.hinhAnh" alt="phim">
+                    <p class="detail-movie">{{thongTinPhim.tenPhim}}</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</ng-container>
+
+
+<ng-template #spinners>
+    <h2 class="animate">Loading</h2>
+</ng-template>
+
