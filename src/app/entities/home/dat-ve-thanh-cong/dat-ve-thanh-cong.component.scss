@@ -1,3 +1,251 @@
-p{
-    color: white;
+@import "../../../../Helper/variable";
+
+* {
+  color: white;
+}
+
+#checkout {
+  height: 100vh;
+  align-items: center;
+  .mycontent {
+    padding: 50px 0;
+    .left {
+      padding: 0px;
+      .infor {
+        h3 {
+          display: inline;
+          color: #fb4226;
+        }
+        p {
+          color: #e9e9e9;
+          margin: 0;
+          margin-bottom: 10px;
+          display: inline-block;
+        }
+        .name {
+          font-size: 24px;
+          span {
+            margin-top: 6px;
+            margin-right: 5px;
+            float: left;
+            background-color: #fb4226;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 4px;
+            padding: 0 5px;
+            display: inline-block;
+            text-align: center;
+          }
+        }
+        .time {
+          font-size: 14px;
+          font-weight: normal;
+          margin-left: 20px;
+          span {
+            margin-right: 7px;
+          }
+        }
+        .detailmovie {
+          font-size: 14px;
+          color: rgb(151, 151, 151);
+        }
+        .cumrap {
+          padding: 30px 0;
+          .qrcode {
+            width: 120px;
+          }
+          p {
+            display: block;
+            font-size: 14px;
+            color: rgb(151, 151, 151);
+          }
+          p.inforp {
+            font-size: 15px;
+            color: white;
+          }
+          p.inforp.tongTien {
+            font-size: 30px;
+            color: $color-text;
+          }
+        }
+        .cumrap.tongTien {
+          padding-right: 50px;
+          border-top: 1px solid $color-border;
+        }
+      }
+      .tab-content {
+        overflow: hidden;
+        #chonve {
+          border-bottom: 1px solid $color-border;
+          border-top: 1px solid $color-border;
+          padding-bottom: 50px !important;
+          animation: fall ease-in-out 1.5s;
+          animation-fill-mode: bold;
+          @keyframes fall {
+            0% {
+              opacity: 0;
+              transform: (translateY(-150px));
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          .chonve {
+            margin: 50px 0;
+            p {
+              display: block;
+            }
+            p:last-child {
+              font-size: 14px;
+              color: #979797;
+            }
+            .left {
+              display: flex;
+              justify-content: flex-star;
+            }
+            .middle {
+              display: flex;
+              justify-content: center;
+            }
+            .right {
+              display: flex;
+              justify-content: flex-end;
+              button {
+                width: 29px;
+                height: 29px;
+                background-color: unset;
+                border: none;
+                font-weight: bolder;
+                font-size: 25px;
+                transition: all ease 0.1s;
+                &:focus {
+                  outline: none;
+                }
+                &:active {
+                  font-size: 27px;
+                }
+              }
+              span {
+                margin: 6px 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 30px;
+                height: 30px;
+                background-color: rgb(104, 104, 104);
+              }
+            }
+          }
+          .chonghe {
+            button {
+              margin-left: 15px;
+              i {
+                margin-left: 7px;
+              }
+            }
+          }
+        }
+        #chonghe {
+          position: relative;
+          height: 550px;
+          border-bottom: 1px solid #303030;
+          animation: fall ease-in-out 1.5s;
+          animation-fill-mode: bold;
+          @keyframes fall {
+            0% {
+              opacity: 0;
+              transform: (translateY(-150px));
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          .screen {
+            img {
+              width: 100%;
+            }
+          }
+          .danhsachghe {
+            width: 320px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-top: 10px;
+            .anphabe {
+              display: inline-block;
+              width: 25px;
+            }
+            .ghe {
+              padding: 10px 0;
+              // button{
+              //     background-color: #686868;
+              //     font-size: 13px;
+              //     white-space: nowrap;
+              //     width: 40px;
+              //     height: 40px;
+              //     border: none;
+              //     &:focus{
+              //         outline: none;
+              //     }
+              // }
+              // .styleghedachon{
+              //     background-color: $color-text;
+              // }
+            }
+          }
+          .note {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            margin-bottom: 20px;
+            button {
+              margin: 2px;
+              background-color: #686868;
+              font-size: 13px;
+              white-space: nowrap;
+              width: 20px;
+              height: 20px;
+              border: none;
+              border-radius: 2px;
+              transition: all linear 0.15s;
+              &:focus {
+                outline: none;
+              }
+            }
+            span {
+              padding: 0 10px;
+            }
+            .ghedangchon {
+              background-color: $color-text;
+            }
+            .gheVip {
+              background-color: rgb(207, 162, 37);
+            }
+            .gheVip.styleghedachon {
+              background-color: $color-text;
+            }
+            .ghedadat {
+              background-color: rgba(0, 0, 0, 0.89);
+            }
+          }
+          .back {
+            padding: 50px 0;
+          }
+        }
+      }
+    }
+    .right {
+      padding: 10px 30px;
+      img {
+        width: 250px;
+        border-radius: 2px;
+        box-shadow: -6px 6px 10px black;
+      }
+      .detail-movie {
+          margin-top: 30px;
+          text-shadow: -6px 6px 10px black;
+          font-size: 20px;
+      }
+    }
+  }
 }

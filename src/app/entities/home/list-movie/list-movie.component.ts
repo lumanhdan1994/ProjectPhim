@@ -44,14 +44,14 @@ export class ListMovieComponent implements OnInit {
     const uri = `QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${this.maPhim}`;
     this.dataService.get(uri).subscribe((data: any) => {
       this.phimDetail = data;
-      console.log(this.phimDetail);
+      // console.log(this.phimDetail);
       this.LayThongTinCumRap();
       let star = 0;
       while (star < this.phimDetail.danhGia) {
         star++;
         this.mangDanhGia.push(star);
       }
-      console.log(this.mangDanhGia)
+      // console.log(this.mangDanhGia)
     });
 
   }
@@ -95,6 +95,8 @@ export class ListMovieComponent implements OnInit {
 
   AfterTheaterSelected() {
     if (this.flagCheck) {
+      // console.log("asd")
+
       $($(".btnLich")[0]).click();
       this.flagCheck = false;
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
 import { ItemgheComponent } from './itemghe/itemghe.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { FormComponent } from './form/form.component';
 
 
@@ -44,16 +44,17 @@ export class DatveComponent implements OnInit {
   checkToThanhToan: boolean = false;
   count: number = 0;
   taiKhoanDaDangNhap: any = {};
-  accessToken: "";
+  thongTinDatVe: any = {};
 
-  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
+
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.getParamUrl();
     this.layThongTinSuatChieu();
     this.taiKhoanDaDangNhap = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
-    if(this.taiKhoanDaDangNhap != null){
-      this.checkLogIn = this.taiKhoanDaDangNhap.checkLogIn;  
+    if (this.taiKhoanDaDangNhap != null) {
+      this.checkLogIn = this.taiKhoanDaDangNhap.checkLogIn;
       this.inforUser = this.taiKhoanDaDangNhap.inforUser;
     }
   }
@@ -64,7 +65,7 @@ export class DatveComponent implements OnInit {
       this.giaVe = this.soLuongVe * 85000;
       this.tongTien = this.giaVe + this.giaCombo + this.giaVeVip;
     }
-    if(this.soLuongVe === 0){
+    if (this.soLuongVe === 0) {
       this.checkChonGhe = false;
     }
   }
@@ -75,7 +76,7 @@ export class DatveComponent implements OnInit {
       this.giaVe = this.soLuongVe * 85000;
       this.tongTien = this.giaVe + this.giaCombo + this.giaVeVip;
     }
-    if(this.soLuongVe !== 0){
+    if (this.soLuongVe !== 0) {
       this.checkChonGhe = true;
     }
   }
@@ -86,7 +87,7 @@ export class DatveComponent implements OnInit {
       this.giaVeVip = this.soLuongVeVip * 90000;
       this.tongTien = this.giaVeVip + this.giaCombo + this.giaVe;
     }
-    if(this.soLuongVeVip !== 0){
+    if (this.soLuongVeVip !== 0) {
       this.checkChonGhe = true;
     }
   }
@@ -97,7 +98,7 @@ export class DatveComponent implements OnInit {
       this.giaVeVip = this.soLuongVeVip * 90000;
       this.tongTien = this.giaVeVip + this.giaCombo + this.giaVe;
     }
-    if(this.soLuongVeVip === 0){
+    if (this.soLuongVeVip === 0) {
       this.checkChonGhe = false;
     }
   }
@@ -119,9 +120,9 @@ export class DatveComponent implements OnInit {
   }
 
   toChonGhe() {
-    if(this.soLuongVe === 0 && this.soLuongVeVip === 0){
+    if (this.soLuongVe === 0 && this.soLuongVeVip === 0) {
       alert("Vui lòng đặt vé!");
-    }else{
+    } else {
       $("#navtagChonGhe").click();
     }
   }
@@ -131,10 +132,10 @@ export class DatveComponent implements OnInit {
   }
 
   chonGhe($event) {
-    if($event.ghe.loaiGhe === "Thuong"){
-      if(this.soLuongVe === 0 && this.soLuongVeVip === 0){
+    if ($event.ghe.loaiGhe === "Thuong") {
+      if (this.soLuongVe === 0 && this.soLuongVeVip === 0) {
         alert("Xin vui lòng chọn vé");
-      }else{
+      } else {
         if ($event.trangThaiChon === true) {
           if (this.mangGheDaChon.length < this.soLuongVe) {
             this.mangGheDaChon.push($event);
@@ -148,9 +149,9 @@ export class DatveComponent implements OnInit {
             let tenGheDuocClick = this.anphabe[this.sttAnphabeDuocClick] + (sttGhe);
             this.mangTenGheDuocClick.push(tenGheDuocClick);
           } else {
-            if(this.soLuongVe === 0 ) {
+            if (this.soLuongVe === 0) {
               alert("Bạn không đặt vé thường")
-            }else{
+            } else {
               alert(`Hey! bạn chỉ được chọn ${this.soLuongVe} ghế thường thôi`);
             }
             this.tagItemGhe.map((item) => {
@@ -160,27 +161,27 @@ export class DatveComponent implements OnInit {
             })
           }
         }
-    
+
         if ($event.trangThaiChon === false) {
           this.mangGheDaChon.map((item, index) => {
             if (item.ghe.tenGhe === $event.ghe.tenGhe) {
               this.mangGheDaChon.splice(index, 1);
               this.mangTenGheDuocClick.splice(index, 1);
             }
-            if(this.mangGheDaChon.length != this.soLuongVe){
+            if (this.mangGheDaChon.length != this.soLuongVe) {
               this.checkThanhToan = false;
             }
           })
         }
-        if(this.mangGheVipDaChon.length === this.soLuongVeVip && this.mangGheDaChon.length === this.soLuongVe){
+        if (this.mangGheVipDaChon.length === this.soLuongVeVip && this.mangGheDaChon.length === this.soLuongVe) {
           this.checkThanhToan = true;
         }
       }
     }
-    if($event.ghe.loaiGhe === "Vip"){
-      if(this.soLuongVe === 0 && this.soLuongVeVip === 0){
-        alert("Xin vui lòng chọn vé");  
-      }else{
+    if ($event.ghe.loaiGhe === "Vip") {
+      if (this.soLuongVe === 0 && this.soLuongVeVip === 0) {
+        alert("Xin vui lòng chọn vé");
+      } else {
         if ($event.trangThaiChon === true) {
           if (this.mangGheVipDaChon.length < this.soLuongVeVip) {
             this.mangGheVipDaChon.push($event);
@@ -194,9 +195,9 @@ export class DatveComponent implements OnInit {
             let tenGheDuocClick = this.anphabe[this.sttAnphabeDuocClick] + (sttGhe);
             this.mangTenGheDuocClick.push(tenGheDuocClick);
           } else {
-            if(this.soLuongVeVip === 0 ) {
+            if (this.soLuongVeVip === 0) {
               alert("Bạn không đặt vé vip")
-            }else{
+            } else {
               alert(`Hey! bạn chỉ được chọn ${this.soLuongVeVip} ghế vip thôi`);
             }
             this.tagItemGhe.map((item) => {
@@ -206,19 +207,19 @@ export class DatveComponent implements OnInit {
             })
           }
         }
-    
+
         if ($event.trangThaiChon === false) {
           this.mangGheVipDaChon.map((item, index) => {
             if (item.ghe.tenGhe === $event.ghe.tenGhe) {
               this.mangGheVipDaChon.splice(index, 1);
               this.mangTenGheDuocClick.splice(index, 1);
             }
-            if(this.mangGheVipDaChon.length != this.soLuongVeVip){
+            if (this.mangGheVipDaChon.length != this.soLuongVeVip) {
               this.checkThanhToan = false;
             }
           })
         }
-        if(this.mangGheVipDaChon.length === this.soLuongVeVip && this.mangGheDaChon.length === this.soLuongVe){
+        if (this.mangGheVipDaChon.length === this.soLuongVeVip && this.mangGheDaChon.length === this.soLuongVe) {
           this.checkThanhToan = true;
         }
       }
@@ -233,12 +234,13 @@ export class DatveComponent implements OnInit {
     const uri = `QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${this.maLichChieu}`;
     this.dataService.get(uri).subscribe((data: any) => {
       this.thongTinSuatChieu = data;
-      // console.log(this.thongTinSuatChieu);
       this.thongTinSuatChieu.danhSachGhe.map((item) => {
-        if(item.stt > 48 && item.stt < 121){
-          item.loaiGhe = "Vip"
+        if (item.stt > 48 && item.stt < 121) {
+          item.loaiGhe = "Vip";
+          item.giaVe = 90000;
         } else {
-          item.loaiGhe = "Thuong"
+          item.loaiGhe = "Thuong";
+          item.giaVe = 75000;
         }
       })
       // lay thong tin chi tiet phim
@@ -266,8 +268,8 @@ export class DatveComponent implements OnInit {
       alert(`Xin vui lòng chọn vé!`);
     } else if (this.mangGheDaChon.length === 0 && this.mangGheVipDaChon.length === 0) {
       alert(`Xin vui lòng chọn ghế!`);
-    }else if(this.mangGheDaChon.length != this.soLuongVe || this.mangGheVipDaChon.length != this.soLuongVeVip) {
-      alert(`Bạn chưa đặt đủ số lượng ghế!`);      
+    } else if (this.mangGheDaChon.length != this.soLuongVe || this.mangGheVipDaChon.length != this.soLuongVeVip) {
+      alert(`Bạn chưa đặt đủ số lượng ghế!`);
     } else {
       if (this.checkLogIn === false) {
         $("#navtagThanhToan").click();
@@ -277,48 +279,49 @@ export class DatveComponent implements OnInit {
           if (this.checkFormThanhToan === false) {
             alert("Vui lòng điền đầy đủ thông tin!");
           } else {
-            alert("đặt vé thành công!");
             const uri = "QuanLyDatVe/DatVe";
-            let thongTinVe = {
-              maGhe: "",
-              giaVe: ""
-            };  
             let mangThongTinVe = [];
+
             this.mangGheDaChon.map((item) => {
-              thongTinVe.maGhe = item.ghe.maGhe;
-              thongTinVe.giaVe = item.ghe.giaVe;
-              // console.log(thongTinVe);
-              mangThongTinVe.push(item);
-              // console.log(mangThongTinVe);
+              let thongTinVe = {
+                maGhe: item.ghe.maGhe,
+                giaVe: item.ghe.maGhe
+              };
+              mangThongTinVe = [...mangThongTinVe, thongTinVe]
             })
-              // console.log(mangThongTinVe);
-              // console.log(this.mangGheDaChon)
-              this.mangGheVipDaChon.map((item) => {
-              thongTinVe.maGhe = item.ghe.maGhe;
-              thongTinVe.giaVe = item.ghe.giaVe;
-              mangThongTinVe.push(thongTinVe);
+
+            this.mangGheVipDaChon.map((item) => {
+              let thongTinVe = {
+                maGhe: item.ghe.maGhe,
+                giaVe: item.ghe.maGhe
+              };
+              mangThongTinVe = [...mangThongTinVe, thongTinVe]
             })
-            const thongTinDatVe = {
-              maLichChieu: this.maLichChieu,
+            if (this.taiKhoanDaDangNhap === null) {
+              this.taiKhoanDaDangNhap = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
+            }
+
+            let thongTinDatVe = {
+              maLichChieu: parseInt(this.maLichChieu),
               danhSachVe: mangThongTinVe,
               taiKhoanNguoiDung: this.taiKhoanDaDangNhap.inforUser.taiKhoan,
             };
-            // console.log(thongTinDatVe);
-            // api đặt vé
-            const thongTinDatVe2 = 
-            {
-              "maLichChieu": "16532",
-              "danhSachVe": [
-                {
-                  "maGhe": 51269,
-                  "giaVe": 75000
-                }
-              ],
-              "taiKhoanNguoiDung": "phucdinh95"
-            }
-            this.dataService.post(uri, thongTinDatVe2).subscribe((data) => {
-              console.log(data);
-            })
+
+            this.dataService.post(uri, thongTinDatVe).subscribe(
+              (data) => {
+
+              }, (err) => {
+                this.router.navigate(['/datvethanhcong'], {
+                  queryParams: {
+                    tongTien: this.tongTien,
+                    maLichChieu: this.maLichChieu,
+                    maPhim: this.maPhim,
+                    soLuongCombo: this.soLuongCombo,
+                    ghe: this.mangTenGheDuocClick,
+                  },
+                })
+              }
+            )
           }
         }
       } else {
@@ -328,7 +331,7 @@ export class DatveComponent implements OnInit {
     }
   }
 
-  btnFormThanhToan(value){
+  btnFormThanhToan(value) {
     this.checkFormThanhToan = true;
   }
 
@@ -360,14 +363,13 @@ export class DatveComponent implements OnInit {
     })
   }
 
-  checkDangNhap(form){
+  checkDangNhap(form) {
     this.checkLogIn = form.checkLogIn;
     this.inforUser = form.inforUser;
-    console.log(this.inforUser);
     $("#myModal").click();
   }
 
-  dangXuat(){
+  dangXuat() {
     localStorage.clear();
     location.reload()
   }
