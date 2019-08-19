@@ -1,0 +1,25 @@
+<ng-container *ngIf="UserList.length != 0; else SpinnerLoading">
+    <table>
+        <thead>
+            <th>Tài Khoản</th>
+            <th>Họ Tên</th>
+            <th>Email</th>
+            <th>SĐT</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of UserList">
+                <td>{{item.taiKhoan}}</td>
+                <td>{{item.hoTen}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.soDt}}</td>
+                <td>
+                    <button mat-flat-button color="warn">Warn</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>
+<ng-template #SpinnerLoading>
+    <p>asdasd</p>
+</ng-template>
