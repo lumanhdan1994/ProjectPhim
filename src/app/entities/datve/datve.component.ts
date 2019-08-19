@@ -46,7 +46,7 @@ export class DatveComponent implements OnInit {
   taiKhoanDaDangNhap: any = {};
   thongTinDatVe: any = {};
 
-  
+
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -312,13 +312,13 @@ export class DatveComponent implements OnInit {
 
               }, (err) => {
                 this.router.navigate(['/datvethanhcong'], {
-                  queryParams: { 
+                  queryParams: {
                     tongTien: this.tongTien,
                     maLichChieu: this.maLichChieu,
                     maPhim: this.maPhim,
                     soLuongCombo: this.soLuongCombo,
                     ghe: this.mangTenGheDuocClick,
-                   },
+                  },
                 })
               }
             )

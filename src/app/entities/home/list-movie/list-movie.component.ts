@@ -96,7 +96,7 @@ export class ListMovieComponent implements OnInit {
   AfterTheaterSelected() {
     if (this.flagCheck) {
       // console.log("asd")
-      
+
       $($(".btnLich")[0]).click();
       this.flagCheck = false;
     }
