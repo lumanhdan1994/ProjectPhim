@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
+import { ToastrService } from 'ngx-toastr';
 // import { $ } from 'protractor';
 declare var $: any;
 
@@ -15,7 +16,7 @@ export class FormComponent implements OnInit {
   accessToken: "";
   @Output() eventDangNhap = new EventEmitter();
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.layMaLoaiNguoiDung();
@@ -49,11 +50,11 @@ export class FormComponent implements OnInit {
     this.dataService.post(uri, nguoiDung).subscribe((data: any) => {
 
       if (data === "Email đã tồn tại!") {
-        alert(data);
+         this.toastr.error(data);
       } else if (data === "Tài khoản đã tồn tại!") {
-        alert(data);
+         this.toastr.error(data);
       } else {
-        alert("Đăng kí thàng công!");
+         this.toastr.success("Đăng kí thàng công!");
         $(document).ready(() => {
           $("#tab-dangnhap").click();
         });

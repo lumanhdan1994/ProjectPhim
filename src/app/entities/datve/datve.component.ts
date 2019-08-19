@@ -3,6 +3,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { ItemgheComponent } from './itemghe/itemghe.component';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { FormComponent } from './form/form.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 declare var $: any;
@@ -47,7 +48,7 @@ export class DatveComponent implements OnInit {
   thongTinDatVe: any = {};
 
 
-  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getParamUrl();
@@ -121,7 +122,7 @@ export class DatveComponent implements OnInit {
 
   toChonGhe() {
     if (this.soLuongVe === 0 && this.soLuongVeVip === 0) {
-      alert("Vui lòng đặt vé!");
+      this.toastr.error("Vui lòng đặt vé!", "Thông báo");
     } else {
       $("#navtagChonGhe").click();
     }
@@ -134,7 +135,7 @@ export class DatveComponent implements OnInit {
   chonGhe($event) {
     if ($event.ghe.loaiGhe === "Thuong") {
       if (this.soLuongVe === 0 && this.soLuongVeVip === 0) {
-        alert("Xin vui lòng chọn vé");
+        this.toastr.error("Xin vui lòng chọn vé", "Thông báo");
       } else {
         if ($event.trangThaiChon === true) {
           if (this.mangGheDaChon.length < this.soLuongVe) {
@@ -150,9 +151,9 @@ export class DatveComponent implements OnInit {
             this.mangTenGheDuocClick.push(tenGheDuocClick);
           } else {
             if (this.soLuongVe === 0) {
-              alert("Bạn không đặt vé thường")
+              this.toastr.error("Bạn không đặt vé thường", "Thông báo")
             } else {
-              alert(`Hey! bạn chỉ được chọn ${this.soLuongVe} ghế thường thôi`);
+              this.toastr.error(`Hey! bạn chỉ được chọn ${this.soLuongVe} ghế thường thôi`, "Thông báo");
             }
             this.tagItemGhe.map((item) => {
               if (item.ghe.maGhe === $event.ghe.maGhe) {
@@ -180,7 +181,7 @@ export class DatveComponent implements OnInit {
     }
     if ($event.ghe.loaiGhe === "Vip") {
       if (this.soLuongVe === 0 && this.soLuongVeVip === 0) {
-        alert("Xin vui lòng chọn vé");
+        this.toastr.error("Xin vui lòng chọn vé", "Thông báo");
       } else {
         if ($event.trangThaiChon === true) {
           if (this.mangGheVipDaChon.length < this.soLuongVeVip) {
@@ -196,9 +197,9 @@ export class DatveComponent implements OnInit {
             this.mangTenGheDuocClick.push(tenGheDuocClick);
           } else {
             if (this.soLuongVeVip === 0) {
-              alert("Bạn không đặt vé vip")
+              this.toastr.error("Bạn không đặt vé vip", "Thông báo")
             } else {
-              alert(`Hey! bạn chỉ được chọn ${this.soLuongVeVip} ghế vip thôi`);
+              this.toastr.error(`Hey! bạn chỉ được chọn ${this.soLuongVeVip} ghế vip thôi`, "Thông báo");
             }
             this.tagItemGhe.map((item) => {
               if (item.ghe.maGhe === $event.ghe.maGhe) {
@@ -265,11 +266,11 @@ export class DatveComponent implements OnInit {
 
   thanhToan() {
     if (this.soLuongVe === 0 && this.soLuongVeVip === 0) {
-      alert(`Xin vui lòng chọn vé!`);
+      this.toastr.error(`Xin vui lòng chọn vé!`, "Thông báo");
     } else if (this.mangGheDaChon.length === 0 && this.mangGheVipDaChon.length === 0) {
-      alert(`Xin vui lòng chọn ghế!`);
+      this.toastr.error(`Xin vui lòng chọn ghế!`, "Thông báo");
     } else if (this.mangGheDaChon.length != this.soLuongVe || this.mangGheVipDaChon.length != this.soLuongVeVip) {
-      alert(`Bạn chưa đặt đủ số lượng ghế!`);
+      this.toastr.error(`Bạn chưa đặt đủ số lượng ghế!`, "Thông báo");
     } else {
       if (this.checkLogIn === false) {
         $("#navtagThanhToan").click();
@@ -277,7 +278,7 @@ export class DatveComponent implements OnInit {
         this.count++;
         if (this.count > 1) {
           if (this.checkFormThanhToan === false) {
-            alert("Vui lòng điền đầy đủ thông tin!");
+            this.toastr.error("Vui lòng điền đầy đủ thông tin!", "Thông báo");
           } else {
             const uri = "QuanLyDatVe/DatVe";
             let mangThongTinVe = [];

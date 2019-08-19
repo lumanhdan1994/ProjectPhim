@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^8.2.0",
+    "@angular/animations": "^8.2.2",
     "@angular/cdk": "^8.1.2",
     "@angular/common": "~8.0.0",
     "@angular/compiler": "~8.0.0",
@@ -25,6 +25,7 @@
     "hammerjs": "^2.0.8",
     "jquery": "^3.4.1",
     "ngx-slick-carousel": "^0.4.4",
+    "ngx-toastr": "^10.1.0",
     "percircle": "^1.0.27",
     "popper.js": "^1.15.0",
     "rxjs": "~6.4.0",
