@@ -238,7 +238,7 @@
                     </div>
                     <div class="row myrow">
                         <div class="col-md-6 star tongtien">Tổng tiền</div>
-                        <div class="col-md-6 end tongtien">{{tongTien | currency:'VND':'symbol':'4.0-2'}}</div>
+                        <div class="col-md-6 end tongtien" [ngClass]="{animation: animation}">{{tongTien | currency:'VND':'symbol':'4.0-2'}}</div>
                     </div>
                     <div class="row myrow">
                         <button (click)="thanhToan()" [ngClass]="{checkThanhToan: checkThanhToan}"
@@ -263,7 +263,7 @@
 <!-- The Modal -->
 <div class="modal" id="myModal">
     <div class="modal-dialog">
-        <!-- <app-form (eventDangNhap)="checkDangNhap($event)"></app-form> -->
+        <app-form (eventDangNhap)="checkDangNhap($event)"></app-form>
     </div>
 
 </div>

@@ -46,7 +46,8 @@ export class DatveComponent implements OnInit {
   count: number = 0;
   taiKhoanDaDangNhap: any = {};
   thongTinDatVe: any = {};
-
+  // animation: any = {check: false, count: 0 }
+  animation: boolean = false;
 
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
@@ -60,8 +61,16 @@ export class DatveComponent implements OnInit {
     }
   }
 
+  animationTotalMoney() {
+    this.animation = true;
+    setTimeout(() => {
+      this.animation = false;
+    }, 1000);
+  }
+
   minusve() {
     if (this.soLuongVe > 0) {
+      this.animationTotalMoney() 
       this.soLuongVe--;
       this.giaVe = this.soLuongVe * 85000;
       this.tongTien = this.giaVe + this.giaCombo + this.giaVeVip;
@@ -73,6 +82,7 @@ export class DatveComponent implements OnInit {
 
   plusve() {
     if (this.tongTien < 800000) {
+      this.animationTotalMoney() 
       this.soLuongVe++;
       this.giaVe = this.soLuongVe * 85000;
       this.tongTien = this.giaVe + this.giaCombo + this.giaVeVip;
@@ -84,6 +94,7 @@ export class DatveComponent implements OnInit {
 
   plusveVip() {
     if (this.tongTien < 800000) {
+      this.animationTotalMoney() 
       this.soLuongVeVip++;
       this.giaVeVip = this.soLuongVeVip * 90000;
       this.tongTien = this.giaVeVip + this.giaCombo + this.giaVe;
@@ -95,6 +106,7 @@ export class DatveComponent implements OnInit {
 
   minusveVip() {
     if (this.soLuongVeVip > 0) {
+      this.animationTotalMoney() 
       this.soLuongVeVip--;
       this.giaVeVip = this.soLuongVeVip * 90000;
       this.tongTien = this.giaVeVip + this.giaCombo + this.giaVe;
@@ -106,6 +118,7 @@ export class DatveComponent implements OnInit {
 
   minuscombo() {
     if (this.soLuongCombo > 0) {
+      this.animationTotalMoney();
       this.soLuongCombo--;
       this.giaCombo = this.soLuongCombo * 45000;
       this.tongTien = this.giaVeVip + this.giaCombo + this.giaVe;
@@ -114,6 +127,7 @@ export class DatveComponent implements OnInit {
 
   pluscombo() {
     if (this.tongTien < 800000) {
+      this.animationTotalMoney();
       this.soLuongCombo++;
       this.giaCombo = this.soLuongCombo * 45000;
       this.tongTien = this.giaVeVip + this.giaCombo + this.giaVe;
