@@ -565,3 +565,20 @@ option:hover {
 .form-control {
   box-shadow: none;
 }
+
+
+.animation{
+  animation: animationTotalmoney ease-in-out 1s ;
+}
+
+@keyframes animationTotalmoney {
+  0% {
+
+  }
+  50% {
+    transform: scaleY(1.5);
+  }
+  100% {
+
+  }
+}
