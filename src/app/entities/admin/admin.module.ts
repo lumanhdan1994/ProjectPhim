@@ -7,10 +7,11 @@ import { AdminSidebarComponent } from 'src/app/layouts/admin-sidebar/admin-sideb
 import { QuanLyUserComponent } from './quan-ly-user/quan-ly-user.component';
 import { QuanLyPhimComponent } from './quan-ly-phim/quan-ly-phim.component';
 import { ModalComponent, BottomSheetOverviewExampleSheet } from './modal/modal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AdminComponent, AdminSidebarComponent, QuanLyUserComponent, QuanLyPhimComponent, ModalComponent, BottomSheetOverviewExampleSheet],
-  imports: [CommonModule, AdminRoutingModule, DemoMaterialModule],
+  imports: [CommonModule, AdminRoutingModule, DemoMaterialModule, FormsModule],
   entryComponents: [ModalComponent, BottomSheetOverviewExampleSheet],
   bootstrap: [ModalComponent],
   providers: []

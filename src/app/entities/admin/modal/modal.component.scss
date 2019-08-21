@@ -1,11 +1,19 @@
 @import "../../../../Helper/variable";
 
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.danger {
+  color: red;
+  font-size: 13px;
+  padding-bottom: 10px;
+  margin-top: -16px;
+}
+

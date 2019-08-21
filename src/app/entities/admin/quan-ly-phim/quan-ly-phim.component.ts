@@ -23,4 +23,14 @@ export class QuanLyPhimComponent implements OnInit {
       this.ListMovie = data;
     })
   }
+
+  delete(maPhim){
+    const uri = `QuanLyPhim/XoaPhim?MaPhim=${parseInt(maPhim)}`;
+    this.dataService.post(uri).subscribe((data) => {
+      console.log(data);
+    }, (err) => {
+      // alert(err.error)
+      console.log(err)
+    })
+  }
 }
