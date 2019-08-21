@@ -6,9 +6,13 @@ import { DemoMaterialModule } from 'src/app/shared/material/material.module';
 import { AdminSidebarComponent } from 'src/app/layouts/admin-sidebar/admin-sidebar.component';
 import { QuanLyUserComponent } from './quan-ly-user/quan-ly-user.component';
 import { QuanLyPhimComponent } from './quan-ly-phim/quan-ly-phim.component';
+import { ModalComponent, BottomSheetOverviewExampleSheet } from './modal/modal.component';
 
 @NgModule({
-  declarations: [AdminComponent, AdminSidebarComponent, QuanLyUserComponent, QuanLyPhimComponent],
-  imports: [CommonModule, AdminRoutingModule, DemoMaterialModule]
+  declarations: [AdminComponent, AdminSidebarComponent, QuanLyUserComponent, QuanLyPhimComponent, ModalComponent, BottomSheetOverviewExampleSheet],
+  imports: [CommonModule, AdminRoutingModule, DemoMaterialModule],
+  entryComponents: [ModalComponent, BottomSheetOverviewExampleSheet],
+  bootstrap: [ModalComponent],
+  providers: []
 })
 export class AdminModule {}

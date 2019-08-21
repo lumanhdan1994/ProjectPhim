@@ -1,1 +1,26 @@
-<p>quan-ly-phim works!</p>
+<div class="container wrap">
+    <div class="table">
+        <app-modal></app-modal>
+        <div class="row">
+            <div class="col-md-1 inforMovie">Stt</div>
+            <div class="col-md-1 inforMovie">Image</div>
+            <div class="col-md-1 inforMovie">Name</div>
+            <div class="col-md-3 inforMovie">Relesed Date</div>
+            <div class="col-md-3 inforMovie">Rate</div>
+            <div class="col-md-3 inforMovie">Action</div>
+        </div>
+        <ng-container *ngFor="let item of ListMovie; let index = index">
+            <div class="row ListMovie">
+                <div class="col-md-1 inforMovie">{{index + 1}}</div>
+                <div class="col-md-1 inforMovie"><img [src]="item.hinhAnh" alt="image"></div>
+                <div class="col-md-1 inforMovie">{{item.tenPhim}}</div>
+                <div class="col-md-3 inforMovie">{{item.ngayKhoiChieu}}</div>
+                <div class="col-md-3 inforMovie">{{item.danhGia}}</div>
+                <div class="col-md-3 inforMovie">
+                    <button>Delete</button>
+                    <button>Update</button>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

@@ -8,12 +8,19 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class QuanLyPhimComponent implements OnInit {
 
+  ListMovie: any = [];
+
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.getListMovie();
   }
 
-  // getMovieList() {
-  //   this.dataService.get()
-  // }
+  getListMovie() {
+    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
+    this.dataService.get(uri).subscribe((data) => {
+      console.log(data);
+      this.ListMovie = data;
+    })
+  }
 }
