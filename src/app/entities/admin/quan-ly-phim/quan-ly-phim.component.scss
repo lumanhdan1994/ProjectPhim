@@ -1,0 +1,47 @@
+@import "../../../../Helper/variable";
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px $color-border;
+  border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $color-border;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(90, 90, 90);
+}
+
+// My scss
+.wrap {
+    background-color: $color-admin-table;
+  .table {
+    background-color: $color-admin-table;
+    margin: 10px 0;
+    height: 550px;
+    overflow: hidden;
+    overflow-y: auto;
+    .ListMovie {
+      background-color: $color-admin-list;
+      margin: 20px;
+      img {
+        width: 50px;
+      }
+      .inforMovie {
+        align-items: center;
+        display: flex;
+        justify-items: center;
+      }
+    }
+  }
+}
