@@ -70,6 +70,7 @@ export class FormComponent implements OnInit {
     }
 
     this.dataService.post(uri, taikhoanuser).subscribe((data: any) => {
+    // console.log(data);
       this.checkDangNhap = false;
       const form = {
         checkLogIn: this.checkDangNhap,
@@ -77,6 +78,7 @@ export class FormComponent implements OnInit {
       }
       this.eventDangNhap.emit(form);
       localStorage.setItem("taiKhoanDaDangNhap", JSON.stringify(form));
+      console.log(form)
     })
   }
 

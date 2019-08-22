@@ -7,13 +7,33 @@ import * as $ from 'jquery';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  LogInLst: any;
   constructor() { }
 
   ngOnInit() {
     this.eventScroll();
+    this.ngDoCheck();
   }
-
+  ngAfterViewInit() {
+    this.checkLogIn();
+  }
+  checkLogIn() {
+    this.LogInLst = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
+    // console.log(this.LogInLst)
+  }
+  LogOut(){
+    localStorage.clear();
+  }
+  checkDangNhap(value) {
+    console.log(value)
+    $("#myModal").click();
+  }
+  ngDoCheck() {
+    this.checkLogIn()
+    if (this.LogInLst != null) {
+      console.log("!@3213")
+    }
+  }
   eventScroll() {
     $(document).ready(() => {
       window.addEventListener('scroll', () => {
