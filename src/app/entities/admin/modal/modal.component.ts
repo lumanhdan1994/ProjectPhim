@@ -12,13 +12,14 @@ import { StoreService } from 'src/app/shared/services/store.service';
 })
 export class ModalComponent implements OnInit {
 
-  constructor(private _bottomSheet: MatBottomSheet) { }
+  constructor(private _bottomSheet: MatBottomSheet, private store: StoreService) { }
 
   ngOnInit() {
   }
 
   openBottomSheet(): void {
     this._bottomSheet.open(BottomSheetOverviewExampleSheet);
+    this.store.shareInforMovie("");
   }
 
 }
@@ -40,6 +41,8 @@ export class ModalComponent implements OnInit {
 })
 export class BottomSheetOverviewExampleSheet {
 
+  checkUpdate: boolean = false;
+
   constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>,
     private dataService: DataService,
     private _bottomSheet: MatBottomSheet,
@@ -47,6 +50,11 @@ export class BottomSheetOverviewExampleSheet {
   ) { }
 
   ngOnInit() {
+    // if(this.store.checkUpdate){
+    //   this.checkUpdate = true;
+    // }else{
+    //   this.checkUpdate = false;
+    // }
     console.log(this.store.inforMovieUpdate);
   }
 

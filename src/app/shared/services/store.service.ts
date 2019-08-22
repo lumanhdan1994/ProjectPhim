@@ -9,9 +9,12 @@ export class StoreService {
   private inforMovie = new BehaviorSubject([] as any);
   inforMovieUpdate = this.inforMovie.asObservable();
 
+
   constructor() { }
+
   shareInforMovie(infor: any) {
     this.inforMovie.next(infor);
   }
+
 }
 
