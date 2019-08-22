@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { DataService } from 'src/app/shared/services/data.service';
 import { $ } from 'protractor';
+import { QuanLyPhimComponent } from '../quan-ly-phim/quan-ly-phim.component';
+import { StoreService } from 'src/app/shared/services/store.service';
 
 @Component({
   selector: 'app-modal',
@@ -25,21 +27,34 @@ export class ModalComponent implements OnInit {
 
 
 // ========================= Component form =====================
+
+
+
+
+
+
 @Component({
   selector: 'bottom-sheet-overview-example-sheet',
   templateUrl: 'bottom-sheet-overview-example-sheet.html',
   styleUrls: ['./modal.component.scss']
 })
 export class BottomSheetOverviewExampleSheet {
+
   constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>,
     private dataService: DataService,
-    private _bottomSheet: MatBottomSheet
+    private _bottomSheet: MatBottomSheet,
+    private store: StoreService
   ) { }
+
+  ngOnInit() {
+    console.log(this.store.inforMovieUpdate);
+  }
 
   openLink(event: MouseEvent): void {
     this._bottomSheetRef.dismiss();
     event.preventDefault();
   }
+
 
   addMovie(value) {
     const uri = "QuanLyPhim/ThemPhim";
@@ -59,6 +74,7 @@ export class BottomSheetOverviewExampleSheet {
         console.log(data);
     }, (err) => {
       alert(err.error);
+      console.log(err)
     })
   }
 }

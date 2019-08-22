@@ -65,9 +65,9 @@ export class DataService {
     return this.http.delete(urlAPI + "/" + uri).pipe(
       tap(
         () => {},
-        catchError(err => {
-          return this.handleErr(err);
-        })
+        // catchError(err => {
+        //   return this.handleErr(err);
+        // })
       )
     );
   }
