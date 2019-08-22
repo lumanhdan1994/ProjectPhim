@@ -56,6 +56,7 @@ export class BottomSheetOverviewExampleSheet {
     }
     this.dataService.post(uri, objMovie).subscribe((data) => {
         this._bottomSheet.dismiss();
+        console.log(data);
     }, (err) => {
       alert(err.error);
     })
