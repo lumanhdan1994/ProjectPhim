@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AdminComponent, AdminSidebarComponent, QuanLyUserComponent, QuanLyPhimComponent, ModalComponent, BottomSheetOverviewExampleSheet],
+  exports: [QuanLyPhimComponent],
   imports: [CommonModule, AdminRoutingModule, DemoMaterialModule, FormsModule],
   entryComponents: [ModalComponent, BottomSheetOverviewExampleSheet],
   bootstrap: [ModalComponent],

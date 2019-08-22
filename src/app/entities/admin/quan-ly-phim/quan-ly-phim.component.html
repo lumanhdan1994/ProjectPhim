@@ -1,6 +1,6 @@
 <div class="container wrap">
     <div class="table">
-        <app-modal></app-modal>
+        <app-modal ></app-modal>
         <div class="row">
             <div class="col-md-1 inforMovie">Stt</div>
             <div class="col-md-1 inforMovie">Image</div>
@@ -17,8 +17,8 @@
                 <div class="col-md-3 inforMovie">{{item.ngayKhoiChieu}}</div>
                 <div class="col-md-3 inforMovie">{{item.danhGia}}</div>
                 <div class="col-md-3 inforMovie">
-                    <button (click)="delete(item.maPhim)">Delete</button>
-                    <button>Update</button>
+                    <button mat-raised-button (click)="delete(item.maPhim)">Delete</button>
+                    <button mat-raised-button (click)="update(item)">Update</button>
                 </div>
             </div>
         </ng-container>
