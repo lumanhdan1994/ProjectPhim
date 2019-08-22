@@ -6,10 +6,11 @@ import { HeaderComponent } from "src/app/layouts/header/header.component";
 import { FooterComponent } from "src/app/layouts/footer/footer.component";
 import { ListMovieModule } from './list-movie/list-movie.module';
 import { DatVeThanhCongModule } from './dat-ve-thanh-cong/dat-ve-thanh-cong.module';
+import { ShareModulesModule } from 'src/app/shared/share-modules/share-modules.module';
 
 
 @NgModule({
   declarations: [HomeComponent, HeaderComponent, FooterComponent],
-  imports: [CommonModule, HomeRoutingModule, ListMovieModule, DatVeThanhCongModule]
+  imports: [CommonModule, HomeRoutingModule, ListMovieModule, DatVeThanhCongModule, ShareModulesModule]
 })
 export class HomeModule { }

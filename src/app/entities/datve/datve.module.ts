@@ -6,11 +6,12 @@ import { ItemgheComponent } from './itemghe/itemghe.component';
 import { FormComponent } from './form/form.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { ShareModulesModule } from 'src/app/shared/share-modules/share-modules.module';
 
 @NgModule({
-  declarations: [DatveComponent, ItemgheComponent, FormComponent],
+  declarations: [DatveComponent, ItemgheComponent],
   imports: [
-    CommonModule, DatveRoutingModule, MatInputModule, FormsModule
+    CommonModule, DatveRoutingModule, MatInputModule, ShareModulesModule
   ]
 })
 export class DatveModule { }
