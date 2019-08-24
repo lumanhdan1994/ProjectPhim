@@ -20,21 +20,27 @@ export class QuanLyPhimComponent implements OnInit {
     this.getListMovie();
   }
 
+  ngDoCheck() {
+    
+  }
+
   getListMovie() {
     const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
     this.dataService.get(uri).subscribe((data) => {
-      console.log(data);
       this.ListMovie = data;
     })
   }
 
   delete(maPhim){
-    const uri = `QuanLyPhim/XoaPhim?MaPhim=1621`;
-    this.dataService.delete(uri).subscribe((data) => {
-      console.log(data);
+    const uri = `QuanLyPhim/XoaPhim?MaPhim=${maPhim}`;
+    this.dataService.delete(uri).subscribe((data) => {  
     }, (err) => {
-      // alert(err.error)
-      console.log(err)
+      if(err.status === 200){
+        alert(err.error.text);
+      }else{
+        alert(err.error);
+      }
+      
     })
   }
 

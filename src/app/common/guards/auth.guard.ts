@@ -10,7 +10,6 @@ export class AuthGuard implements CanActivate {
   canActivate() {
     let taiKhoanDaDangNhap = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
     if (taiKhoanDaDangNhap) {
-      console.log(taiKhoanDaDangNhap)
       if (taiKhoanDaDangNhap.inforUser.maLoaiNguoiDung === "QuanTri") {
         return true;
       }
