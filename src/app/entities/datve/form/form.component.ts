@@ -50,15 +50,21 @@ export class FormComponent implements OnInit {
     this.dataService.post(uri, nguoiDung).subscribe((data: any) => {
 
       if (data === "Email đã tồn tại!") {
-         this.toastr.error(data);
+        this.toastr.error(data);
       } else if (data === "Tài khoản đã tồn tại!") {
-         this.toastr.error(data);
+        this.toastr.error(data);
       } else {
-         this.toastr.success("Đăng kí thàng công!");
+        this.toastr.success("Đăng kí thàng công!");
         $(document).ready(() => {
           $("#tab-dangnhap").click();
         });
       };
+    }, (err) => {
+      if (err.status === 200) {
+        alert(err.error.text);
+      } else {
+        alert(err.error);
+      }
     })
   }
 
@@ -70,7 +76,7 @@ export class FormComponent implements OnInit {
     }
 
     this.dataService.post(uri, taikhoanuser).subscribe((data: any) => {
-    // console.log(data);
+      console.log(data);
       this.checkDangNhap = false;
       const form = {
         checkLogIn: this.checkDangNhap,
@@ -78,11 +84,16 @@ export class FormComponent implements OnInit {
       }
       this.eventDangNhap.emit(form);
       localStorage.setItem("taiKhoanDaDangNhap", JSON.stringify(form));
-      console.log(form)
+    }, (err) => {
+      if (err.status === 200) {
+        alert(err.error.text);
+      } else {
+        alert(err.error);
+      }
     })
   }
 
-  toLogIn(){
+  toLogIn() {
     $("#tab-dangki").click();
   }
 }

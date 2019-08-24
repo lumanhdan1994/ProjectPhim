@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { StoreService } from 'src/app/shared/services/store.service';
+import { BottomSheetOverviewExampleSheet } from '../modal/modal.component';
 
 declare var $: any;
 
@@ -14,7 +15,7 @@ export class QuanLyPhimComponent implements OnInit {
 
   ListMovie: any = [];
 
-  constructor(private dataService: DataService, private store: StoreService) { }
+  constructor(private dataService: DataService, private store: StoreService, private _bottomSheet: MatBottomSheet) { }
 
   ngOnInit() {
     this.getListMovie();
@@ -47,7 +48,7 @@ export class QuanLyPhimComponent implements OnInit {
 
   update(movie){
     this.store.shareInforMovie(movie);
-    $("#openModal").click();
+    this._bottomSheet.open(BottomSheetOverviewExampleSheet);
   }
 
 
