@@ -1,78 +1,114 @@
 <mat-nav-list>
-  <form class="example-form" [formGroup]="Form" (ngSubmit)="onSubmit()">
-    
+  <form class="example-form" [formGroup]="Form">
+
     <ng-container *ngIf="checkUpdate; else addModal">
       <h2>Sửa thông tin phim</h2>
     </ng-container>
-    
+
     <ng-template #addModal>
       <h2>Thêm người dùng</h2>
     </ng-template>
-    
+
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Mã phim" formControlName="maPhim">
     </mat-form-field>
+    <span class="danger" *ngIf="Form.controls.maPhim.errors?.required && Form.controls.maPhim.touched">
+      (*)Vui lòng nhập vào trường này
+    </span>
+    <span class="danger" *ngIf="(Form.controls.maPhim.errors?.required && Form.controls.maPhim.touched) && Form.controls.maPhim.errors?.pattern">
+      (*)Vui lòng chỉ nhập số
+    </span>
 
-    
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Tên phim" formControlName="tenPhim">
     </mat-form-field>
+    <span class="danger" *ngIf="Form.controls.tenPhim.errors?.required && Form.controls.tenPhim.touched">
+      (*)Vui lòng nhập vào trường này
+    </span>
 
-    
+
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Bí danh" formControlName="biDanh">
     </mat-form-field>
+    <span class="danger" *ngIf="Form.controls.biDanh.errors?.required && Form.controls.biDanh.touched">
+      (*)Vui lòng nhập vào trường này
+    </span>
 
-    
+
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Trailer" formControlName="trailer">
     </mat-form-field>
+    <span class="danger" *ngIf="Form.controls.trailer.errors?.required && Form.controls.trailer.touched">
+      (*)Vui lòng nhập vào trường này
+    </span>
 
-    
+
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Hình Ảnh" formControlName="hinhAnh">
     </mat-form-field>
+    <span class="danger" *ngIf="Form.controls.hinhAnh.errors?.required && Form.controls.hinhAnh.touched">
+      (*)Vui lòng nhập vào trường này
+    </span>
 
-    
+
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Mô tả" formControlName="moTa">
     </mat-form-field>
+    <span class="danger" *ngIf="Form.controls.moTa.errors?.required && Form.controls.moTa.touched">
+      (*)Vui lòng nhập vào trường này
+    </span>
 
-    
+
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Mã nhóm" formControlName="maNhom">
     </mat-form-field>
+    <span class="danger" *ngIf="Form.controls.maNhom.errors?.required && Form.controls.maNhom.touched">
+      (*)Vui lòng nhập vào trường này
+    </span>
 
-    
+
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Ngày khởi chiếu" formControlName="ngayKhoiChieu">
     </mat-form-field>
+    <span class="danger" *ngIf="Form.controls.ngayKhoiChieu.errors?.required && Form.controls.ngayKhoiChieu.touched">
+      (*)Vui lòng nhập vào trường này
+    </span>
 
-    
+
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Đánh giá" formControlName="danhGia">
     </mat-form-field>
+    <span class="danger" *ngIf="Form.controls.danhGia.errors?.required && Form.controls.danhGia.touched">
+      (*)Vui lòng nhập vào trường này
+    </span>
+    <span class="danger" *ngIf="(Form.controls.maPhim.errors?.required && Form.controls.maPhim.touched) && Form.controls.maPhim.errors?.pattern">
+      (*)Vui lòng chỉ nhập số
+    </span>
 
-    
     <!-- ========================================== -->
     <div class="button_cont" align="center">
-      <button mat-button >Submit</button>
+      <ng-container *ngIf="checkUpdate; else addMovie">
+        <button mat-button (click)="onUpdate()">Sửa</button>
+      </ng-container>
+      <ng-template #addMovie>
+        <button mat-button (click)="onSubmit()">Thêm</button>
+      </ng-template>
     </div>
   </form>
 </mat-nav-list>
