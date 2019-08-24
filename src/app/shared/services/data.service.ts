@@ -62,7 +62,7 @@ export class DataService {
   }
 
   delete(uri: string): Observable<any> {
-    return this.http.delete(urlAPI + "/" + uri).pipe(
+    return this.http.delete(urlAPI + "/" + uri, httpOptions).pipe(
       tap(
         () => {},
         // catchError(err => {

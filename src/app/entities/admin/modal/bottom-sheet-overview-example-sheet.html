@@ -1,5 +1,5 @@
 <mat-nav-list>
-  <form class="example-form" #registerForm="ngForm" (ngSubmit)="addMovie(registerForm.value)">
+  <form class="example-form" [formGroup]="Form" (ngSubmit)="onSubmit()">
     
     <ng-container *ngIf="checkUpdate; else addModal">
       <h2>Sửa thông tin phim</h2>
@@ -10,123 +10,69 @@
     </ng-template>
     
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Mã phim" name="maPhim" #MaPhim="ngModel" ngModel required>
+      <input matInput placeholder="Mã phim" formControlName="maPhim">
     </mat-form-field>
 
-    <div *ngIf="MaPhim.errors && (MaPhim.dirty || MaPhim.touched)" class="danger">
-      <!-- Kiểm tra rỗng -->
-      <div *ngIf="MaPhim.errors.required">
-        (*)Vui lòng không được để trống
-      </div>
-    </div>
-
+    
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Tên phim" name="tenPhim" #TenPhim="ngModel" ngModel required>
+      <input matInput placeholder="Tên phim" formControlName="tenPhim">
     </mat-form-field>
 
-    <div *ngIf="TenPhim.errors && (TenPhim.dirty || TenPhim.touched)" class="danger">
-      <!-- Kiểm tra rỗng -->
-      <div *ngIf="TenPhim.errors.required">
-        (*)Vui lòng không được để trống
-      </div>
-    </div>
-
+    
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Bí danh" name="biDanh" #BiDanh="ngModel" ngModel required>
+      <input matInput placeholder="Bí danh" formControlName="biDanh">
     </mat-form-field>
 
-    <div *ngIf="BiDanh.errors && (BiDanh.dirty || BiDanh.touched)" class="danger">
-      <!-- Kiểm tra rỗng -->
-      <div *ngIf="BiDanh.errors.required">
-        (*)Vui lòng không được để trống
-      </div>
-    </div>
-
+    
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Trailer" name="trailer" #Trailer="ngModel" ngModel required>
+      <input matInput placeholder="Trailer" formControlName="trailer">
     </mat-form-field>
 
-    <div *ngIf="Trailer.errors && (Trailer.dirty || Trailer.touched)" class="danger">
-      <!-- Kiểm tra rỗng -->
-      <div *ngIf="Trailer.errors.required">
-        (*)Vui lòng không được để trống
-      </div>
-    </div>
-
+    
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Hình Ảnh" name="hinhAnh" #HinhAnh="ngModel" ngModel required>
+      <input matInput placeholder="Hình Ảnh" formControlName="hinhAnh">
     </mat-form-field>
 
-    <div *ngIf="HinhAnh.errors && (HinhAnh.dirty || HinhAnh.touched)" class="danger">
-      <!-- Kiểm tra rỗng -->
-      <div *ngIf="HinhAnh.errors.required">
-        (*)Vui lòng không được để trống
-      </div>
-    </div>
-
+    
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Mô tả" name="moTa" #MoTa="ngModel" ngModel required>
+      <input matInput placeholder="Mô tả" formControlName="moTa">
     </mat-form-field>
 
-    <div *ngIf="MoTa.errors && (MoTa.dirty || MoTa.touched)" class="danger">
-      <!-- Kiểm tra rỗng -->
-      <div *ngIf="MoTa.errors.required">
-        (*)Vui lòng không được để trống
-      </div>
-    </div>
-
+    
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Mã nhóm" name="maNhom" #MaNhom="ngModel" ngModel required>
+      <input matInput placeholder="Mã nhóm" formControlName="maNhom">
     </mat-form-field>
 
-    <div *ngIf="MaNhom.errors && (MaNhom.dirty || MaNhom.touched)" class="danger">
-      <!-- Kiểm tra rỗng -->
-      <div *ngIf="MaNhom.errors.required">
-        (*)Vui lòng không được để trống
-      </div>
-    </div>
-
+    
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
-      <input value="08-08-2019" matInput placeholder="Ngày khởi chiếu" name="ngayKhoiChieu" #NgayKhoiChieu="ngModel" ngModel required>
+      <input matInput placeholder="Ngày khởi chiếu" formControlName="ngayKhoiChieu">
     </mat-form-field>
 
-    <div *ngIf="NgayKhoiChieu.errors && (NgayKhoiChieu.dirty || NgayKhoiChieu.touched)" class="danger">
-      <!-- Kiểm tra rỗng -->
-      <div *ngIf="NgayKhoiChieu.errors.required">
-        (*)Vui lòng không được để trống
-      </div>
-    </div>
-
+    
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Đánh giá" name="danhGia" #DanhGia="ngModel" ngModel required>
+      <input matInput placeholder="Đánh giá" formControlName="danhGia">
     </mat-form-field>
 
-    <div *ngIf="DanhGia.errors && (DanhGia.dirty || DanhGia.touched)" class="danger">
-      <!-- Kiểm tra rỗng -->
-      <div *ngIf="DanhGia.errors.required">
-        (*)Vui lòng không được để trống
-      </div>
-    </div>
-
+    
     <!-- ========================================== -->
     <div class="button_cont" align="center">
-      <button mat-button [disabled]="!registerForm.form.valid" target="_blank" rel="nofollow noopener">Submit</button>
+      <button mat-button >Submit</button>
     </div>
   </form>
 </mat-nav-list>
