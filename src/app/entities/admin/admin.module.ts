@@ -9,11 +9,12 @@ import { QuanLyPhimComponent } from './quan-ly-phim/quan-ly-phim.component';
 import { ModalComponent, BottomSheetOverviewExampleSheet } from './modal/modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [AdminComponent, AdminSidebarComponent, QuanLyUserComponent, QuanLyPhimComponent, ModalComponent, BottomSheetOverviewExampleSheet],
   exports: [QuanLyPhimComponent],
-  imports: [CommonModule, AdminRoutingModule, DemoMaterialModule, FormsModule, ReactiveFormsModule, MatInputModule],
+  imports: [CommonModule, AdminRoutingModule, DemoMaterialModule, FormsModule, ReactiveFormsModule, MatInputModule, MatTableModule],
   entryComponents: [ModalComponent, BottomSheetOverviewExampleSheet],
   bootstrap: [ModalComponent],
   providers: []
