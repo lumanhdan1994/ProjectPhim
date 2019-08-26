@@ -12,14 +12,18 @@ const routes: Routes = [
 
       //Trang Dat ve
       {
-        path: "", loadChildren: "./datve/datve.module#DatveModule",
+        path: "", loadChildren: "./datve/datve.module#DatveModule"
       },
 
       //Trang Admin
       {
-        path: "admin", loadChildren: "./admin/admin.module#AdminModule",
+        path: "admin", loadChildren: "./admin/admin.module#AdminModule"
       },
 
+      //Trang Login
+      {
+        path: "login", loadChildren: './login/login.module#LoginModule'
+      }
     ]
   }
 ];
