@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <form #regiterForm="ngForm" (ngSubmit)="Login(regiterForm.value)">
+            <div class="form-group">
+                <label>Tài Khoản</label>
+                <input type="text" name="id" id="" class="form-control" placeholder="Tài Khoản" ngModel>
+                <label>Mật Khẩu</label>
+                <input type="password" name="password" id="" class="form-control" placeholder="Mật Khẩu" ngModel>
+                <button type="submit">Đăng Nhập</button>
+            </div>
+        </form>
+    </div>
+</div>
+<router-outlet></router-outlet>
