@@ -1,5 +1,6 @@
-@import './../../../../Helper/variable';
+@import "./../../../../Helper/variable";
 
+//css loading
 .gooey {
   position: absolute;
   top: 50%;
@@ -7,7 +8,7 @@
   width: 142px;
   height: 40px;
   margin: -20px 0 0 -71px;
-//   background: $primary-color-light;
+  //   background: $primary-color-light;
   filter: contrast(20);
 }
 .gooey .dot {
@@ -76,5 +77,29 @@
 @keyframes dots {
   50% {
     transform: translateX(-31px);
+  }
+}
+// 
+
+.mat-flat-button{
+  height: 40px;
+  margin: 5px 0;
+}
+.mat-header-cell{
+  font-size: 15px;
+}
+.mat-elevation-z8 {
+  table {
+    width: 100%;
+  }
+
+  .mat-form-field {
+    font-size: 17px;
+    width: 100%;
+  }
+
+  td,
+  th {
+    width: 22%;
   }
 }
