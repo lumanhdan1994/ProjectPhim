@@ -6,14 +6,14 @@ import { environment } from "src/environments/environment";
 
 let urlAPI = "http://movie0706.cybersoft.edu.vn/api/";
 
-if(JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"))){
+if (JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"))) {
   var accessToken = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap")).inforUser.accessToken;
 }
 
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",
-    "Authorization" : `Bearer ${accessToken}`,
+    "Authorization": `Bearer ${accessToken}`,
   })
 };
 
@@ -41,19 +41,18 @@ export class DataService {
 
   post(uri: string, data?: object): Observable<any> {
     return this.http.post(urlAPI + "/" + uri, data, httpOptions).pipe(
-      tap(
-        () => {},
-        // catchError(err => {
-        //   return this.handleErr(err);
-        // })
-      )  
+      tap(data => { }
+      ),
+      catchError(err => {
+        return this.handleErr(err);
+      })
     );
   }
 
   put(uri: string, data?: object): Observable<any> {
     return this.http.put(urlAPI + "/" + uri, data, httpOptions).pipe(
       tap(
-        () => {},
+        () => { },
         catchError(err => {
           return this.handleErr(err);
         })
@@ -64,7 +63,7 @@ export class DataService {
   delete(uri: string): Observable<any> {
     return this.http.delete(urlAPI + "/" + uri, httpOptions).pipe(
       tap(
-        () => {},
+        () => { },
         // catchError(err => {
         //   return this.handleErr(err);
         // })
