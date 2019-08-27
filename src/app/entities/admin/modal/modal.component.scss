@@ -1,9 +1,11 @@
 @import "../../../../Helper/variable";
 
+
 .example-form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+  overflow: unset;
 }
 
 .example-full-width {
@@ -16,4 +18,11 @@
   padding-bottom: 10px;
   margin-top: -16px;
 }
+#cdk-overlay-0{
+  mat-bottom-sheet-container.mat-bottom-sheet-container.ng-tns-c14-28.ng-trigger.ng-trigger-state.mat-bottom-sheet-container-large.ng-star-inserted {
 
+    max-height: 100vh !important;
+    overflow: unset;
+    display: none;
+  }
+}
