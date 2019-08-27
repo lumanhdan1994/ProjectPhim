@@ -38,7 +38,6 @@ export class QuanLyUserComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
-      console.log("ád")
       this.dataSource.paginator.firstPage();
     }
   }

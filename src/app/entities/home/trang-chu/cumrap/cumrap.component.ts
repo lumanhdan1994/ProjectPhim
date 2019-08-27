@@ -57,7 +57,7 @@ export class CumrapComponent implements OnInit {
 
 
   layDanhSachPhim() {
-    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
+    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP05";
     this.dataService.get(uri).subscribe((data: any) => {
      this.danhSachPhim = data;
      this.danhSachPhim.splice(10,8);
