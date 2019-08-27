@@ -30,7 +30,8 @@ export class ModalComponent implements OnInit {
   styleUrls: ['./modal.component.scss']
 })
 export class BottomSheetOverviewExampleSheet {
-
+  
+  checkList: boolean = false;
   checkUpdate: boolean = false;
   selectedMovieUpdate: any = {};
   Form = new FormGroup({
@@ -82,10 +83,6 @@ export class BottomSheetOverviewExampleSheet {
     })
   }
 
-  openLink(event: MouseEvent): void {
-    this._bottomSheetRef.dismiss();
-    event.preventDefault();
-  }
 
   onSubmit() {
     const uri = "QuanLyPhim/ThemPhim";
@@ -101,13 +98,12 @@ export class BottomSheetOverviewExampleSheet {
       danhGia: parseInt(this.Form.value.danhGia),
     }
     this.dataService.post(uri, objMovie).subscribe((data) => {
-      this._bottomSheet.dismiss();
-      console.log(data);
+      this._bottomSheetRef.dismiss();
+      this.checkList = !this.checkList;
+      this.store.shareCheckListMovieChange(this.checkList);
     }, (err) => {
-      alert(err.error);
-      console.log(err)
     })
-    console.log(this.Form);
+    
   }
 
   onUpdate() {
@@ -124,11 +120,10 @@ export class BottomSheetOverviewExampleSheet {
       danhGia: parseInt(this.Form.value.danhGia),
     }
     this.dataService.post(uri, objMovie).subscribe((data) => {
-      this._bottomSheet.dismiss();
-      console.log(data);
+      this._bottomSheetRef.dismiss();
+      this.checkList = !this.checkList;
+      this.store.shareCheckListMovieChange(this.checkList);
     }, (err) => {
-      alert(err.error);
-      console.log(err)
     })
   }
 }

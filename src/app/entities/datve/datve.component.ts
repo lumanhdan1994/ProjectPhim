@@ -264,7 +264,7 @@ export class DatveComponent implements OnInit {
   }
 
   layThongTinChiTietPhim() {
-    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
+    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP05";
     this.dataService.get(uri).subscribe((data: any) => {
       data.map(item => {
         if (item.tenPhim === this.thongTinSuatChieu.tenPhim) {

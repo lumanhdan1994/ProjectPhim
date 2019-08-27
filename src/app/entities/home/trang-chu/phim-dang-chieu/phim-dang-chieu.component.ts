@@ -10,7 +10,6 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class PhimDangChieuComponent implements OnInit {
 
-  // danhSachPhim: any = [];
   DSPhimDangChieu: any =[];
   DSPhimSapChieu: any =[]
   constructor(private dataService: DataService) { }
@@ -22,7 +21,7 @@ export class PhimDangChieuComponent implements OnInit {
   }
 
   layDanhSachPhim() {
-    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP09";
+    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP05";
     this.dataService.get(uri).subscribe((data: any) => {
       data.map(item => {
         if(item.maPhim %2 ==0){

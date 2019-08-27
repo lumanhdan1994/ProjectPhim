@@ -6,14 +6,14 @@ import { environment } from "src/environments/environment";
 
 let urlAPI = "http://movie0706.cybersoft.edu.vn/api/";
 
-if(JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"))){
+if (JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"))) {
   var accessToken = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap")).inforUser.accessToken;
 }
 
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",
-    "Authorization" : `Bearer ${accessToken}`,
+    "Authorization": `Bearer ${accessToken}`,
   })
 };
 
@@ -31,45 +31,42 @@ export class DataService {
         () => {
           //Thành công
           //Xử lý loading
-        }
-        // catchError(err => {
-        //   return this.handleErr(err);
-        // })
-      )
+        }),
+        catchError(err => {
+          return this.handleErr(err);
+        })
     );
   }
 
   post(uri: string, data?: object): Observable<any> {
     return this.http.post(urlAPI + "/" + uri, data, httpOptions).pipe(
       tap(
-        () => {}
-        // catchError(err => {
-        //   return this.handleErr(err);
-        // })
-      )  
+        () => { }),
+        catchError(err => {
+          return this.handleErr(err);
+        })
     );
   }
 
   put(uri: string, data?: object): Observable<any> {
     return this.http.put(urlAPI + "/" + uri, data, httpOptions).pipe(
       tap(
-        () => {},
-        // catchError(err => {
-        //   return this.handleErr(err);
-        // })
-      )
+        () => { }),
+        catchError(err => {
+          return this.handleErr(err);
+        })
+      
     );
   }
 
   delete(uri: string): Observable<any> {
     return this.http.delete(urlAPI + "/" + uri, httpOptions).pipe(
       tap(
-        () => {},
-        // catchError(err => {
-        //   return this.handleErr(err);
-        // })
+        () => { }),
+        catchError(err => {
+          return this.handleErr(err);
+        })
       )
-    );
   }
 
   handleErr(err) {
@@ -80,7 +77,7 @@ export class DataService {
       return throwError(err.error);
     }
 
-    return throwError("Something went wrong, please try again later.");
+    return throwError("Something went wrong, please try again later.");z
 
     // if (error.error instanceof ErrorEvent) {
     //   // A client-side or network error occurred. Handle it accordingly.

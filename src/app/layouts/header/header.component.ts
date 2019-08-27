@@ -31,18 +31,21 @@ export class HeaderComponent implements OnInit {
   ngDoCheck() {
     this.checkLogIn()
     if (this.LogInLst != null) {
-      console.log("!@3213")
+      // console.log("!@3213")
     }
   }
   eventScroll() {
     $(document).ready(() => {
       window.addEventListener('scroll', () => {
         let top = window.pageYOffset;
-        if (top != 0) {
+        console.log(top)
+        if (top !== 0 && top > 33) {
           $("#NavBar").css({
             "opacity": "0.7",
-            "transition": "all 0.3s"
+            "position": "fixed",
+            "transition": "all 0.3s",
           });
+          
           $("#NavBar").mouseenter(()=>{
             $("#NavBar").css({
               "opacity": "1",
@@ -56,7 +59,11 @@ export class HeaderComponent implements OnInit {
             });
           });
         } else {
-          $("#NavBar").css("opacity", "1");
+          $("#NavBar").css({
+            "opacity": "1",
+            "position": "sticky",
+            "transition": "all 0.3s",
+          });
         }
       })
     })
