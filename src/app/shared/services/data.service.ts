@@ -31,10 +31,10 @@ export class DataService {
         () => {
           //Thành công
           //Xử lý loading
-        },
-        catchError(err => {
-          return this.handleErr(err);
-        })
+        }
+        // catchError(err => {
+        //   return this.handleErr(err);
+        // })
       )
     );
   }
@@ -42,7 +42,7 @@ export class DataService {
   post(uri: string, data?: object): Observable<any> {
     return this.http.post(urlAPI + "/" + uri, data, httpOptions).pipe(
       tap(
-        () => {},
+        () => {}
         // catchError(err => {
         //   return this.handleErr(err);
         // })
@@ -54,9 +54,9 @@ export class DataService {
     return this.http.put(urlAPI + "/" + uri, data, httpOptions).pipe(
       tap(
         () => {},
-        catchError(err => {
-          return this.handleErr(err);
-        })
+        // catchError(err => {
+        //   return this.handleErr(err);
+        // })
       )
     );
   }
