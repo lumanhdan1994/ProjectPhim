@@ -573,12 +573,13 @@ option:hover {
 
 @keyframes animationTotalmoney {
   0% {
-
+    color: white;
   }
   50% {
+    color: $color-text;
     transform: scaleY(1.5);
   }
   100% {
-
+    color: white;
   }
 }

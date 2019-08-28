@@ -77,7 +77,7 @@ export class DataService {
       return throwError(err.error);
     }
 
-    return throwError("Something went wrong, please try again later.");z
+    return throwError("Something went wrong, please try again later.");
 
     // if (error.error instanceof ErrorEvent) {
     //   // A client-side or network error occurred. Handle it accordingly.

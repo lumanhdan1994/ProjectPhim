@@ -82,7 +82,7 @@
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Ngày khởi chiếu" formControlName="ngayKhoiChieu">
+      <input type="date" matInput placeholder="Ngày khởi chiếu" formControlName="ngayKhoiChieu">
     </mat-form-field>
     <span class="danger" *ngIf="Form.controls.ngayKhoiChieu.errors?.required && Form.controls.ngayKhoiChieu.touched">
       (*)Vui lòng nhập vào trường này
@@ -104,7 +104,7 @@
     <!-- ========================================== -->
     <div class="button_cont" align="center">
       <ng-container *ngIf="checkUpdate; else addMovie">
-        <button mat-button [disabled]="Form.valid" (click)="onUpdate()">Sửa</button>
+        <button mat-button [disabled]="!Form.valid" (click)="onUpdate()">Sửa</button>
       </ng-container>
       <ng-template #addMovie>
         <button mat-button [disabled]="!Form.valid" (click)="onSubmit()">Thêm</button>

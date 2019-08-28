@@ -21,7 +21,6 @@ export class DatVeThanhCongComponent implements OnInit {
       this.inforTicket = params;
     });
     this.layThongTinSuatChieu();
-    
   }
 
   layThongTinSuatChieu() {
