@@ -60,6 +60,7 @@ export class QuanLyPhimComponent implements OnInit {
   }
 
   delete(maPhim){
+    alert("Bạn có muốn xóa phim ?");
     const uri = `QuanLyPhim/XoaPhim?MaPhim=${maPhim}`;
     this.dataService.delete(uri).subscribe((data) => {  
       
