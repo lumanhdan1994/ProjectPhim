@@ -13,15 +13,15 @@
         </ul>
         <div class="login-admin">
             <span>Xin Chào {{InfoLogin.inforUser.hoTen}}</span>
-            <button mat-flat-button color="warn" class="ml-3">Log Out</button>
+            <button mat-flat-button color="warn" class="ml-3" (click)="LogOut()">Log Out</button>
         </div>
     </div>
 </nav>
 <ng-container *ngIf="UserSeleted">
-    <app-quan-ly-user></app-quan-ly-user>
+    <app-quan-ly-user style="color: white"></app-quan-ly-user>
 </ng-container>
 <ng-container *ngIf="MovieSeleted">
-    <app-quan-ly-phim></app-quan-ly-phim>
+    <app-quan-ly-phim style="color: white"></app-quan-ly-phim>
 </ng-container>
 <router-outlet></router-outlet>
 <!-- <app-admin-sidebar></app-admin-sidebar> -->
