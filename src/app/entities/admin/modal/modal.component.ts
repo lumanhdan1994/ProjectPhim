@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { DataService } from 'src/app/shared/services/data.service';
-import { $ } from 'protractor';
 import { QuanLyPhimComponent } from '../quan-ly-phim/quan-ly-phim.component';
 import { StoreService } from 'src/app/shared/services/store.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -33,7 +32,7 @@ export class ModalComponent implements OnInit {
   styleUrls: ['./modal.component.scss']
 })
 export class BottomSheetOverviewExampleSheet {
-  
+
   checkList: boolean = false;
   checkUpdate: boolean = false;
   selectedMovieUpdate: any = {};
@@ -60,7 +59,6 @@ export class BottomSheetOverviewExampleSheet {
     this.getSelectedMovie();
     this.setValueBySelectedMovie();
   }
-
 
   getSelectedMovie() {
     this.store.inforMovieUpdate.subscribe(data => {
@@ -90,6 +88,19 @@ export class BottomSheetOverviewExampleSheet {
 
   onSubmit() {
     const uri = "QuanLyPhim/ThemPhim";
+    let fullNgayKhoiChieu = new Date(this.Form.value.ngayKhoiChieu);
+    let getMonth
+    let getDate
+    if ((fullNgayKhoiChieu.getMonth() + 1) < 10) {
+      getMonth = "0" + (fullNgayKhoiChieu.getMonth() + 1)
+    } else {
+      getMonth = (fullNgayKhoiChieu.getMonth() + 1)
+    }
+    if (fullNgayKhoiChieu.getDate() < 10) {
+      getDate = "0" + fullNgayKhoiChieu.getDate()
+    } else {
+      getDate = fullNgayKhoiChieu.getDate()
+    }
     const objMovie = {
       maPhim: parseInt(this.Form.value.maPhim),
       tenPhim: this.Form.value.tenPhim,
@@ -98,16 +109,17 @@ export class BottomSheetOverviewExampleSheet {
       hinhAnh: this.Form.value.hinhAnh,
       moTa: this.Form.value.moTa,
       maNhom: this.Form.value.maNhom,
-      ngayKhoiChieu: this.Form.value.ngayKhoiChieu,
+      ngayKhoiChieu: getDate + '/' + getMonth + '/' + fullNgayKhoiChieu.getFullYear() ,
       danhGia: parseInt(this.Form.value.danhGia),
     }
+    console.log(objMovie.ngayKhoiChieu)
     this.dataService.post(uri, objMovie).subscribe((data) => {
       this._bottomSheetRef.dismiss();
       this.checkList = !this.checkList;
       this.store.shareCheckListMovieChange(this.checkList);
     }, (err) => {
     })
-    
+
   }
 
   onUpdate() {
