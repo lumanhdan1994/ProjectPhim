@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 declare var $: any;
 
 export interface MovieData {
-  stt: string,
+  maPhim: string,
   hinhAnh: string,
   hoTen: string,
   ngayChieu: string,
@@ -25,7 +25,7 @@ export interface MovieData {
 })
 export class QuanLyPhimComponent implements OnInit {
 
-  displayedColumns: string[] = ['stt', 'hinhAnh', 'hoTen', 'ngayChieu', 'danhGia', 'chinhSua'];
+  displayedColumns: string[] = ['maPhim', 'hinhAnh', 'hoTen', 'ngayChieu', 'danhGia', 'chinhSua'];
   dataSource: MatTableDataSource<MovieData>;
   ListMovie: any = [];
 
