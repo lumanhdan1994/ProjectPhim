@@ -16,11 +16,19 @@ export class ModalComponent implements OnInit {
   constructor(private _bottomSheet: MatBottomSheet, private store: StoreService) { }
 
   ngOnInit() {
+    this.store.tabsSelected.subscribe((data: any) => {
+      this.TabsSelected = data;
+    })
   }
-
+  TabsSelected: boolean;
   openBottomSheet(): void {
     this.store.shareInforMovie("");
     this._bottomSheet.open(BottomSheetOverviewExampleSheet, {
+      panelClass: 'custom-height'
+    });
+  }
+  openBottomSheetUser(): void {
+    this._bottomSheet.open(BottomSheetUser, {
       panelClass: 'custom-height'
     });
   }
@@ -109,7 +117,7 @@ export class BottomSheetOverviewExampleSheet {
       hinhAnh: this.Form.value.hinhAnh,
       moTa: this.Form.value.moTa,
       maNhom: this.Form.value.maNhom,
-      ngayKhoiChieu: getDate + '/' + getMonth + '/' + fullNgayKhoiChieu.getFullYear() ,
+      ngayKhoiChieu: getDate + '/' + getMonth + '/' + fullNgayKhoiChieu.getFullYear(),
       danhGia: parseInt(this.Form.value.danhGia),
     }
     this.dataService.post(uri, objMovie).subscribe((data) => {
@@ -153,5 +161,29 @@ export class BottomSheetOverviewExampleSheet {
       this.store.shareCheckListMovieChange(this.checkList);
     }, (err) => {
     })
+  }
+}
+// User Form
+@Component({
+  selector: 'bottom-sheet-user',
+  templateUrl: 'bottom-sheet-user.html',
+  styleUrls: ['./modal.component.scss']
+})
+export class BottomSheetUser {
+  FormData = {
+    taiKhoan: "",
+    matKhau: "",
+    email: "",
+    soDt: "",
+    maNhom: "GP05",
+    maLoaiNguoiDung: "",
+    hoTen: ""
+  }
+  user : FormGroup
+  constructor() { }
+  ngOninit() {
+  }
+  AddUser() {
+    console.log(this.user)
   }
 }

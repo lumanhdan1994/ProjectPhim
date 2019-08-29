@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 <button id="openModal" mat-raised-button (click)="openBottomSheet()">Thêm người dùng</button>
 
 
+=======
+<button id="openModal" mat-raised-button (click)="openBottomSheet()" *ngIf="TabsSelected; else NhanhElse">Thêm Phim</button>
+<ng-template #NhanhElse>
+    <button id="openModal" mat-raised-button (click)="openBottomSheetUser()">Thêm Người Dùng</button>
+</ng-template>
+>>>>>>> danlu

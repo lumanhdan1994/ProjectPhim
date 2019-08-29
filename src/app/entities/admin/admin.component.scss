@@ -1,5 +1,6 @@
 @import "../../../Helper/variable";
 
+<<<<<<< HEAD
 img {
   width: 50px;
 }
@@ -44,4 +45,18 @@ img {
   .sidenav a {
     font-size: 18px;
   }
+=======
+.navbar {
+  background-color: black;
+}
+.login-admin {
+  span {
+    color: $text-color;
+    font-weight: 500;
+    font-size: 16px;
+  }
+}
+.active {
+  color: $color-text !important;
+>>>>>>> danlu
 }
