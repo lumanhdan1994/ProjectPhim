@@ -1,29 +1,11 @@
 <ng-container *ngIf="ListMovie.length != 0; else SpinnerLoading">
     <div class="table">
-        <app-modal></app-modal>
-        <!-- <div class="row">
-            <div class="col-md-1 inforMovie">Stt</div>
-            <div class="col-md-1 inforMovie">Image</div>
-            <div class="col-md-1 inforMovie">Name</div>
-            <div class="col-md-3 inforMovie">Relesed Date</div>
-            <div class="col-md-3 inforMovie">Rate</div>
-            <div class="col-md-3 inforMovie">Action</div>
+        <div class="container d-flex justify-content-between algin-items-center">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Tìm Kiếm Người Dùng">
+            </mat-form-field>
+            <app-modal></app-modal>
         </div>
-        <ng-container *ngFor="let item of ListMovie; let index = index">
-            <div class="row ListMovie">
-                <div class="col-md-1 inforMovie">{{index + 1}}</div>
-                <div class="col-md-1 inforMovie"><img [src]="item.hinhAnh" alt="image"></div>
-                <div class="col-md-1 inforMovie">{{item.tenPhim}}</div>
-                <div class="col-md-3 inforMovie">{{item.ngayKhoiChieu | date:'mediumDate'}}</div>
-                <div class="col-md-3 inforMovie">{{item.danhGia}}</div>
-                <div class="col-md-3 inforMovie">
-                    <button mat-raised-button (click)="delete(item.maPhim)">Delete</button>
-                    <button mat-raised-button (click)="update(item)">Update</button>
-                </div>
-            </div>
-        </ng-container> -->
-
-
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" matSort>
 
@@ -33,9 +15,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="hoTen">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tên phim </th>
-                        <td mat-cell *matCellDef="let row"> {{row.tenPhim}} </td>
-                    </ng-container>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tên phim </th>
+                    <td mat-cell *matCellDef="let row"> {{row.tenPhim}} </td>
+                </ng-container>
 
                 <ng-container matColumnDef="hinhAnh">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Hình Ảnh </th>
@@ -44,7 +26,8 @@
 
                 <ng-container matColumnDef="ngayChieu">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Ngày Chiếu </th>
-                    <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.ngayKhoiChieu | date:'mediumDate'}} </td>
+                    <td mat-cell *matCellDef="let row" [style.color]="row.color">
+                        {{row.ngayKhoiChieu | date:'mediumDate'}} </td>
                 </ng-container>
 
 
