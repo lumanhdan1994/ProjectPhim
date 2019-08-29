@@ -104,9 +104,30 @@ img{
     width: 100%;
   }
 
-  td,
-  th {
-    width: 12%;
+  td {
+    width: 16.6%;
+    text-align: center;     
+    white-space: nowrap;
+  }
+
+  th{
+    padding-left: 50px;
+    color: white;
+  }
+
+  .maphim{
+    padding-left: 66px;
+  }
+
+  .chinhsua{
+    padding-left: 36px;
+  }
+  .tenphim{
+    padding-left: 88px;
+  }
+
+  .mat-sort-header-container{
+    justify-content: center;
   }
 
   .mat-cell{

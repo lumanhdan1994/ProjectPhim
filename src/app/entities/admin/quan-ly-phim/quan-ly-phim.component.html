@@ -10,13 +10,13 @@
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" matSort>
 
-                <ng-container matColumnDef="stt">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> STT </th>
-                    <td mat-cell *matCellDef="let row"> {{row.stt}} </td>
+                <ng-container matColumnDef="maPhim">
+                    <th class="maphim" mat-header-cell *matHeaderCellDef mat-sort-header> Mã Phim </th>
+                    <td mat-cell *matCellDef="let row"> {{row.maPhim}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="hoTen">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tên phim </th>
+                    <th class="tenphim" mat-header-cell *matHeaderCellDef mat-sort-header> Tên phim </th>
                     <td mat-cell *matCellDef="let row"> {{row.tenPhim}} </td>
                 </ng-container>
 
@@ -42,11 +42,10 @@
                 </ng-container>
 
                 <ng-container matColumnDef="chinhSua">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Chỉnh Sửa </th>
+                    <th class="align-content-center chinhsua" mat-header-cell *matHeaderCellDef mat-sort-header> Chỉnh Sửa </th>
                     <td mat-cell *matCellDef="let row" [style.color]="row.color">
-                        <button mat-flat-button color="accent">Info</button>
-                        <button mat-raised-button color="primary" (click)="update(row)">Edit</button>
-                        <button mat-raised-button color="warn" (click)="delete(row.maPhim)">Delete</button>
+                        <button mat-flat-button color="accent" (click)="update(row)">Edit</button>
+                        <button mat-flat-button color="warn" (click)="delete(row.maPhim)">Delete</button>
 
 
                     </td>
