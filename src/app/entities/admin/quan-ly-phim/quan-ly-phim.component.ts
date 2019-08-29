@@ -71,7 +71,9 @@ export class QuanLyPhimComponent implements OnInit {
 
   update(movie){
     this.store.shareInforMovie(movie);
-    this._bottomSheet.open(BottomSheetOverviewExampleSheet);
+    this._bottomSheet.open(BottomSheetOverviewExampleSheet, {
+      panelClass: 'custom-height'
+    });
   }
 
 

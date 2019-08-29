@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { DataService } from 'src/app/shared/services/data.service';
-import { $ } from 'protractor';
 import { QuanLyPhimComponent } from '../quan-ly-phim/quan-ly-phim.component';
 import { StoreService } from 'src/app/shared/services/store.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+declare var $: any
 
 @Component({
   selector: 'app-modal',
@@ -20,7 +20,9 @@ export class ModalComponent implements OnInit {
 
   openBottomSheet(): void {
     this.store.shareInforMovie("");
-    this._bottomSheet.open(BottomSheetOverviewExampleSheet);
+    this._bottomSheet.open(BottomSheetOverviewExampleSheet, {
+      panelClass: 'custom-height'
+    });
   }
 }
 // ========================= Component form =====================
@@ -57,9 +59,7 @@ export class BottomSheetOverviewExampleSheet {
     this.getSelectedMovie();
     this.setValueBySelectedMovie();
   }
-  Format(value) {
-    console.log(value)
-  }
+
   getSelectedMovie() {
     this.store.inforMovieUpdate.subscribe(data => {
       this.selectedMovieUpdate = data;

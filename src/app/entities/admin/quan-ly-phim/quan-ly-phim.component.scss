@@ -4,7 +4,7 @@
 ///css loading
 
 img{
-  width: 100px;
+  width: 70px;
 }
 
 .gooey {
@@ -106,6 +106,15 @@ img{
 
   td,
   th {
-    width: 22%;
+    width: 12%;
+  }
+
+  .mat-cell{
+    white-space: nowrap;
+  }
+  .mat-flat-button{
+    height: 33px;
+    margin: 0px 2px;
   }
 }
+

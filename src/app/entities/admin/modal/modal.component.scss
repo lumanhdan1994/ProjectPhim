@@ -13,16 +13,21 @@
 }
 
 .danger {
-  color: red;
+  color: $color-text;
   font-size: 13px;
   padding-bottom: 10px;
   margin-top: -16px;
 }
-#cdk-overlay-0{
-  mat-bottom-sheet-container.mat-bottom-sheet-container.ng-tns-c14-28.ng-trigger.ng-trigger-state.mat-bottom-sheet-container-large.ng-star-inserted {
 
-    max-height: 100vh !important;
-    overflow: unset;
-    display: none;
-  }
+mat-form-field{
+  height: 40px;
+  margin-top: 10px;
 }
+// #cdk-overlay-0{
+//   mat-bottom-sheet-container.mat-bottom-sheet-container.ng-tns-c14-28.ng-trigger.ng-trigger-state.mat-bottom-sheet-container-large.ng-star-inserted {
+
+//     max-height: 100vh !important;
+//     overflow: unset;
+//     display: none;
+//   }
+// }
