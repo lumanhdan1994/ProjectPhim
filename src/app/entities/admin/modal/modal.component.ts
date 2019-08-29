@@ -57,9 +57,7 @@ export class BottomSheetOverviewExampleSheet {
     this.getSelectedMovie();
     this.setValueBySelectedMovie();
   }
-  Format(value) {
-    console.log(value)
-  }
+
   getSelectedMovie() {
     this.store.inforMovieUpdate.subscribe(data => {
       this.selectedMovieUpdate = data;
