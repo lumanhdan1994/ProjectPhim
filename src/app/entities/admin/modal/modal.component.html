@@ -1,3 +1,4 @@
-<button id="openModal" mat-raised-button (click)="openBottomSheet()">Open file</button>
-
-
+<button id="openModal" mat-raised-button (click)="openBottomSheet()" *ngIf="TabsSelected; else NhanhElse">Thêm Phim</button>
+<ng-template #NhanhElse>
+    <button id="openModal" mat-raised-button (click)="openBottomSheetUser()">Thêm Người Dùng</button>
+</ng-template>

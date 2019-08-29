@@ -12,6 +12,9 @@ export class StoreService {
   private checkListChange = new BehaviorSubject([] as any);
   checkListMovieChange = this.checkListChange.asObservable();
 
+  private checkTabsSelected = new BehaviorSubject([] as any);
+  tabsSelected = this.checkTabsSelected.asObservable();
+
   constructor() { }
 
   shareCheckListMovieChange(check: boolean) {
@@ -20,6 +23,10 @@ export class StoreService {
 
   shareInforMovie(infor: any) {
     this.inforMovie.next(infor);
+  }
+
+  shareTabSelected(checkTabs: boolean) {
+    this.checkTabsSelected.next(checkTabs);
   }
 }
 

@@ -54,9 +54,6 @@ export class QuanLyUserComponent implements OnInit {
     })
   }
 
-  AddUser() {
-    console.log("Thêm")
-  }
 }
 function createNewUser(user): UserData {
   

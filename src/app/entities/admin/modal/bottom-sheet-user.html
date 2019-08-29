@@ -1,0 +1,28 @@
+<mat-nav-list class="container">
+    <h1>Thêm Người Dùng</h1>
+    <form>
+        <mat-form-field color="warn">
+            <input value="" matInput placeholder="Tài Khoản">
+        </mat-form-field>
+        <mat-form-field color="warn">
+            <input value="" matInput placeholder="Họ Tên">
+        </mat-form-field>
+        <mat-form-field color="warn">
+            <input value="" matInput type="password" placeholder="Mật Khẩu">
+        </mat-form-field>
+        <mat-form-field color="warn">
+            <input value="" matInput placeholder="Email">
+        </mat-form-field>
+        <mat-form-field color="warn">
+            <input value="" matInput placeholder="Số Điện Thoại">
+        </mat-form-field>
+        <mat-form-field color="warn">
+            <mat-select placeholder="Loại Người Dùng">
+                <mat-option value="option">Quản Trị</mat-option>
+                <mat-option value="option">Khách Hàng</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-stroked-button color="warn" (click)="AddUser()">Thêm</button>
+    </form>
+</mat-nav-list>
