@@ -33,9 +33,6 @@ export class ListMovieComponent implements OnInit {
     this.getParamsUrl();
     this.getDetailMovie();
   }
-  // ngDoCheck() {
-  //   $($('.nav-link')[0]).click();
-  // }
   getParamsUrl() {
     this.maPhim = this.activatedRoute.snapshot.paramMap.get("malichchieu");
   }
@@ -44,14 +41,12 @@ export class ListMovieComponent implements OnInit {
     const uri = `QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${this.maPhim}`;
     this.dataService.get(uri).subscribe((data: any) => {
       this.phimDetail = data;
-      // console.log(this.phimDetail);
       this.LayThongTinCumRap();
       let star = 0;
       while (star < this.phimDetail.danhGia) {
         star++;
         this.mangDanhGia.push(star);
       }
-      // console.log(this.mangDanhGia)
     });
 
   }
@@ -89,14 +84,11 @@ export class ListMovieComponent implements OnInit {
       this.flagCheck = true;
       setTimeout(() => this.AfterTheaterSelected(), 1);
     }
-    // console.log(this.lichChieuTheoMaRap)
 
   }
 
   AfterTheaterSelected() {
     if (this.flagCheck) {
-      // console.log("asd")
-
       $($(".btnLich")[0]).click();
       this.flagCheck = false;
     }
@@ -111,20 +103,5 @@ export class ListMovieComponent implements OnInit {
 
       }
     })
-    // console.log(this.DateSelect);
   }
-
-
-
-  // getListMovie() {
-  //   const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP01";
-  //   this.subListMovie = this.dataService.get(uri).subscribe((data: any) => {
-  //     console.log(data);
-  //   });
-  // }
-
-  // ngOnDestroy() {
-  //   this.subListMovie.unsubscribe();
-  //   console.log("ngOnDestroy");
-  // }
 }

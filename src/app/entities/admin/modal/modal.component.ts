@@ -5,6 +5,7 @@ import { $ } from 'protractor';
 import { QuanLyPhimComponent } from '../quan-ly-phim/quan-ly-phim.component';
 import { StoreService } from 'src/app/shared/services/store.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+declare var $: any
 
 @Component({
   selector: 'app-modal',
@@ -20,7 +21,9 @@ export class ModalComponent implements OnInit {
 
   openBottomSheet(): void {
     this.store.shareInforMovie("");
-    this._bottomSheet.open(BottomSheetOverviewExampleSheet);
+    this._bottomSheet.open(BottomSheetOverviewExampleSheet, {
+      panelClass: 'custom-height'
+    });
   }
 }
 // ========================= Component form =====================
@@ -57,6 +60,7 @@ export class BottomSheetOverviewExampleSheet {
     this.getSelectedMovie();
     this.setValueBySelectedMovie();
   }
+
 
   getSelectedMovie() {
     this.store.inforMovieUpdate.subscribe(data => {
