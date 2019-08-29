@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +10,7 @@ export class AdminComponent implements OnInit {
   UserSeleted: boolean = false;
   MovieSeleted: boolean = false;
   InfoLogin: any;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.getInfoLogin();
@@ -25,5 +26,9 @@ export class AdminComponent implements OnInit {
   GetDSUser() {
     this.MovieSeleted = false;
     this.UserSeleted = true;
+  }
+  LogOut() {
+    localStorage.clear();
+    this.router.navigate([""])
   }
 }

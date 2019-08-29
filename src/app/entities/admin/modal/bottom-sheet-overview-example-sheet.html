@@ -82,7 +82,7 @@
     <!-- ========================================== -->
 
     <mat-form-field class="example-full-width">
-      <input type="date" matInput placeholder="Ngày khởi chiếu" formControlName="ngayKhoiChieu">
+      <input type="date" matInput placeholder="Ngày khởi chiếu" formControlName="ngayKhoiChieu" ng-change="Format(Form.value.ngayKhoiChieu)">
     </mat-form-field>
     <span class="danger" *ngIf="Form.controls.ngayKhoiChieu.errors?.required && Form.controls.ngayKhoiChieu.touched">
       (*)Vui lòng nhập vào trường này
