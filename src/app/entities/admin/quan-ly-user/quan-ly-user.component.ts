@@ -19,7 +19,7 @@ export interface UserData {
   styleUrls: ['./quan-ly-user.component.scss']
 })
 export class QuanLyUserComponent implements OnInit {
-  displayedColumns: string[] = ['taiKhoan', 'hoTen', 'email', 'soDt', 'maLoaiNguoiDung'];
+  displayedColumns: string[] = ['taiKhoan', 'hoTen', 'email', 'soDt', 'maLoaiNguoiDung', 'setting'];
   dataSource: MatTableDataSource<UserData>;
   UserList: any = [];
 
