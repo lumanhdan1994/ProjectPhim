@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { DataService } from 'src/app/shared/services/data.service';
 import { QuanLyPhimComponent } from '../quan-ly-phim/quan-ly-phim.component';
 import { StoreService } from 'src/app/shared/services/store.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { QuanLyUserComponent } from '../quan-ly-user/quan-ly-user.component';
 declare var $: any
 
 @Component({
@@ -188,11 +189,16 @@ export class BottomSheetUser {
     maLoaiNguoiDung : new FormControl(''),
     hoTen : new FormControl('')
   });
-  constructor() { }
+  constructor(private store: StoreService, private dataService: DataService, private _bottomSheetRef: MatBottomSheetRef<BottomSheetUser>) { }
   ngOninit() {
   }
   AddUser() {
     console.log(this.user.value);
+    const uri = "QuanLyNguoiDung/ThemNguoiDung"
+    this.dataService.post(uri, this.user.value).subscribe(() => {
+      // this._bottomSheetRef.dismiss();
+      // this.domQLUser.renderingTable();
+    }, (err)=>{})
     // console.log(this.FormData)
   }
   // AdddUser(value) {
