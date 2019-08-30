@@ -1,25 +1,29 @@
 <mat-nav-list class="container">
     <h1>Thêm Người Dùng</h1>
-    <form>
+    <form [formGroup]="user">
         <mat-form-field color="warn">
-            <input value="" matInput placeholder="Tài Khoản">
+            <input formControlName="taiKhoan" value="" matInput placeholder="Tài Khoản">
         </mat-form-field>
         <mat-form-field color="warn">
-            <input value="" matInput placeholder="Họ Tên">
+            <input formControlName="hoTen" value="" matInput placeholder="Họ Tên">
         </mat-form-field>
         <mat-form-field color="warn">
-            <input value="" matInput type="password" placeholder="Mật Khẩu">
+            <input formControlName="matKhau" matInput placeholder="Mật Khẩu" [type]="hide ? 'text' : 'password'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </button>
         </mat-form-field>
         <mat-form-field color="warn">
-            <input value="" matInput placeholder="Email">
+            <input formControlName="email" value="" matInput placeholder="Email">
         </mat-form-field>
         <mat-form-field color="warn">
-            <input value="" matInput placeholder="Số Điện Thoại">
+            <input formControlName="soDt" value="" matInput placeholder="Số Điện Thoại">
         </mat-form-field>
         <mat-form-field color="warn">
-            <mat-select placeholder="Loại Người Dùng">
-                <mat-option value="option">Quản Trị</mat-option>
-                <mat-option value="option">Khách Hàng</mat-option>
+            <mat-select formControlName="maLoaiNguoiDung" placeholder="Loại Người Dùng">
+                <mat-option value="QuanTri">Quản Trị</mat-option>
+                <mat-option value="KhachHang">Khách Hàng</mat-option>
             </mat-select>
         </mat-form-field>
 

@@ -99,9 +99,9 @@ img{
     width: 100%;
   }
 
-  .mat-form-field {
-    font-size: 17px;
-    width: 100%;
+  .custom-mat-form-field {
+    font-size: 17px !important;
+    width: 50% !important;
   }
 
   td {
@@ -137,5 +137,6 @@ img{
     height: 33px;
     margin: 0px 2px;
   }
+  
 }
 

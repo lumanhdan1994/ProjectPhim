@@ -79,13 +79,13 @@
     transform: translateX(-31px);
   }
 }
-// 
+//
 
-.mat-flat-button{
-  height: 40px;
-  margin: 5px 0;
-}
-.mat-header-cell{
+// .mat-flat-button{
+//   height: 40px;
+//   margin: 5px 0;
+// }
+.mat-header-cell {
   font-size: 15px;
 }
 .mat-elevation-z8 {
@@ -94,8 +94,8 @@
   }
 
   .mat-form-field {
-    font-size: 17px;
-    width: 100%;
+    font-size: 20px !important;
+    width: 100% !important;
   }
 
   td,
@@ -103,11 +103,12 @@
     width: 22%;
   }
 
-  .mat-cell{
+  .mat-cell {
     white-space: nowrap;
   }
-  .mat-flat-button{
-    height: 33px;
+  .mat-flat-button {
+    height: 35px;
     margin: 0px 2px;
   }
+  
 }
