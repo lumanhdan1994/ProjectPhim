@@ -170,20 +170,32 @@ export class BottomSheetOverviewExampleSheet {
   styleUrls: ['./modal.component.scss']
 })
 export class BottomSheetUser {
-  FormData = {
-    taiKhoan: "",
-    matKhau: "",
-    email: "",
-    soDt: "",
-    maNhom: "GP05",
-    maLoaiNguoiDung: "",
-    hoTen: ""
-  }
-  user : FormGroup
+  // FormData = {
+  //   taiKhoan: "",
+  //   matKhau: "",
+  //   email: "",
+  //   soDt: "",
+  //   maNhom: "GP05",
+  //   maLoaiNguoiDung: "",
+  //   hoTen: ""
+  // }
+  user: FormGroup = new FormGroup({
+    taiKhoan : new FormControl(''),
+    matKhau : new FormControl(''),
+    email : new FormControl(''),
+    soDt : new FormControl(''),
+    maNhom: new FormControl('GP05'),
+    maLoaiNguoiDung : new FormControl(''),
+    hoTen : new FormControl('')
+  });
   constructor() { }
   ngOninit() {
   }
   AddUser() {
-    console.log(this.user)
+    console.log(this.user.value);
+    // console.log(this.FormData)
   }
+  // AdddUser(value) {
+  //   console.log(value);
+  // }
 }

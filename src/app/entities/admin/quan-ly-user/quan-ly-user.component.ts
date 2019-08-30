@@ -3,6 +3,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { BottomSheetUser } from '../modal/modal.component';
 
 export interface UserData {
   email: string,
@@ -49,11 +50,13 @@ export class QuanLyUserComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.UserList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      // console.log(this.UserList);
+      console.log(this.UserList);
       console.log(this.dataSource)
     })
   }
-
+  Edit(data) {
+    console.log(data);
+  }
 }
 function createNewUser(user): UserData {
   
