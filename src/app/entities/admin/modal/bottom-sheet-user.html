@@ -1,11 +1,14 @@
 <mat-nav-list class="container">
-    <h1>Thêm Người Dùng</h1>
+    <h1 *ngIf="!CheckUpdate; else EditSelected">Thêm Người Dùng</h1>
+    <ng-template #EditSelected>
+        <h1>Cập Nhật Người Dùng</h1>
+    </ng-template>
     <form [formGroup]="user">
         <mat-form-field color="warn">
-            <input formControlName="taiKhoan" value="" matInput placeholder="Tài Khoản">
+            <input formControlName="taiKhoan" matInput placeholder="Tài Khoản">
         </mat-form-field>
         <mat-form-field color="warn">
-            <input formControlName="hoTen" value="" matInput placeholder="Họ Tên">
+            <input formControlName="hoTen" matInput placeholder="Họ Tên">
         </mat-form-field>
         <mat-form-field color="warn">
             <input formControlName="matKhau" matInput placeholder="Mật Khẩu" [type]="hide ? 'text' : 'password'">
@@ -15,10 +18,10 @@
             </button>
         </mat-form-field>
         <mat-form-field color="warn">
-            <input formControlName="email" value="" matInput placeholder="Email">
+            <input formControlName="email" matInput placeholder="Email">
         </mat-form-field>
         <mat-form-field color="warn">
-            <input formControlName="soDt" value="" matInput placeholder="Số Điện Thoại">
+            <input formControlName="soDt" matInput placeholder="Số Điện Thoại">
         </mat-form-field>
         <mat-form-field color="warn">
             <mat-select formControlName="maLoaiNguoiDung" placeholder="Loại Người Dùng">
@@ -27,6 +30,9 @@
             </mat-select>
         </mat-form-field>
 
-        <button mat-stroked-button color="warn" (click)="AddUser()">Thêm</button>
+        <button mat-stroked-button color="warn" (click)="AddUser()" *ngIf="!CheckUpdate; else EditButton">Thêm</button>
+        <ng-template #EditButton>
+            <button mat-stroked-button color="warn" (click)="EditUser()">Cập Nhật</button>
+        </ng-template>
     </form>
 </mat-nav-list> -->
