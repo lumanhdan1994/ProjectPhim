@@ -5,6 +5,7 @@ import { QuanLyPhimComponent } from '../quan-ly-phim/quan-ly-phim.component';
 import { StoreService } from 'src/app/shared/services/store.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuanLyUserComponent } from '../quan-ly-user/quan-ly-user.component';
+import { MatTable } from '@angular/material/table';
 declare var $: any
 
 @Component({
@@ -13,7 +14,6 @@ declare var $: any
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-
   constructor(private _bottomSheet: MatBottomSheet, private store: StoreService) { }
 
   ngOnInit() {
@@ -22,15 +22,25 @@ export class ModalComponent implements OnInit {
     })
   }
   TabsSelected: boolean;
+
   openBottomSheet(): void {
     this.store.shareInforMovie("");
     this._bottomSheet.open(BottomSheetOverviewExampleSheet, {
       panelClass: 'custom-height'
     });
+
   }
+
   openBottomSheetUser(): void {
+    this.store.shareInfoUser("");
     this._bottomSheet.open(BottomSheetUser, {
-      panelClass: 'custom-height'
+      panelClass: 'custom-height',
+    });
+  }
+  openEditBottomSheetUser(data): void {
+    this.store.shareInfoUser(data);
+    this._bottomSheet.open(BottomSheetUser, {
+      panelClass: 'custom-height',
     });
   }
 }
@@ -164,44 +174,72 @@ export class BottomSheetOverviewExampleSheet {
     })
   }
 }
-// User Form
+
+
+// ======================     USER FORM     ====================== 
 @Component({
   selector: 'bottom-sheet-user',
   templateUrl: 'bottom-sheet-user.html',
   styleUrls: ['./modal.component.scss']
 })
 export class BottomSheetUser {
-  // FormData = {
-  //   taiKhoan: "",
-  //   matKhau: "",
-  //   email: "",
-  //   soDt: "",
-  //   maNhom: "GP05",
-  //   maLoaiNguoiDung: "",
-  //   hoTen: ""
-  // }
+
   user: FormGroup = new FormGroup({
-    taiKhoan : new FormControl(''),
-    matKhau : new FormControl(''),
-    email : new FormControl(''),
-    soDt : new FormControl(''),
+    taiKhoan: new FormControl(''),
+    matKhau: new FormControl(''),
+    email: new FormControl(''),
+    soDt: new FormControl(''),
     maNhom: new FormControl('GP05'),
-    maLoaiNguoiDung : new FormControl(''),
-    hoTen : new FormControl('')
+    maLoaiNguoiDung: new FormControl(''),
+    hoTen: new FormControl('')
   });
+
+
   constructor(private store: StoreService, private dataService: DataService, private _bottomSheetRef: MatBottomSheetRef<BottomSheetUser>) { }
-  ngOninit() {
+
+  @ViewChild(MatTable, { static: false }) domQLUser: QuanLyUserComponent;
+
+  CheckUpdate: boolean = false;
+  _dataSourse: any = this.domQLUser.dataSource;
+  ngOnInit() {
+    this.UserSelected();
   }
-  AddUser() {
-    console.log(this.user.value);
+
+
+  UserSelected() {
+    this.store.getInfoUser.subscribe((data: any) => {
+      console.log(data)
+      if (data != "") {
+        this.user.setValue({
+          taiKhoan: data.taiKhoan,
+          matKhau: data.matKhau,
+          email: data.email,
+          soDt: data.soDt,
+          maLoaiNguoiDung: data.maLoaiNguoiDung,
+          hoTen: data.hoTen,
+          maNhom: "GP05",
+        });
+        this.CheckUpdate = true;
+      } else {
+        this.CheckUpdate = false
+      }
+    })
+  }
+
+  AddUser(): void {
     const uri = "QuanLyNguoiDung/ThemNguoiDung"
     this.dataService.post(uri, this.user.value).subscribe(() => {
-      // this._bottomSheetRef.dismiss();
-      // this.domQLUser.renderingTable();
-    }, (err)=>{})
-    // console.log(this.FormData)
+      this._bottomSheetRef.dismiss();
+      
+    }, (err) => { })
   }
-  // AdddUser(value) {
-  //   console.log(value);
-  // }
+  EditUser() {
+    const uri = "QuanLyNguoiDung/CapNhatThongTinNguoiDung";
+    console.log(this.user.value)
+    this.dataService.put(uri, this.user.value).subscribe(() => {
+      this._bottomSheetRef.dismiss();
+    }, (err) => {
+        
+    })
+  }
 }
