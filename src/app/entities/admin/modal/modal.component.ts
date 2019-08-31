@@ -197,10 +197,10 @@ export class BottomSheetUser {
 
   constructor(private store: StoreService, private dataService: DataService, private _bottomSheetRef: MatBottomSheetRef<BottomSheetUser>) { }
 
-  @ViewChild(MatTable, { static: false }) domQLUser: QuanLyUserComponent;
+  // @ViewChild(MatTable, { static: false }) domQLUser: QuanLyUserComponent;
 
   CheckUpdate: boolean = false;
-  _dataSourse: any = this.domQLUser.dataSource;
+  // _dataSourse: any = this.domQLUser.dataSource;
   ngOnInit() {
     this.UserSelected();
   }

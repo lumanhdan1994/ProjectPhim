@@ -65,7 +65,7 @@ export class QuanLyUserComponent implements OnInit {
     const uri = `QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${data.taiKhoan}`
     this.dataService.delete(uri).subscribe(() => {
     }, (err) => { });
-    console.log(this.renderTable);
+    // console.log(this.renderTable._getRenderedRows);
   }
 }
 // function createNewUser(user): UserData {
