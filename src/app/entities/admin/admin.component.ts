@@ -17,6 +17,9 @@ export class AdminComponent implements OnInit {
   private store: StoreService) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      $(".tagPhim").click();
+    },1000);
     this.getInfoLogin();
   }
   getInfoLogin() {

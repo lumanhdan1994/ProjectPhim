@@ -1,48 +1,21 @@
-<!-- <nav class="navbar navbar-expand-sm navbar-dark">
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link p-0" href="#"><img src="../../../assets/img/logo.png" alt="logo"></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" (click)="GetDSPhim()">Danh Sách Phim</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" (click)="GetDSUser()">Danh Sách User</a>
-            </li>
-        </ul>
-        <div class="login-admin">
-            <span>Xin Chào {{InfoLogin.inforUser.hoTen}}</span>
-            <button mat-flat-button color="warn" class="ml-3" (click)="LogOut()">Log Out</button>
-        </div>
-    </div>
-</nav>
-<ng-container *ngIf="UserSeleted">
-    <app-quan-ly-user style="color: white"></app-quan-ly-user>
-</ng-container>
-<ng-container *ngIf="MovieSeleted">
-    <app-quan-ly-phim style="color: white"></app-quan-ly-phim>
-</ng-container>
-<router-outlet></router-outlet> -->
-<!-- <app-admin-sidebar></app-admin-sidebar> -->
-
-
-
 <div class="sidenav">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-            <a class="nav-link p-0" href="#"><img src="../../../assets/img/logo.png" alt="logo"> <span>SuperFilm.vn</span> </a>
+            <a class="nav-link logo p-0" href="#"><img src="../../../assets/img/logo.png" alt="logo">
+                <span id="superFilm">SuperFilm.vn</span> </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" (click)="GetDSPhim()">Danh Sách Phim</a>
+            <div class="button_cont" align="center"><a class="example_b tagPhim nav-link" (click)="GetDSPhim()"><i class="fas fa-video m-1"></i>Danh sách phim</a></div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" (click)="GetDSUser()">Danh Sách User</a>
+            <div class="button_cont" align="center"><a class="example_b nav-link" (click)="GetDSUser()"><i class="fas fa-user m-1"></i>Danh người dùng</a></div>
+        </li>
+        <li class="nav-item">
+            <div class="button_cont" align="center"><a class="example_b nav-link" (click)="LogOut()"><i class="fas fa-sign-out-alt m-1"></i>Đăng xuất</a></div>
         </li>
     </ul>
     <div class="login-admin">
         <span>Xin Chào {{InfoLogin.inforUser.hoTen}}</span>
-        <button mat-flat-button color="warn" class="ml-3" (click)="LogOut()">Log Out</button>
     </div>
 </div>
 <div class="main">
