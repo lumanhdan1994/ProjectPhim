@@ -1,7 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { StoreService } from 'src/app/shared/services/store.service';
 
-
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) {}
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+} 
 
 @Component({
   selector: 'app-phim-dang-chieu',
@@ -10,10 +18,10 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class PhimDangChieuComponent implements OnInit {
 
-  trailerShow: string = "testsdfafgdfbdzfbzdfb";
+  trailerShow: string = "";
   DSPhimDangChieu: any =[];
   DSPhimSapChieu: any =[]
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private store: StoreService) { }
 
   slideConfig = { "slidesToShow": 4, "slidesToScroll": 4 };
 

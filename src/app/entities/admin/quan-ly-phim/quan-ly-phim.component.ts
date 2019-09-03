@@ -53,9 +53,11 @@ export class QuanLyPhimComponent implements OnInit {
     const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP05";
     this.dataService.get(uri).subscribe((data) => {
       this.ListMovie = data;
-      this.dataSource = new MatTableDataSource(this.ListMovie);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      setTimeout(() => {
+        this.dataSource = new MatTableDataSource(this.ListMovie);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }, 1)
     })
   }
 
