@@ -2,7 +2,7 @@
     <div class="img">
         <img [src]="phim.hinhAnh" alt="slide2">
         <div class="trailer">
-            <a [href]="phim.trailer"><i class="fa fa-play" aria-hidden="true"></i></a>
+            <a (click)="sendTrailer()" data-toggle="modal" data-target="#myModalPhuc"><i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
         <button class="buyticker" (click)="chitiet()">Mua vé</button>
     </div>
@@ -11,3 +11,5 @@
         <p class="time">106 phút - 6.5 IMDb</p>
     </div>
 </div>
+
+

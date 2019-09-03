@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from "@angular/router";
 
 @Component({
@@ -8,11 +8,16 @@ import { Router } from "@angular/router";
 })
 export class ItemPhimComponent implements OnInit {
 
+  @Output() eventSendTrailer = new EventEmitter<any>();
   @Input() phim;
 
   constructor( private router: Router ) { }
 
   ngOnInit() {
+  }
+
+  sendTrailer(){
+    this.eventSendTrailer.emit(this.phim.trailer);
   }
 
   chitiet(){
