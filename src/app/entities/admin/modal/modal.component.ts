@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { DataService } from 'src/app/shared/services/data.service';
-import { QuanLyPhimComponent } from '../quan-ly-phim/quan-ly-phim.component';
 import { StoreService } from 'src/app/shared/services/store.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuanLyUserComponent } from '../quan-ly-user/quan-ly-user.component';
-import { MatTable } from '@angular/material/table';
 declare var $: any
 
 @Component({
@@ -195,16 +193,20 @@ export class BottomSheetUser {
   });
 
 
-  constructor(private store: StoreService, private dataService: DataService, private _bottomSheetRef: MatBottomSheetRef<BottomSheetUser>) { }
+  constructor(
+    private store: StoreService,
+    private dataService: DataService,
+    private _bottomSheetRef: MatBottomSheetRef<BottomSheetUser>,
+  ) { }
 
-  // @ViewChild(MatTable, { static: false }) domQLUser: QuanLyUserComponent;
 
   CheckUpdate: boolean = false;
-  // _dataSourse: any = this.domQLUser.dataSource;
   ngOnInit() {
+    
     this.UserSelected();
   }
 
+  _flagChanging: boolean = false;
 
   UserSelected() {
     this.store.getInfoUser.subscribe((data: any) => {
@@ -230,7 +232,7 @@ export class BottomSheetUser {
     const uri = "QuanLyNguoiDung/ThemNguoiDung"
     this.dataService.post(uri, this.user.value).subscribe(() => {
       this._bottomSheetRef.dismiss();
-      
+      this._flagChanging= true
     }, (err) => { })
   }
   EditUser() {
@@ -238,8 +240,9 @@ export class BottomSheetUser {
     console.log(this.user.value)
     this.dataService.put(uri, this.user.value).subscribe(() => {
       this._bottomSheetRef.dismiss();
+      !this._flagChanging
     }, (err) => {
-        
+
     })
   }
 }

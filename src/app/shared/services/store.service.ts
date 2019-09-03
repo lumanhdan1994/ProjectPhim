@@ -18,6 +18,9 @@ export class StoreService {
   private infoUser = new BehaviorSubject([] as any);
   getInfoUser = this.infoUser.asObservable();
 
+  private changeData = new BehaviorSubject([] as any);
+  onChangeData = this.changeData.asObservable();
+
   // private checkUserSelected = new BehaviorSubject([] as any);
   // UserSelected = this.checkUserSelected.asObservable();
 
@@ -37,6 +40,10 @@ export class StoreService {
 
   shareInfoUser(data: any) {
     this.infoUser.next(data);
+  }
+
+  getDataChanging(check: boolean) {
+    this.changeData.next(check);
   }
 }
 
