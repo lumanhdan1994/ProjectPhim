@@ -19,26 +19,22 @@ export class HeaderComponent implements OnInit {
   }
   checkLogIn() {
     this.LogInLst = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
-    // console.log(this.LogInLst)
   }
   LogOut(){
     localStorage.clear();
   }
   checkDangNhap(value) {
-    console.log(value)
     $("#myModal").click();
   }
   ngDoCheck() {
     this.checkLogIn()
     if (this.LogInLst != null) {
-      // console.log("!@3213")
     }
   }
   eventScroll() {
     $(document).ready(() => {
       window.addEventListener('scroll', () => {
         let top = window.pageYOffset;
-        console.log(top)
         if (top !== 0 && top > 33) {
           $("#NavBar").css({
             "opacity": "0.7",

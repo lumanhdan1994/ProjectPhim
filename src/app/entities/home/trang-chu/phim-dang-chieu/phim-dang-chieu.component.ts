@@ -10,6 +10,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class PhimDangChieuComponent implements OnInit {
 
+  trailerShow: string = "testsdfafgdfbdzfbzdfb";
   DSPhimDangChieu: any =[];
   DSPhimSapChieu: any =[]
   constructor(private dataService: DataService) { }
@@ -31,8 +32,11 @@ export class PhimDangChieuComponent implements OnInit {
           this.DSPhimSapChieu.push(item);
         }
       })
-      // this.danhSachPhim = data;
     });
+  }
+
+  takeTrailer(trailer){
+    this.trailerShow = trailer;
   }
 }
 

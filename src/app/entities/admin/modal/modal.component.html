@@ -1,4 +1,4 @@
-<button id="openModal" mat-raised-button (click)="openBottomSheet()" *ngIf="TabsSelected; else NhanhElse">Thêm Phim <i class="fa fa-plus" aria-hidden="true"></i></button>
+<button id="openModal" mat-raised-button (click)="openBottomSheet()" *ngIf="TabsSelected; else NhanhElse"><i class="fa fa-plus" aria-hidden="true"></i></button>
 <ng-template #NhanhElse>
     <button id="openModal" mat-raised-button (click)="openBottomSheetUser()" color="accent"><i class="fa fa-plus" aria-hidden="true"></i></button>
 </ng-template>

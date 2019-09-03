@@ -16,7 +16,7 @@
       <ng-container *ngIf="DSPhimDangChieu">
         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
           <div ngxSlickItem *ngFor="let item of DSPhimDangChieu" class="slide">
-            <app-item-phim [phim]="item"></app-item-phim>
+            <app-item-phim (eventSendTrailer)="takeTrailer($event)" [phim]="item"></app-item-phim>
           </div>
         </ngx-slick-carousel>
       </ng-container>
@@ -35,4 +35,13 @@
     </div>
     <!-- end sap chieu -->
   </div>
+  
+
+<div class="modal" id="myModalPhuc">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <iframe width="853" height="480" data-bind="atrr: {src: trailerShow}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
 </section>

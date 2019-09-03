@@ -139,3 +139,21 @@
 .swiper-pagination-bullet-active {
   background: $color-text;
 }
+
+.modal {
+  padding: 66px 0;
+  .modal-dialog {
+    margin: 0 auto;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    .modal-content {
+      height: 80vh;
+      width: 150%;
+      position: absolute;
+      left: -24%;
+    }
+  }
+}
