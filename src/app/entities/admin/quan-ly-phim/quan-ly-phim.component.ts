@@ -3,9 +3,9 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { StoreService } from 'src/app/shared/services/store.service';
 import { BottomSheetOverviewExampleSheet } from '../modal/modal.component';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 
 declare var $: any;
 
@@ -29,8 +29,8 @@ export class QuanLyPhimComponent implements OnInit {
   dataSource: MatTableDataSource<MovieData>;
   ListMovie: any = [];
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(private dataService: DataService, private store: StoreService, private _bottomSheet: MatBottomSheet) { }
 
@@ -51,14 +51,19 @@ export class QuanLyPhimComponent implements OnInit {
   
   getListMovie() {
     const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP05";
-    this.dataService.get(uri).subscribe((data) => {
+    this.dataService.get(uri).subscribe((data:any) => {
       this.ListMovie = data;
       setTimeout(() => {
         this.dataSource = new MatTableDataSource(this.ListMovie);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+<<<<<<< HEAD
       }, 1)
     })
+=======
+      }, 1);
+    }, err=>{})
+>>>>>>> master
   }
 
   delete(maPhim){
