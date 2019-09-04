@@ -57,8 +57,13 @@ export class QuanLyPhimComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.ListMovie);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+<<<<<<< HEAD
+      }, 1)
+    })
+=======
       }, 1);
     }, err=>{})
+>>>>>>> master
   }
 
   delete(maPhim){

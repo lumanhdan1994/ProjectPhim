@@ -35,13 +35,12 @@
     </div>
     <!-- end sap chieu -->
   </div>
-  
 
-<div class="modal" id="myModalPhuc">
+  <div class="modal" id="myModalPhuc">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <iframe width="853" height="480" data-bind="atrr: {src: trailerShow}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="modal-content">
+          <iframe width="100%" height="300" [src]="trailerShow | safe"></iframe>
         </div>
     </div>
-</div>
+  </div>
 </section>
