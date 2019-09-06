@@ -12,7 +12,8 @@ import { ReviewComponent } from './review/review.component';
 
 
 @NgModule({
-  declarations: [TrangChuComponent, CarouselComponent,PhimDangChieuComponent, ItemPhimComponent, CumrapComponent, AppComponent, ReviewComponent, SafePipe],
+  declarations: [TrangChuComponent, CarouselComponent, PhimDangChieuComponent,
+     ItemPhimComponent, CumrapComponent, AppComponent, ReviewComponent, SafePipe],
   // exports: [TrangChuComponent, CarouselComponent, PhimDangChieuComponent, ItemPhimComponent],
 
   imports: [CommonModule, TrangChuRoutingModule, SlickCarouselModule]
