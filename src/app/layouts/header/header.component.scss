@@ -29,15 +29,35 @@
         padding-right: 10px;
         color: $text-color;
       }
-      .btn {
-        color: $text-color !important;
-        padding: 0 !important;
-        font-size: 15px !important;
-        font-weight: 500;
-      }
-      .khuvuc-scroll {
-        z-index: 10000;
-      }
+      // .btn {
+      //   color: $text-color !important;
+      //   padding: 0 !important;
+      //   font-size: 15px !important;
+      //   font-weight: 500;
+      // }
+      // .khuvuc-scroll {
+      //   z-index: 10000;
+      // }
+      // .srcoll-khuvuc {
+      //   // height: 30px;
+      //   overflow-y: auto;
+      //   .khuvuc {
+      //     border: none;
+      //     outline: none;
+      //     color: white;
+      //     background: none;
+      //     .khuvuc-options {
+      //       background: black;
+      //       color: white;
+      //       outline: none;
+      //       height: 100px;
+      //       overflow: scroll;
+      //     }
+      //   }
+      // }
+      // .mat-select-value{
+      //   max-width: 100%;
+      // }
     }
   }
 }
@@ -49,8 +69,9 @@
   overflow: hidden;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.774);
   opacity: 1;
-  top:0;
-  z-index: 1020;
+  top: 0;
+  z-index: 1000;
+  position: sticky;
   .toggle-button {
     width: 50px;
     button {
@@ -107,15 +128,20 @@
       }
     }
   }
-
-  @media screen and (min-width: 601px) {
-    .toggle-button {
-      > button {
-        display: none;
-      }
+}
+#myModal {
+  width: 66% !important;
+}
+@media screen and(min-width: 612px) {
+  .toggle-button {
+    > button {
+      display: none;
     }
-    .nav-menu {
-      display: inline-block;
-    }
+  }
+  .nav-menu {
+    display: inline-block;
+  }
+  #myModal {
+    width: 100% !important;
   }
 }

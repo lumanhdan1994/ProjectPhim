@@ -20,9 +20,11 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-
-.custom-height{
+.custom-height {
   max-height: 100vh !important;
   overflow: unset !important;
   width: 600px !important;
+}
+.mat-select-value {
+  max-width: 100% !important;
 }
