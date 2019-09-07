@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap, catchError } from "rxjs/operators";
-import { environment } from "src/environments/environment";
 
 let urlAPI = "http://movie0706.cybersoft.edu.vn/api/";
 
@@ -22,7 +21,6 @@ const httpOptions = {
 })
 export class DataService {
   constructor(private http: HttpClient) {
-    urlAPI = environment.urlApi;
   }
 
   get(uri: string): Observable<any> {
