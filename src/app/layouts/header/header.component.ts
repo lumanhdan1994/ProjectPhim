@@ -6,21 +6,52 @@ import * as $ from 'jquery';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+  
 export class HeaderComponent implements OnInit {
   LogInLst: any;
   constructor() { }
-
+  areas = [
+    { value: "Chọn Khu Vực" },
+    { value: 'Hồ Chí Minh' },
+    { value: 'Hà Nội' },
+    { value: 'Đà Nẵng' },
+    { value: 'Hải Phòng' },
+    { value: 'Bà Rịa Vũng Tàu' },
+    { value: 'Cần Thơ' },
+  ]
+  
   ngOnInit() {
     this.eventScroll();
     this.ngDoCheck();
+    $('.mat-option').attr('disabled')
+    // console.log(this.areas)
   }
   ngAfterViewInit() {
     this.checkLogIn();
+    $(document).ready(() => {
+      //Open side bar
+      $('#show-menu').click(function () {
+        $('#Sidebar').css('width', '100%');
+        $('.side-menu').css('right', '0%');
+        $('.sidebar-bg').css('right', '70%');
+        $('.side-menu').css('transition', 'all 0.3s');
+        $('.sidebar-bg').css('transition', 'all 0.2s 0.1s');
+      })
+      // Close side bar
+      $('.sidebar-bg').click(function () {
+        $('#Sidebar').css('width', '0%');
+        $('.side-menu').css('right', '-70%');
+        $('.sidebar-bg').css('right', '0%');
+        $('#Sidebar').css('transition', 'all 0.2s');
+        $('.side-menu').css('transition', 'all 0.2s 0.05s');
+        $('.sidebar-bg').css('transition', 'all 0.2s');
+      })
+    })
   }
   checkLogIn() {
     this.LogInLst = JSON.parse(localStorage.getItem("taiKhoanDaDangNhap"));
   }
-  LogOut(){
+  LogOut() {
     localStorage.clear();
   }
   checkDangNhap(value) {
@@ -41,14 +72,14 @@ export class HeaderComponent implements OnInit {
             "position": "fixed",
             "transition": "all 0.3s",
           });
-          
-          $("#NavBar").mouseenter(()=>{
+
+          $("#NavBar").mouseenter(() => {
             $("#NavBar").css({
               "opacity": "1",
               "transition": "all 0.3s"
             });
           });
-          $("#NavBar").mouseleave(()=>{
+          $("#NavBar").mouseleave(() => {
             $("#NavBar").css({
               "opacity": "0.7",
               "transition": "all 0.3s"

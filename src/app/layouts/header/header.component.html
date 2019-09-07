@@ -3,7 +3,8 @@
         <div class="header-log-in">
             <a data-target="#myModal" class="log-in d-flex align-items-center">
                 <i class="fas fa-user-circle"></i>
-                <span data-toggle="modal" data-target="#myModal" (click)="checkLogIn()" *ngIf="!LogInLst; else LogInSuccess">Đăng Nhập</span>
+                <span data-toggle="modal" data-target="#myModal" (click)="checkLogIn()"
+                    *ngIf="!LogInLst; else LogInSuccess">Đăng Nhập</span>
                 <ng-template #LogInSuccess>
                     <span class="pr-2">Xin Chào {{LogInLst.inforUser.hoTen}}</span>
                     |
@@ -14,18 +15,30 @@
         </div>
         <div class="header-khuvuc d-flex align-items-center">
             <i class="fas fa-map-marker-alt"></i>
-            <button type="button" class="btn btn-primary dropdown-toggle btn-khuvuc" data-toggle="dropdown">
+            <!-- <button type="button" class="btn btn-primary dropdown-toggle btn-khuvuc" data-toggle="dropdown">
                 Hồ Chí Minh
-            </button>
-            <div class="dropdown-menu khuvuc-scroll">
-                <a class="dropdown-item" href="#">Hà Nội</a>
-                <a class="dropdown-item" href="#">Đà Nẵng</a>
-                <a class="dropdown-item" href="#">Hải Phòng</a>
-                <a class="dropdown-item" href="#">Nha Trang</a>
-                <a class="dropdown-item" href="#">Bà Rịa Vũng Tàu</a>
-                <a class="dropdown-item" href="#">Hồ Chí Minh</a>
-                <a class="dropdown-item" href="#">Cần Thơ</a>
-            </div>
+            </button> -->
+            <!-- <div class="srcoll-khuvuc">
+                <select class="khuvuc" size="5">
+                    <option class="khuvuc-options" [value]="item.value" *ngFor="let item of areas">{{item.value}}
+                    </option>
+                </select>
+            </div> -->
+            <!-- <mat-form-field> -->
+            <!-- <mat-label>Chọn Khu Vực</mat-label> -->
+            <mat-select [value]="areas[0].value">
+                <ng-container *ngFor="let item of areas; let index=index">
+                    <mat-option [value]="item.value" *ngIf="index != 0; else DisableOption">
+                        {{item.value}}
+                    </mat-option>
+                    <ng-template #DisableOption>
+                        <mat-option [value]="item.value" disabled>
+                            {{item.value}}
+                        </mat-option>
+                    </ng-template>
+                </ng-container>
+            </mat-select>
+            <!-- </mat-form-field> -->
         </div>
     </div>
 </header>
@@ -35,13 +48,13 @@
 <nav id="NavBar" class="my-container d-flex justify-content-between align-items-center">
     <div class="navbar-brand">
         <a href="#">
-            <img src="./../../../assets/img/logo.png" alt="LuManhDan">
+            <img src="./../../../assets/img/logo.png">
         </a>
     </div>
     <div class="nav-menu">
         <ul class="nav3-nav d-flex align-items-center">
             <li class="nav-item">
-                <a href="/trangchu#showtime" class="active">Lịch Chiếu</a>
+                <a href="/trangchu#showtime">Lịch Chiếu</a>
             </li>
             <li class="nav-item">
                 <a href="/trangchu#cumrap">Cụm Rạp</a>
@@ -68,3 +81,6 @@
         <app-form (eventDangNhap)="checkDangNhap($event)"></app-form>
     </div>
 </div>
+
+<!-- Sider Bar -->
+<app-side-header></app-side-header>

@@ -18,16 +18,8 @@
 }   
 
 
-@media (max-width: 767px){
+@media screen and(max-width: 611px){
     #mycarousel{
-        .carousel-inner{
-            .carousel-item{
-                img{
-                    width: unset;
-                    height: 350px;
-                    display: none;
-                }
-            }
-        }
+        display: none;
     }
 }

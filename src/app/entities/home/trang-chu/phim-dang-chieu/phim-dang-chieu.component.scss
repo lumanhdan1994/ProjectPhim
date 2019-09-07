@@ -9,8 +9,7 @@
     border: none;
     .nav-item {
       .nav-link {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin: 0 10px;
         color: #fff;
         border: none;
         position: relative;
@@ -154,9 +153,18 @@
       width: 150%;
       position: absolute;
       left: -24%;
-      iframe{
+      iframe {
         height: 100%;
       }
+    }
+  }
+}
+@media screen and(max-width: 611px) {
+  #showtime {
+    padding-top: 10px;
+    .nav-link {
+      margin: 0px !important;
+      font-size: 23px;
     }
   }
 }

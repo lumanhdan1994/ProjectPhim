@@ -28,7 +28,13 @@ export class PhimDangChieuComponent implements OnInit {
   ngOnInit() {
     this.layDanhSachPhim();
   }
-
+  ngDoCheck() {
+    if (this.trailerShow != "") {
+      console.log("ád")
+      this.slideConfig = { "slidesToShow": 1, "slidesToScroll": 1 };
+    }
+  }
+  
   layDanhSachPhim() {
     const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP05";
     this.dataService.get(uri).subscribe((data: any) => {
