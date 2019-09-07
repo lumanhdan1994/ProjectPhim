@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Fe20angular</title>
+  <title>SuperFilm</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +15,26 @@
 
 <body>
   <app-root></app-root>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC4VszlXxebia72dqilqmld1hHQNaxqulg",
+    authDomain: "superfilm95.firebaseapp.com",
+    databaseURL: "https://superfilm95.firebaseio.com",
+    projectId: "superfilm95",
+    storageBucket: "",
+    messagingSenderId: "767785170040",
+    appId: "1:767785170040:web:6055c095d11b82d7ec698d"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 
 </html>
